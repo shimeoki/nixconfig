@@ -41,6 +41,8 @@
       ];
     };
 
+    prefer-no-csd = true;
+
     binds = with config.lib.niri.actions; {
       "Mod+Shift+Slash".action = show-hotkey-overlay;
 
