@@ -1,5 +1,9 @@
 { config, pkgs, zen-browser, ... }:
 {
+  imports = [
+    zen-browser.homeModules.twilight
+  ];
+
   home.username = "d";
   home.homeDirectory = "/home/d";
   programs.home-manager.enable = true;
@@ -57,6 +61,10 @@
 
       "Mod+Shift+E".action = quit;
     };
+  };
+
+  programs.zen-browser = {
+    enable = true;
   };
 
   programs.fuzzel = {
