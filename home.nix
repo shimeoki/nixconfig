@@ -212,6 +212,15 @@
         };
       };
     };
+    plugins.treesitter = { # todo: use main branch
+      enable = true;
+      settings = {
+        highlight = {
+          enable = true;
+          additional_vim_regex_highlighting = false;
+        };
+      };
+    };
   };
 
   home.packages = with pkgs; [
