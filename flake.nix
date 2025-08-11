@@ -23,6 +23,11 @@
       url = "github:shimeoki/dotfiles";
       flake = false;
     };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, ... }: {
