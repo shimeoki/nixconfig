@@ -268,6 +268,12 @@
           '';
         };
       };
+      bashls = {
+        enable = true;
+        settings = {
+          filetypes = [ "sh" "zsh" "bash" ];
+        };
+      };
     };
   };
 
