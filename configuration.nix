@@ -1,4 +1,4 @@
-{ config, lib, pkgs, dotfiles, ... }:
+{ config, lib, pkgs, dotfiles, zen-browser, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,6 +6,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = { inherit zen-browser; };
   home-manager.users.d = ./home.nix;
 
   boot.loader.systemd-boot.enable = false;
