@@ -283,6 +283,9 @@
       cssls = {
         enable = true;
       };
+      texlab = {
+        enable = true;
+      };
     };
   };
 
