@@ -131,10 +131,34 @@
       mapleader = " ";
       maplocalleader = " ";
     };
+    plugins.lualine = {
+      enable = true;
+      settings = let
+        position = [
+          { __unkeyed-1 = "mode"; fmt = ''
+            function(s)
+              string.sub(string.lower(s), 1, 3)
+            end
+          ''; }
+          { __unkeyed-1 = "location"; }
+          { __unkeyed-1 = "progress"; fmt = ''string.lower''; }
+        ];
+      in {
+        options = {
+          component_separators = "";
+          section_separators = "";
+        };
+        sections = {
+          lualine_a = position;
+        };
+        inactive_sections = {
+
+        };
+      };
+    };
   };
 
   home.packages = with pkgs; [
-    neovim
   ];
 
   home.stateVersion = "25.05";
