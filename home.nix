@@ -277,6 +277,9 @@
       clangd = {
         enable = true;
       };
+      nushell = {
+        enable = true;
+      };
     };
   };
 
