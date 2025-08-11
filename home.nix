@@ -32,7 +32,14 @@
 
   programs.niri.settings = {
     binds = with config.lib.niri.actions; {
+      "Mod+Shift+Slash".action = show-hotkey-overlay;
+
       "Mod+Return".action = spawn "kitty";
+      "Mod+D".action = spawn "fuzzel";
+
+      "Mod+BackSpace".action = close-window;
+
+      "Mod+Shift+E".action = quit;
     };
   };
 
