@@ -286,6 +286,9 @@
       texlab = {
         enable = true;
       };
+      hyprls = {
+        enable = true;
+      };
     };
   };
 
