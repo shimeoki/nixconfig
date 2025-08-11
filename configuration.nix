@@ -30,7 +30,6 @@
     useXkbConfig = true;
   };
 
-  services.xserver.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];  
 
   services.xserver.xkb.layout = "us,ru";
