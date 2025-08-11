@@ -220,6 +220,10 @@
           additional_vim_regex_highlighting = false;
         };
       };
+      languageRegister = {
+        css = "gtkcss";
+        bash = [ "sh" "zsh" ];
+      };
     };
   };
 
