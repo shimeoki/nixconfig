@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixvim, ... }:
 {
+  imports = [
+    nixvim.homeModules.nixvim
+  ];
+
   home.username = "d";
   home.homeDirectory = "/home/d";
   programs.home-manager.enable = true;
@@ -69,6 +73,11 @@
 
   programs.kitty = {
     enable = true;
+  };
+
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
   };
 
   home.packages = with pkgs; [
