@@ -204,9 +204,11 @@
           lualine_c = file;
           lualine_x = status;
           lualine_y = git;
+          lualine_z.__raw = ''{}''; # todo: noice macro display
         };
         inactive_sections = {
-
+          lualine_c = file;
+          lualine_x = status;
         };
       };
     };
