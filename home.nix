@@ -280,6 +280,9 @@
       nushell = {
         enable = true;
       };
+      cssls = {
+        enable = true;
+      };
     };
   };
 
