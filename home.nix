@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, zen-browser, ... }:
 {
   home.username = "d";
   home.homeDirectory = "/home/d";

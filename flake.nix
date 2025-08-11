@@ -30,11 +30,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, ... }: {
+  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, zen-browser, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit dotfiles; };
+        specialArgs = { inherit dotfiles zen-browser; };
         modules = [
           ./configuration.nix
           lanzaboote.nixosModules.lanzaboote
