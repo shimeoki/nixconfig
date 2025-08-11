@@ -150,6 +150,27 @@
           }
           { __unkeyed-1 = "encoding"; show_bomb = false; }
         ];
+        file = [
+          {
+            __unkeyed-1 = "filename";
+            file_status = true;
+            newfile_status = true;
+            path = 4;
+            shorting_target = 40;
+            symbols = {
+              modified = "~";
+              readonly = "=";
+              unnamed = "?";
+              newfile = "+";
+            };
+          }
+          {
+            __unkeyed-1 = "filetype";
+            colored = true;
+            icon_only = false;
+            icon = { align = "left"; };
+          }
+        ];
       in {
         options = {
           component_separators = "";
@@ -158,6 +179,7 @@
         sections = {
           lualine_a = position;
           lualine_b = fileinfo;
+          lualine_c = file;
         };
         inactive_sections = {
 
