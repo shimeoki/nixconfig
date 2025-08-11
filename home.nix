@@ -143,6 +143,13 @@
           { __unkeyed-1 = "location"; }
           { __unkeyed-1 = "progress"; fmt = ''string.lower''; }
         ];
+        fileinfo = [
+          {
+            __unkeyed-1 = "fileformat";
+            symbols = { unix = "lf"; dos = "crlf"; mac = "lf"; };
+          }
+          { __unkeyed-1 = "encoding"; show_bomb = false; }
+        ];
       in {
         options = {
           component_separators = "";
@@ -150,6 +157,7 @@
         };
         sections = {
           lualine_a = position;
+          lualine_b = fileinfo;
         };
         inactive_sections = {
 
