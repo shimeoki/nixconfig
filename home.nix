@@ -251,6 +251,9 @@
           };
         };
       };
+      jedi_language_server = {
+        enable = true;
+      };
     };
   };
 
