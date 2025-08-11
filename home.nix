@@ -228,6 +228,29 @@
     plugins.lspconfig = {
       enable = true;
     };
+    lsp.servers = {
+      lua_ls = {
+        enable = true;
+        settings = {
+          # todo: on_init function
+          settings.Lua = {
+            runtime = { version = "LuaJIT"; };
+            diagnostics = { globals = [ "vim" "require" ]; };
+            telemetry = { enable = false; };
+            format = { enable = false; };
+            hint = {
+              enable = true;
+              arrayIndex = "Auto";
+              await = true;
+              paramName = "Literal";
+              paramType = true;
+              semicolon = "SameLine";
+              setType = true;
+            };
+          };
+        };
+      };
+    };
   };
 
   home.packages = with pkgs; [
