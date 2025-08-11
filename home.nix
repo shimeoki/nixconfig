@@ -274,6 +274,9 @@
           filetypes = [ "sh" "zsh" "bash" ];
         };
       };
+      clangd = {
+        enable = true;
+      };
     };
   };
 
