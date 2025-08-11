@@ -18,6 +18,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dotfiles = {
+      url = "github:shimeoki/dotfiles";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, lanzaboote, niri, home-manager, ... }: {
