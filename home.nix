@@ -171,6 +171,16 @@
             icon = { align = "left"; };
           }
         ];
+        status = [
+          {
+            __unkeyed-1 = "diagnostics";
+            sources = [ "nvim_lsp" "nvim_diagnostic" ];
+            sections = [ "error" "warn" "info" "hint" ];
+            colored = true;
+            update_in_insert = false;
+            always_visible = false;
+          }
+        ];
         git = [
           {
             __unkeyed-1 = "diff";
@@ -192,6 +202,7 @@
           lualine_a = position;
           lualine_b = fileinfo;
           lualine_c = file;
+          lualine_x = status;
           lualine_y = git;
         };
         inactive_sections = {
