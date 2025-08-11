@@ -38,6 +38,10 @@
     enable = true;
   };
 
+  programs.kitty = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     neovim
   ];
