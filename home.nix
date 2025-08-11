@@ -171,6 +171,18 @@
             icon = { align = "left"; };
           }
         ];
+        git = [
+          {
+            __unkeyed-1 = "diff";
+            colored = true;
+            symbols = {
+              added = "+";
+              modified = "~";
+              removed = "-";
+            };
+          }
+          { __unkeyed-1 = "branch"; icon = "@"; }
+        ];
       in {
         options = {
           component_separators = "";
@@ -180,6 +192,7 @@
           lualine_a = position;
           lualine_b = fileinfo;
           lualine_c = file;
+          lualine_y = git;
         };
         inactive_sections = {
 
