@@ -23,13 +23,18 @@
       url = "github:shimeoki/dotfiles";
       flake = false;
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, ... }: {
+  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, nixvim, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit dotfiles; };
+        specialArgs = { inherit dotfiles nixvim; };
         modules = [
           ./configuration.nix
           lanzaboote.nixosModules.lanzaboote
