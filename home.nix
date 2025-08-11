@@ -225,6 +225,9 @@
         bash = [ "sh" "zsh" ];
       };
     };
+    plugins.lspconfig = {
+      enable = true;
+    };
   };
 
   home.packages = with pkgs; [
