@@ -49,6 +49,10 @@
 
       "Mod+BackSpace".action = close-window;
 
+      "Mod+R".action = switch-preset-column-width;
+      "Mod+Shift+R".action = switch-preset-window-height;
+      "Mod+Ctrl+R".action = reset-window-height;
+
       "Mod+Shift+E".action = quit;
     };
   };
