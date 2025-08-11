@@ -15,6 +15,22 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754506705,
+        "narHash": "sha256-pillvjQGf9IwcqvmvuhhhwLgOKBwEdR1JC+Y0b6U7U0=",
+        "owner": "shimeoki",
+        "repo": "dotfiles",
+        "rev": "0f53fd41d8c4ae501aec322fe9bb12aa67170cca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shimeoki",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -255,6 +271,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "niri": "niri",

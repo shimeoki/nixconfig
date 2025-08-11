@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, dotfiles, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -43,6 +43,13 @@
   users.users.d = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+  };
+
+  services.kanata = {
+    enable = true;
+    keyboards.main = {
+      configFile = "${dotfiles}/root/private_dot_config/kanata/kanata.kbd";
+    };
   };
 
   programs.niri.enable = true;
