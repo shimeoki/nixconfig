@@ -228,6 +228,7 @@
     plugins.lspconfig = {
       enable = true;
     };
+    lsp.inlayHints.enable = true;
     lsp.servers = {
       lua_ls = {
         enable = true;
