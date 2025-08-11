@@ -46,6 +46,8 @@
     extraGroups = [ "wheel" "networkmanager" ];
   };
 
+  programs.niri.enable = true;
+
   environment.systemPackages = with pkgs; [
     sbctl
   ];

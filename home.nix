@@ -30,6 +30,14 @@
     };
   };
 
+  programs.fuzzel = {
+    enable = true;
+  };
+
+  services.dunst = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     neovim
   ];
