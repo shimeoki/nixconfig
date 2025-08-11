@@ -25,10 +25,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, ... }: {
+  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit dotfiles; };
         modules = [
           ./configuration.nix
           lanzaboote.nixosModules.lanzaboote
