@@ -1,7 +1,8 @@
-{ config, pkgs, nixvim, ... }:
+{ config, pkgs, nixvim, zen-browser, ... }:
 {
   imports = [
     nixvim.homeModules.nixvim
+    zen-browser.homeModules.twilight
   ];
 
   home.username = "d";
@@ -61,6 +62,10 @@
 
       "Mod+Shift+E".action = quit;
     };
+  };
+
+  programs.zen-browser = {
+    enable = true;
   };
 
   programs.fuzzel = {

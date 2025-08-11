@@ -28,13 +28,18 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, nixvim, ... }: {
+  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, dotfiles, nixvim, zen-browser, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit dotfiles nixvim; };
+        specialArgs = { inherit dotfiles nixvim zen-browser; };
         modules = [
           ./configuration.nix
           lanzaboote.nixosModules.lanzaboote

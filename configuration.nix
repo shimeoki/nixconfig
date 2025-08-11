@@ -1,4 +1,4 @@
-{ config, lib, pkgs, dotfiles, nixvim, ... }:
+{ config, lib, pkgs, dotfiles, nixvim, zen-browser, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,7 +6,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs = { inherit nixvim; };
+  home-manager.extraSpecialArgs = { inherit nixvim zen-browser; };
   home-manager.users.d = ./home.nix;
 
   boot.loader.systemd-boot.enable = false;
