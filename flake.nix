@@ -9,19 +9,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:/sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, ... }: {
+  outputs = { self, nixpkgs, lanzaboote, niri, home-manager, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
           lanzaboote.nixosModules.lanzaboote
+          niri.nixosModules.niri
 	  home-manager.nixosModules.home-manager
         ];
       };

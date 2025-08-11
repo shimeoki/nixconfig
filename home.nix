@@ -30,6 +30,47 @@
     };
   };
 
+  programs.niri.settings = {
+    layout = {
+      default-column-width = { proportion = 0.5; };
+
+      preset-column-widths = [
+        { proportion = 0.5; }
+        { proportion = 1.0; }
+        { proportion = 0.3; }
+      ];
+    };
+
+    prefer-no-csd = true;
+
+    binds = with config.lib.niri.actions; {
+      "Mod+Shift+Slash".action = show-hotkey-overlay;
+
+      "Mod+Return".action = spawn "kitty";
+      "Mod+D".action = spawn "fuzzel";
+
+      "Mod+BackSpace".action = close-window;
+
+      "Mod+R".action = switch-preset-column-width;
+      "Mod+Shift+R".action = switch-preset-window-height;
+      "Mod+Ctrl+R".action = reset-window-height;
+
+      "Mod+Shift+E".action = quit;
+    };
+  };
+
+  programs.fuzzel = {
+    enable = true;
+  };
+
+  services.dunst = {
+    enable = true;
+  };
+
+  programs.kitty = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     neovim
   ];

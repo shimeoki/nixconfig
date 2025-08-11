@@ -30,7 +30,6 @@
     useXkbConfig = true;
   };
 
-  services.xserver.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];  
 
   services.xserver.xkb.layout = "us,ru";
@@ -45,6 +44,8 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
   };
+
+  programs.niri.enable = true;
 
   environment.systemPackages = with pkgs; [
     sbctl
