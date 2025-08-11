@@ -30,6 +30,12 @@
     };
   };
 
+  programs.niri.settings = {
+    binds = with config.lib.niri.actions; {
+      "Mod+Return".action = spawn "kitty";
+    };
+  };
+
   programs.fuzzel = {
     enable = true;
   };
