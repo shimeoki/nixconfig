@@ -396,6 +396,7 @@
     lsp.inlayHints.enable = true;
     dependencies = {
       go.enable = true;
+      yazi.enable = true;
     };
     lsp.servers = {
       lua_ls = {
@@ -479,6 +480,14 @@
       };
       nixd = {
         enable = true;
+      };
+    };
+    plugins.yazi = {
+      enable = true;
+      settings = {
+        floating_window_scaling_factor = 1.0;
+        open_for_directories = true;
+        keymaps.show_help = "<f1>";
       };
     };
   };
