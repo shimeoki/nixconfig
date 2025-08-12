@@ -311,6 +311,9 @@
       dockerls = {
         enable = true;
       };
+      marksman = {
+        enable = true;
+      };
     };
   };
 
