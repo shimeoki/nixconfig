@@ -294,10 +294,25 @@
       hyprls = {
         enable = true;
       };
+      gopls = {
+        enable = true;
+        settings.gopls = {
+          hints = {
+            rangeVariableTypes = true;
+            parameterNames = true;
+            constantValues = true;
+            assignVariableTypes = true;
+            compositeLiteralFields = true;
+            compositeLiteralTypes = true;
+            functionTypeParameters = true;
+          };
+        };
+      };
     };
   };
 
   home.packages = with pkgs; [
+    go # required by gopls. probably a bug
   ];
 
   home.stateVersion = "25.05";
