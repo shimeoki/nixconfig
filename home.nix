@@ -136,6 +136,7 @@
       mapleader = " ";
       maplocalleader = " ";
     };
+    clipboard.register = "unnamedplus";
     plugins.lualine = {
       enable = true;
       settings = let
