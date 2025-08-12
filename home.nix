@@ -308,6 +308,9 @@
           };
         };
       };
+      dockerls = {
+        enable = true;
+      };
     };
   };
 
