@@ -230,6 +230,80 @@
         bash = [ "sh" "zsh" ];
       };
     };
+    plugins.luasnip = { # todo: virtual text and snippets
+      enable = true;
+      settings = {
+        region_check_events = [ "InsertEnter" ];
+        delete_check_events = [ "InsertLeave" "TextChanged" ];
+      };
+    };
+    plugins.blink-cmp = {
+      enable = true;
+      settings = {
+        signature.enabled = false;
+        snippets.preset = "luasnip";
+        sources.default = [ "lsp" "snippets" "path" "buffer" ];
+        completion = {
+          keyword.range = "full";
+          list.selection = { preselect = true; auto_insert = false; };
+          ghost_text.enabled = true;
+          documentation = {
+            auto_show = true;
+            auto_show_delay_ms = 0;
+          };
+          trigger = {
+            prefetch_on_insert = true;
+            show_in_snippet = true;
+            show_on_keyword = true;
+            show_on_trigger_character = true;
+          };
+          menu = {
+            max_height = 11;
+            direction_priority = [ "n" "s" ];
+            draw = { # todo: item idx
+              columns = [
+                 { __unkeyed-1 = "label"; }
+                 { __unkeyed-1 = "label_description"; }
+                 { __unkeyed-1 = "kind_icon"; }
+                 { __unkeyed-1 = "kind"; }
+                 { __unkeyed-1 = "source_name"; }
+              ];
+            };
+          };
+        };
+        cmdline = {
+           keymap.preset = "inherit";
+           completion = {
+             list.selection = { preselect = false; auto_insert = false; };
+             menu.auto_show = true;
+           };
+        };
+        keymap = {
+           preset = "none";
+
+           "<enter>" = [ "accept" "snippet_forward" "fallback" ];
+           "<tab>" = [ "accept" "snippet_forward" "fallback" ];
+
+           "<c-s>" = [ "show" "hide" "fallback_to_mappings" ];
+           # todo: other show binds
+
+           "<c-j>" = [ "select_next" "fallback_to_mappings" ];
+           "<c-k>" = [ "select_prev" "fallback_to_mappings" ];
+
+           "<c-h>" = [ "snippet_backward" "fallback_to_mappings" ];
+           "<c-l>" = [ "snippet_forward" "fallback_to_mappings" ];
+
+           "<c-d>" = [ "scroll_documentation_down" "fallback" ];
+           "<c-u>" = [ "scroll_documentation_up" "fallback" ];
+
+           "<c-t>" = [ "show_signature" "hide_signature" "fallback" ];
+           "<c-i>" = [ "show_documentation" "hide_documentation" "fallback" ];
+
+           # todo: index binds
+        };
+        fuzzy.sorts = [ "score" "sort_text" ]; # todo: exact and source sort
+      };
+    };
     plugins.lspconfig = {
       enable = true;
     };
