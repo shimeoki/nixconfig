@@ -234,6 +234,9 @@
       enable = true;
     };
     lsp.inlayHints.enable = true;
+    dependencies = {
+      go.enable = true;
+    };
     lsp.servers = {
       lua_ls = {
         enable = true;
@@ -319,10 +322,6 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    go # required by gopls. probably a bug
-  ];
 
   home.stateVersion = "25.05";
 }
