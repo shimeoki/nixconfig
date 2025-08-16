@@ -86,6 +86,58 @@
 
     programs.kitty = {
         enable = true;
+        font = {
+            package = pkgs.nerd-fonts.fira-code;
+            name = "FiraCode Nerd Font";
+            size = 12;
+        };
+        settings = {
+            disable_ligatures = "always";
+
+            "modify_font underline_position" = 4;
+            "modify_font underline_thickness" = "150%";
+            "modify_font strikethrough_position" = -2;
+
+            enabled_layouts = "splits, stack";
+
+            window_resize_step_cells = 2;
+            window_resize_step_lines = 2;
+
+            window_border_width = "0px";
+            draw_minimal_borders = true;
+
+            window_margin_width = 0;
+            single_window_margin_width = 0;
+
+            window_padding_width = "6 9";
+            single_window_padding_width = -1;
+
+            placement_strategy = "center";
+
+            inactive_text_alpha = 1.0;
+
+            hide_window_decorations = true;
+
+            tab_bar_edge = "top";
+            tab_bar_align = "left";
+
+            tab_bar_margin_width = 0;
+            tab_bar_background = "none";
+
+            tab_bar_style = "hidden";
+            tab_powerline_style = "slanted";
+            tab_separator = "";
+
+            tab_title_template = ''" {fmt.fg.red}[bell_symbol]{activity_symbol}{fmt.fg.tab} {index} {title} {tab.last_focused_progress_percent} "'';
+
+            tab_bar_min_tabs = 2;
+            tab_switch_strategy = "previous";
+
+            enable_audio_bell = false;
+
+            cursor_trail = 3;
+            cursor_trail_decay = "0.1 0.4";
+        };
     };
 
     programs.nh = {
