@@ -816,6 +816,452 @@
             nixfmt
             statix
         ];
+        keymaps =
+            let
+                modes = [
+                    "n"
+                    "v"
+                ];
+            in
+            [
+                {
+                    key = "<space>";
+                    action = "<nop>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-d>";
+                    action = ''"_d'';
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>@";
+                    action = "<cmd>cd %:p:h<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>u";
+                    action = "<cmd>w<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>U";
+                    action = "<cmd>wall<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>x";
+                    action = "<cmd>wqall<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>h";
+                    action = "<cmd>wincmd h<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>j";
+                    action = "<cmd>wincmd j<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>k";
+                    action = "<cmd>wincmd k<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>l";
+                    action = "<cmd>wincmd l<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>H";
+                    action = "<cmd>wincmd H<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>J";
+                    action = "<cmd>wincmd J<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>K";
+                    action = "<cmd>wincmd K<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>L";
+                    action = "<cmd>wincmd L<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>,";
+                    action = "<cmd>bnext<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>.";
+                    action = "<cmd>bprevious<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-h>";
+                    action = "<cmd>4wincmd <<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-j>";
+                    action = "<cmd>4wincmd -<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-k>";
+                    action = "<cmd>4wincmd +<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-l>";
+                    action = "<cmd>4wincmd ><cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>'";
+                    action = "<cmd>vsplit<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>;";
+                    action = "<cmd>split<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = ''<leader>"'';
+                    action = "<cmd>vnew<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>:";
+                    action = "<cmd>new<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><enter>";
+                    action = "<cmd>vsplit<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><s-enter>";
+                    action = "<cmd>vnew<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><bs>";
+                    action = "<cmd>quit<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><s-bs>";
+                    action = "<cmd>only<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-bs>";
+                    action = "<cmd>bdelete<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>[";
+                    action = "<cmd>-wincmd w<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>]";
+                    action = "<cmd>+wincmd w<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>{";
+                    action = "<cmd>wincmd R<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>}";
+                    action = "<cmd>wincmd r<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>i";
+                    action.__raw = ''
+                        function()
+                            vim.lsp.buf.hover()
+                        end
+                    '';
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>I";
+                    action.__raw = ''
+                        function()
+                            vim.lsp.buf.signature_help()
+                        end
+                    '';
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-i>";
+                    action.__raw = ''
+                        function()
+                            local hints = vim.lsp.inlay_hint
+                            hints.enable(not hints.is_enabled())
+                        end
+                    '';
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>a";
+                    action.__raw = ''
+                        function()
+                            vim.lsp.buf.code_action()
+                        end
+                    '';
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>N";
+                    action.__raw = ''
+                        function()
+                            vim.lsp.buf.rename()
+                        end
+                    '';
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>c";
+                    action.__raw = ''
+                        function()
+                            vim.api.nvim_input("gcc")
+                        end
+                    '';
+                    options.silent = true;
+                    mode = [ "n" ];
+                }
+                {
+                    key = "<leader>c";
+                    action.__raw = ''
+                        function()
+                            vim.api.nvim_input("gc")
+                        end
+                    '';
+                    options.silent = true;
+                    mode = [ "v" ];
+                }
+                {
+                    key = "<leader>e";
+                    action = "<cmd>Yazi<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>E";
+                    action = "<cmd>Yazi cwd<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-e>";
+                    action = "<cmd>Yazi toggle<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>f";
+                    action = "<cmd>Telescope find_files<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>F";
+                    action = "<cmd>Telescope live_grep<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>b";
+                    action = "<cmd>Telescope buffers<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>B";
+                    action = "<cmd>Telescope oldfiles<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>r";
+                    action = "<cmd>Telescope commands<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-r>";
+                    action = "<cmd>Telescope command_history<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>v";
+                    action = "<cmd>Telescope registers<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>/";
+                    action = "<cmd>Telescope current_buffer_fuzzy_find<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>n";
+                    action = "<cmd>Telescope lsp_references<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>d";
+                    action = "<cmd>Telescope diagnostics bufnr=0<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>D";
+                    action = "<cmd>Telescope diagnostics<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>s";
+                    action = "<cmd>Telescope lsp_documents_symbols<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>S";
+                    action = "<cmd>Telescope lsp_workspace_symbols<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>t";
+                    action = "<cmd>Telescope lsp_definitions<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>T";
+                    action = "<cmd>Telescope lsp_implementations<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader><c-t>";
+                    action = "<cmd>Telescope lsp_type_definitions<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>g";
+                    action = "<cmd>Telescope git_commits<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                {
+                    key = "<leader>G";
+                    action = "<cmd>Telescope git_branches<cr>";
+                    options.silent = true;
+                    mode = modes;
+                }
+                # todo: quarto
+                {
+                    key = "<c-s-l>";
+                    action.__raw = ''
+                        function()
+                            local ls = require("luasnip")
+                            return ls.choice_active() and ls.change_choice(1)
+                        end
+                    '';
+                    options.silent = true;
+                    mode = [
+                        "i"
+                        "s"
+                    ];
+                }
+                {
+                    key = "<c-s-h>";
+                    action.__raw = ''
+                        function()
+                            local ls = require("luasnip")
+                            return ls.choice_active() and ls.change_choice(-1)
+                        end
+                    '';
+                    options.silent = true;
+                    mode = [
+                        "i"
+                        "s"
+                    ];
+                }
+                {
+                    key = "<c-bs>";
+                    action.__raw = ''
+                        function()
+                            require("luasnip").unlink_current()
+                        end
+                    '';
+                    options.silent = true;
+                    mode = [
+                        "i"
+                        "s"
+                    ];
+                }
+            ];
     };
 
     home.stateVersion = "25.05";
