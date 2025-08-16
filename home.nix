@@ -1,6 +1,7 @@
 {
     config,
     pkgs,
+    dotfiles,
     nixvim,
     zen-browser,
     ...
@@ -101,6 +102,102 @@
             ff = "merge --ff";
             changes = "diff --cached";
         };
+    };
+
+    programs.yazi = {
+        enable = true;
+        settings = {
+            mgr = {
+                ratio = [
+                    1
+                    3
+                    3
+                ];
+                sort_by = "natural";
+                sort_dir_first = true;
+                sort_translit = true;
+                linemode = "none";
+                show_symlink = true;
+                scrolloff = 5;
+            };
+            preview = {
+                wrap = "yes";
+                tab_size = 4;
+                max_width = 1280;
+                max_height = 720;
+            };
+            plugin.prepend_fetchers = [
+                {
+                    id = "git";
+                    name = "*";
+                    run = "git";
+                }
+                {
+                    id = "git";
+                    name = "*/";
+                    run = "git";
+                }
+            ];
+            tasks = {
+                image_bound = [
+                    0
+                    0
+                ];
+            };
+        };
+        plugins = with pkgs.yaziPlugins; {
+            inherit
+                git
+                ouch
+                diff
+                chmod
+                toggle-pane
+                full-border
+                ;
+        };
+        keymap = {
+            mgr.prepend_keymap = [
+                {
+                    on = [
+                        "c"
+                        "m"
+                    ];
+                    run = "plugin chmod";
+                }
+                {
+                    on = [ "<C-d>" ];
+                    run = "plugin diff";
+                }
+                {
+                    on = [ "!" ];
+                    run = ''shell "$SHELL" --block --confirm'';
+                }
+                # todo: ripdrag
+                {
+                    on = [
+                        "g"
+                        "r"
+                    ];
+                    # todo: ensure that git is installed
+                    run = ''shell -- ya emit cd "$(git rev-parse --show-toplevel)"'';
+                }
+                {
+                    on = [ "<C-t>" ];
+                    run = "plugin toggle-pane min-preview";
+                }
+                {
+                    on = [ "T" ];
+                    run = "plugin toggle-pane max-preview";
+                }
+                # todo: swww
+                {
+                    on = [ "C" ];
+                    run = "plugin ouch";
+                }
+            ];
+        };
+        # fix: just the path doesn't work
+        initLua = builtins.readFile "${dotfiles}/root/private_dot_config/yazi/init.lua";
     };
 
     programs.niri.settings = {

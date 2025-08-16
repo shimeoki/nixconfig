@@ -14,7 +14,7 @@
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
-    home-manager.extraSpecialArgs = { inherit nixvim zen-browser; };
+    home-manager.extraSpecialArgs = { inherit dotfiles nixvim zen-browser; };
     home-manager.users.d = ./home.nix;
 
     boot.loader.systemd-boot.enable = false;
