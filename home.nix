@@ -13,6 +13,20 @@
         zen-browser.homeModules.twilight
     ];
 
+    stylix.targets = {
+        kitty = {
+            variant256Colors = true;
+        };
+        nixvim = {
+            plugin = "base16-nvim";
+            transparentBackground = {
+                main = true;
+                numberLine = true;
+                signColumn = true;
+            };
+        };
+    };
+
     home.username = "d";
     home.homeDirectory = "/home/d";
     programs.home-manager.enable = true;
