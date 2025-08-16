@@ -672,6 +672,9 @@
         plugins.nvim-autopairs = {
             enable = true;
         };
+        plugins.indent-blankline = {
+            enable = true;
+        };
         extraPackages = with pkgs; [
             nixfmt
         ];
