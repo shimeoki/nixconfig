@@ -921,6 +921,9 @@
             go.enable = true;
             yazi.enable = true;
             ripgrep.enable = true;
+            nodejs.enable = true;
+            gcc.enable = true;
+            tree-sitter.enable = true;
         };
         lsp.servers = {
             lua_ls = {
@@ -1201,6 +1204,8 @@
         extraPackages = with pkgs; [
             nixfmt
             statix
+            fd
+            wl-clipboard
         ];
         keymaps =
             let
