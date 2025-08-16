@@ -52,6 +52,11 @@
         pulse.enable = true;
     };
 
+    # fix: enable only on laptops
+    services.tlp = {
+        enable = true;
+    };
+
     users.users.d = {
         isNormalUser = true;
         extraGroups = [
