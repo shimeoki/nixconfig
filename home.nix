@@ -669,6 +669,9 @@
                 };
             };
         };
+        plugins.nvim-autopairs = {
+            enable = true;
+        };
         extraPackages = with pkgs; [
             nixfmt
         ];
