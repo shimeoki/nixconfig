@@ -33,6 +33,11 @@
             url = "github:0xc000022070/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        stylix = {
+            url = "github:/nix-community/stylix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs =
@@ -45,6 +50,7 @@
             dotfiles,
             nixvim,
             zen-browser,
+            stylix,
             ...
         }:
         {
@@ -57,6 +63,7 @@
                         lanzaboote.nixosModules.lanzaboote
                         niri.nixosModules.niri
                         home-manager.nixosModules.home-manager
+                        stylix.nixosModules.stylix
                     ];
                 };
             };

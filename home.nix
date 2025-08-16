@@ -1,6 +1,7 @@
 {
     config,
     pkgs,
+    lib,
     dotfiles,
     nixvim,
     zen-browser,
@@ -246,8 +247,10 @@
     programs.kitty = {
         enable = true;
         font = {
-            package = pkgs.nerd-fonts.fira-code;
-            name = "FiraCode Nerd Font";
+            # hack: otherwise stylix doesn't work
+            # better to specify in stylix config
+            package = lib.mkForce pkgs.nerd-fonts.fira-code;
+            name = lib.mkForce "FiraCode Nerd Font";
             size = 12;
         };
         settings = {
