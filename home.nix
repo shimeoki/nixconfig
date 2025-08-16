@@ -88,6 +88,11 @@
         enable = true;
     };
 
+    programs.nh = {
+        enable = true;
+        flake = "/home/d/nixconfig"; # fix: hardcoded path
+    };
+
     programs.nixvim = {
         enable = true;
         defaultEditor = true;
