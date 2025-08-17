@@ -95,7 +95,7 @@
                 date = "iso";
                 abbrevCommit = true;
             };
-            branch.sort = "-commiterdate";
+            branch.sort = "-committerdate";
             push = {
                 autoSetupRemote = true;
                 default = "current";
