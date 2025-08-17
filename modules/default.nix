@@ -8,5 +8,6 @@
         ./nh
         ./dotfiles
         ./git
+        ./yazi
     ];
 }
