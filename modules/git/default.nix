@@ -1,4 +1,3 @@
-{ ... }:
 {
     imports = [ ./nixos.nix ];
 }
