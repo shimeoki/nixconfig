@@ -33,6 +33,7 @@
     shimeoki = {
         gpg.enable = true;
         ssh.enable = true;
+        kitty.enable = true;
     };
 
     home.username = "d";
@@ -342,131 +343,7 @@
     };
 
     programs.kitty = {
-        enable = true;
-        font = {
-            # hack: otherwise stylix doesn't work
-            # better to specify in stylix config
-            package = lib.mkForce pkgs.nerd-fonts.fira-code;
-            name = lib.mkForce "FiraCode Nerd Font";
-            size = 12;
-        };
         settings = {
-            kitty_mod = "alt";
-
-            disable_ligatures = "always";
-
-            "modify_font underline_position" = 4;
-            "modify_font underline_thickness" = "150%";
-            "modify_font strikethrough_position" = -2;
-
-            enabled_layouts = "splits, stack";
-
-            window_resize_step_cells = 2;
-            window_resize_step_lines = 2;
-
-            window_border_width = "0px";
-            draw_minimal_borders = true;
-
-            window_margin_width = 0;
-            single_window_margin_width = 0;
-
-            window_padding_width = "6 9";
-            single_window_padding_width = -1;
-
-            placement_strategy = "center";
-
-            inactive_text_alpha = 1.0;
-
-            hide_window_decorations = true;
-
-            tab_bar_edge = "top";
-            tab_bar_align = "left";
-
-            tab_bar_margin_width = 0;
-            tab_bar_background = "none";
-
-            tab_bar_style = "hidden";
-            tab_powerline_style = "slanted";
-            tab_separator = "";
-
-            tab_title_template = ''" {fmt.fg.red}[bell_symbol]{activity_symbol}{fmt.fg.tab} {index} {title} {tab.last_focused_progress_percent} "'';
-
-            tab_bar_min_tabs = 2;
-            tab_switch_strategy = "previous";
-
-            enable_audio_bell = false;
-
-            cursor_trail = 3;
-            cursor_trail_decay = "0.1 0.4";
-        };
-        keybindings = {
-            "kitty_mod+/" = "scroll_line_up";
-            "kitty_mod+shift+/" = "scroll_line_down";
-
-            "kitty_mod+[" = "previous_window";
-            "kitty_mod+]" = "next_window";
-
-            "kitty_mod+h" = "neighboring_window left";
-            "kitty_mod+j" = "neighboring_window bottom";
-            "kitty_mod+k" = "neighboring_window top";
-            "kitty_mod+l" = "neighboring_window right";
-
-            "kitty_mod+shift+[" = "move_window_backward";
-            "kitty_mod+shift+]" = "move_window_forward";
-
-            "kitty_mod+shift+h" = "move_window left";
-            "kitty_mod+shift+j" = "move_window bottom";
-            "kitty_mod+shift+k" = "move_window top";
-            "kitty_mod+shift+l" = "move_window right";
-
-            "kitty_mod+enter" = "new_window_with_cwd";
-            "kitty_mod+shift+enter" = "new_window";
-
-            "kitty_mod+backspace" = "close_window";
-            "kitty_mod+shift+backspace" = "close_other_windows_in_tab";
-
-            "kitty_mod+r" = "start_resizing_window";
-
-            "kitty_mod+w" = "new_tab_with_cwd";
-            "kitty_mod+shift+w" = "new_tab";
-
-            "kitty_mod+q" = "close_tab";
-            "kitty_mod+shift+q" = "close_other_tabs_in_os_window";
-
-            "kitty_mod+," = "previous_tab";
-            "kitty_mod+." = "next_tab";
-
-            "kitty_mod+shift+," = "move_tab_backward";
-            "kitty_mod+shift+." = "move_tab_forward";
-
-            "kitty_mod+1" = "goto_tab 1";
-            "kitty_mod+2" = "goto_tab 2";
-            "kitty_mod+3" = "goto_tab 3";
-            "kitty_mod+4" = "goto_tab 4";
-            "kitty_mod+5" = "goto_tab 5";
-            "kitty_mod+6" = "goto_tab 6";
-            "kitty_mod+7" = "goto_tab 7";
-            "kitty_mod+8" = "goto_tab 8";
-            "kitty_mod+9" = "goto_tab 9";
-
-            "kitty_mod+b" = "select_tab";
-
-            "kitty_mod+d" = "detach_window";
-            "kitty_mod+shift+d" = "detach_tab";
-
-            "kitty_mod+a" = "detach_window ask";
-            "kitty_mod+shift+a" = "detach_tab ask";
-
-            "kitty_mod+;" = "launch --location=hsplit --cwd=current";
-            "kitty_mod+'" = "launch --location=vsplit --cwd=current";
-
-            "kitty_mod+shift+;" = "launch --location=hsplit";
-            "kitty_mod+shift+'" = "launch --location=vsplit";
-
-            "kitty_mod+\\" = "layout_action rotate";
-            "kitty_mod+f" = "toggle_layout stack";
-
-            # todo: scrollback
         };
     };
 

@@ -3,5 +3,6 @@
     imports = [
         ./gpg
         ./ssh
+        ./kitty
     ];
 }
