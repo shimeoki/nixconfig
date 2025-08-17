@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
     # todo: check for available flake inputs before importing
 
@@ -11,5 +10,6 @@
         ./dotfiles
         ./git
         ./yazi
+        ./zen-browser
     ];
 }

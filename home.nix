@@ -7,7 +7,6 @@
 {
     imports = [
         inputs.nixvim.homeModules.nixvim
-        inputs.zen-browser.homeModules.twilight
     ];
 
     stylix.targets = {
@@ -22,6 +21,7 @@
                 signColumn = true;
             };
         };
+        # todo: use in zen-browser module
         zen-browser = {
             profileNames = [ "main" ];
         };
@@ -69,94 +69,6 @@
 
             "Mod+Shift+E".action = quit;
         };
-    };
-
-    programs.zen-browser = {
-        enable = true;
-        policies = {
-            AutofillAddressEnabled = true;
-            AutofillCreditCardEnabled = false;
-            DisableAppUpdate = true;
-            DisableFeedbackCommands = true;
-            DisableFirefoxStudies = true;
-            DisablePocket = true;
-            DisableTelemetry = true;
-            DontCheckDefaultBrowser = true;
-            NoDefaultBookmarks = true;
-            OfferToSaveLogins = true;
-            EnableTrackingProtection = {
-                Value = true;
-                Locked = true;
-                Cryptomining = true;
-                Fingerprinting = true;
-            };
-        };
-        profiles.main = {
-            id = 0;
-            search = {
-                force = true;
-                default = "ddg";
-                privateDefault = "ddg";
-                order = [
-                    "ddg"
-                    "google"
-                ];
-                engines = {
-                    nixpkgs = {
-                        name = "nixpkgs";
-                        urls = [
-                            {
-                                template = "https://search.nixos.org/packages";
-                                params = [
-                                    {
-                                        name = "type";
-                                        value = "packages";
-                                    }
-                                    {
-                                        name = "query";
-                                        value = "{searchTerms}";
-                                    }
-                                ];
-                                definedAliases = [ "@np" ];
-                                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                            }
-                        ];
-                    };
-
-                    nixwiki = {
-                        name = "nixwiki";
-                        urls = [
-                            {
-                                teamplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
-                            }
-                        ];
-                        iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-                        definedAliases = [ "@nw" ];
-                    };
-
-                    bing.metaData.hidden = true;
-                    google.metaData.alias = "@g";
-                };
-            };
-        };
-    };
-
-    xdg.mimeApps = {
-        enable = true;
-        defaultApplications =
-            let
-                browser = "zen-twilight.desktop";
-            in
-            {
-                "text/html" = browser;
-                "text/xml" = browser;
-                "application/xhtml+xml" = browser;
-                "x-scheme-handler/http" = browser;
-                "x-scheme-handler/https" = browser;
-                "application/x-xpinstall" = browser;
-                "application/pdf" = browser;
-                "application/json" = browser;
-            };
     };
 
     programs.fuzzel = {
