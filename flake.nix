@@ -54,11 +54,13 @@
             ...
         }:
         {
+            nixosModules.shimeoki = ./modules;
             nixosConfigurations = {
                 nixos = nixpkgs.lib.nixosSystem {
                     system = "x86_64-linux";
                     specialArgs = { inherit dotfiles nixvim zen-browser; };
                     modules = [
+                        self.nixosModules.shimeoki
                         ./configuration.nix
                         lanzaboote.nixosModules.lanzaboote
                         niri.nixosModules.niri

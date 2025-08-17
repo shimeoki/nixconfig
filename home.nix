@@ -34,12 +34,6 @@
     home.homeDirectory = "/home/d";
     programs.home-manager.enable = true;
 
-    programs.gpg.enable = true;
-    services.gpg-agent = {
-        enable = true;
-        pinentry.package = pkgs.pinentry-curses;
-    };
-
     programs.ssh.enable = true;
     services.ssh-agent.enable = true;
 
