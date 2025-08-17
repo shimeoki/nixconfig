@@ -14,6 +14,7 @@
 
     shimeoki = {
         gpg.enable = true;
+        ssh.enable = true;
     };
 
     home-manager.useGlobalPkgs = true;

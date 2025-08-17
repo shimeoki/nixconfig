@@ -32,14 +32,12 @@
 
     shimeoki = {
         gpg.enable = true;
+        ssh.enable = true;
     };
 
     home.username = "d";
     home.homeDirectory = "/home/d";
     programs.home-manager.enable = true;
-
-    programs.ssh.enable = true;
-    services.ssh-agent.enable = true;
 
     # note: bash is the default shell and
     # works without this, but other things
