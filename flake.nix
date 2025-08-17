@@ -41,31 +41,20 @@
     };
 
     outputs =
-        {
-            self,
-            nixpkgs,
-            lanzaboote,
-            niri,
-            home-manager,
-            dotfiles,
-            nixvim,
-            zen-browser,
-            stylix,
-            ...
-        }:
+        { self, nixpkgs, ... }@inputs:
         {
             nixosModules.shimeoki = ./modules;
             nixosConfigurations = {
                 nixos = nixpkgs.lib.nixosSystem {
                     system = "x86_64-linux";
-                    specialArgs = { inherit dotfiles nixvim zen-browser; };
+                    specialArgs = { inherit inputs; };
                     modules = [
                         self.nixosModules.shimeoki
                         ./configuration.nix
-                        lanzaboote.nixosModules.lanzaboote
-                        niri.nixosModules.niri
-                        home-manager.nixosModules.home-manager
-                        stylix.nixosModules.stylix
+                        inputs.lanzaboote.nixosModules.lanzaboote
+                        inputs.niri.nixosModules.niri
+                        inputs.home-manager.nixosModules.home-manager
+                        inputs.stylix.nixosModules.stylix
                     ];
                 };
             };

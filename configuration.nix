@@ -1,10 +1,6 @@
 {
-    config,
-    lib,
     pkgs,
-    dotfiles,
-    nixvim,
-    zen-browser,
+    inputs,
     ...
 }:
 {
@@ -14,7 +10,7 @@
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
-    home-manager.extraSpecialArgs = { inherit dotfiles nixvim zen-browser; };
+    home-manager.extraSpecialArgs = { inherit inputs; };
     home-manager.users.d = ./home.nix;
 
     boot.loader.systemd-boot.enable = false;
@@ -68,7 +64,7 @@
     services.kanata = {
         enable = true;
         keyboards.main = {
-            configFile = "${dotfiles}/root/private_dot_config/kanata/kanata.kbd";
+            configFile = "${inputs.dotfiles}/root/private_dot_config/kanata/kanata.kbd";
         };
     };
 

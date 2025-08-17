@@ -1,16 +1,13 @@
 {
     config,
     pkgs,
-    lib,
-    dotfiles,
-    nixvim,
-    zen-browser,
+    inputs,
     ...
 }:
 {
     imports = [
-        nixvim.homeModules.nixvim
-        zen-browser.homeModules.twilight
+        inputs.nixvim.homeModules.nixvim
+        inputs.zen-browser.homeModules.twilight
     ];
 
     stylix.targets = {
@@ -213,7 +210,7 @@
             ];
         };
         # fix: just the path doesn't work
-        initLua = builtins.readFile "${dotfiles}/root/private_dot_config/yazi/init.lua";
+        initLua = builtins.readFile "${inputs.dotfiles}/root/private_dot_config/yazi/init.lua";
     };
 
     programs.niri.settings = {
