@@ -35,6 +35,7 @@ in
         ssh.enable = true;
         kitty.enable = true;
         nh.enable = true;
+        git.enable = true;
     };
 
     home.username = "d";
@@ -46,79 +47,6 @@ in
     # that are reliant on bash - don't.
     # for example: GPG_TTY environment variable
     programs.bash.enable = true;
-
-    # note: author specific
-    programs.git = {
-        enable = true;
-        userName = "shimeoki";
-        userEmail = "shimeoki@gmail.com";
-        signing = {
-            key = "2B092E2DCA05866B";
-            signByDefault = true;
-        };
-        extraConfig = {
-            init.defaultBranch = "main";
-            core = {
-                whitespace = "error";
-                preloadIndex = true;
-            };
-            commit.verbose = true;
-            merge = {
-                conflictStyle = "zdiff3";
-                ff = false;
-            };
-            diff = {
-                colorMoved = "default";
-                algorithm = "histogram";
-                submodule = "log";
-                renames = "copies";
-            };
-            status = {
-                branch = true;
-                showStash = true;
-                submoduleSummary = true;
-            };
-            submodule.recurse = true;
-            transfer = {
-                fsckObjects = true;
-            };
-            fetch = {
-                fsckObjects = true;
-                prune = true;
-            };
-            receive = {
-                fsckObjects = true;
-            };
-            log = {
-                date = "iso";
-                abbrevCommit = true;
-            };
-            branch.sort = "-committerdate";
-            push = {
-                autoSetupRemote = true;
-                default = "current";
-                followTags = true;
-            };
-            pull.ff = "only";
-            tag.sort = "-taggerdate";
-        };
-        aliases = {
-            ci = "commit";
-            reword = "commit --amend";
-            st = "status --short";
-            sw = "switch";
-            new = "switch --create";
-            b = "branch";
-            del = "branch --delete";
-            list = "branch --all";
-            hist = "log --graph --oneline --all";
-            undo = "reset HEAD~";
-            unstage = "reset HEAD";
-            m = "merge";
-            ff = "merge --ff";
-            changes = "diff --cached";
-        };
-    };
 
     programs.yazi = {
         enable = true;

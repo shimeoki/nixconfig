@@ -8,5 +8,6 @@
         ./kitty
         ./nh
         ./dotfiles
+        ./git
     ];
 }
