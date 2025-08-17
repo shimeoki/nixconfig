@@ -43,7 +43,7 @@
     outputs =
         { self, nixpkgs, ... }@inputs:
         {
-            nixosModules.shimeoki = ./modules;
+            nixosModules.shimeoki = ./shimeoki;
             nixosConfigurations = {
                 nixos = nixpkgs.lib.nixosSystem {
                     system = "x86_64-linux";
