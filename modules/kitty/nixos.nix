@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.kitty;
+    module = config.shimeoki;
+    cfg = module.kitty;
     home = lib.optionalAttrs (options ? home-manager) {
         home-manager.sharedModules = [ ./home ];
     };
@@ -13,7 +14,7 @@ in
 {
     options.shimeoki.kitty = {
         enable = lib.mkEnableOption "kitty" // {
-            default = true;
+            default = module.enable;
         };
     };
 

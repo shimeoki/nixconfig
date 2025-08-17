@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.nh;
+    module = config.shimeoki;
+    cfg = module.nh;
     home = lib.optionalAttrs (options ? home-manager) {
         home-manager.sharedModules = [ ./home.nix ];
     };
@@ -13,7 +14,7 @@ in
 {
     options.shimeoki.nh = {
         enable = lib.mkEnableOption "nh" // {
-            default = true;
+            default = module.enable;
         };
     };
 
