@@ -342,11 +342,6 @@
         enable = true;
     };
 
-    programs.kitty = {
-        settings = {
-        };
-    };
-
     programs.nh = {
         enable = true;
         flake = "/home/d/nixconfig"; # fix: hardcoded path
