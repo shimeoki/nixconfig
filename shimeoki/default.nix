@@ -11,5 +11,6 @@
         ./git
         ./yazi
         ./zen-browser
+        ./niri
     ];
 }
