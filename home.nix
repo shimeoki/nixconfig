@@ -4,6 +4,9 @@
     inputs,
     ...
 }:
+let
+    inherit (config.shimeoki) dotfiles;
+in
 {
     imports = [
         inputs.nixvim.homeModules.nixvim
@@ -210,7 +213,7 @@
             ];
         };
         # fix: just the path doesn't work
-        initLua = builtins.readFile "${inputs.dotfiles}/root/private_dot_config/yazi/init.lua";
+        initLua = builtins.readFile (dotfiles.config "yazi/init.lua");
     };
 
     programs.niri.settings = {

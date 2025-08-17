@@ -1,8 +1,12 @@
 {
+    config,
     pkgs,
     inputs,
     ...
 }:
+let
+    inherit (config.shimeoki) dotfiles;
+in
 {
     imports = [
         ./hardware-configuration.nix
@@ -64,7 +68,7 @@
     services.kanata = {
         enable = true;
         keyboards.main = {
-            configFile = "${inputs.dotfiles}/root/private_dot_config/kanata/kanata.kbd";
+            configFile = dotfiles.config "kanata/kanata.kbd";
         };
     };
 
