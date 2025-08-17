@@ -30,6 +30,10 @@
         };
     };
 
+    shimeoki = {
+        gpg.enable = true;
+    };
+
     home.username = "d";
     home.homeDirectory = "/home/d";
     programs.home-manager.enable = true;
