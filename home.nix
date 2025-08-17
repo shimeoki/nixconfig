@@ -34,6 +34,7 @@
         gpg.enable = true;
         ssh.enable = true;
         kitty.enable = true;
+        nh.enable = true;
     };
 
     home.username = "d";
@@ -340,11 +341,6 @@
 
     services.dunst = {
         enable = true;
-    };
-
-    programs.nh = {
-        enable = true;
-        flake = "/home/d/nixconfig"; # fix: hardcoded path
     };
 
     programs.nixvim = {

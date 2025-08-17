@@ -4,5 +4,6 @@
         ./gpg
         ./ssh
         ./kitty
+        ./nh
     ];
 }
