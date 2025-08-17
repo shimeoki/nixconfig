@@ -13,7 +13,6 @@
     ];
 
     shimeoki = {
-        gpg.enable = true;
         ssh.enable = true;
     };
 
