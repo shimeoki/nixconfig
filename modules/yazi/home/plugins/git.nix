@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.yazi.plugins.git;
+    inherit (config.shimeoki.yazi) plugins;
+    cfg = plugins.git;
     bind = {
         on = [
             "g"
@@ -16,7 +17,9 @@ let
 in
 {
     options.shimeoki.yazi.plugins.git = {
-        enable = lib.mkEnableOption "git";
+        enable = lib.mkEnableOption "git" // {
+            default = plugins.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

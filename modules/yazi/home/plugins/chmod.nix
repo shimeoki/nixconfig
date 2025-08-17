@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.yazi.plugins.chmod;
+    inherit (config.shimeoki.yazi) plugins;
+    cfg = plugins.chmod;
     bind = {
         on = [
             "c"
@@ -16,7 +17,9 @@ let
 in
 {
     options.shimeoki.yazi.plugins.chmod = {
-        enable = lib.mkEnableOption "chmod";
+        enable = lib.mkEnableOption "chmod" // {
+            default = plugins.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

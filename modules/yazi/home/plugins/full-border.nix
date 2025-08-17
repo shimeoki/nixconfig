@@ -5,11 +5,14 @@
     ...
 }:
 let
-    cfg = config.shimeoki.yazi.plugins.full-border;
+    inherit (config.shimeoki.yazi) plugins;
+    cfg = plugins.full-border;
 in
 {
     options.shimeoki.yazi.plugins.full-border = {
-        enable = lib.mkEnableOption "full-border";
+        enable = lib.mkEnableOption "full-border" // {
+            default = plugins.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

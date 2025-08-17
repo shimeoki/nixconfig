@@ -1,4 +1,8 @@
 {
+    lib,
+    ...
+}:
+{
     imports = [
         ./git.nix
         ./ouch.nix
@@ -8,4 +12,8 @@
         ./full-border.nix
         # todo: ripdrag & swww
     ];
+
+    options.shimeoki.yazi.plugins = {
+        enable = lib.mkEnableOption "plugins";
+    };
 }

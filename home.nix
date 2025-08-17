@@ -35,14 +35,7 @@
         git.enable = true;
         yazi = {
             enable = true;
-            plugins = {
-                git.enable = true;
-                ouch.enable = true;
-                diff.enable = true;
-                chmod.enable = true;
-                toggle-pane.enable = true;
-                full-border.enable = true;
-            };
+            plugins.enable = true;
         };
     };
 

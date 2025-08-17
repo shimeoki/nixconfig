@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.yazi.plugins.ouch;
+    inherit (config.shimeoki.yazi) plugins;
+    cfg = plugins.ouch;
     bind = {
         on = [ "C" ];
         run = "plugin ouch";
@@ -13,7 +14,9 @@ let
 in
 {
     options.shimeoki.yazi.plugins.ouch = {
-        enable = lib.mkEnableOption "ouch";
+        enable = lib.mkEnableOption "ouch" // {
+            default = plugins.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

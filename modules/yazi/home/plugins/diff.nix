@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.yazi.plugins.diff;
+    inherit (config.shimeoki.yazi) plugins;
+    cfg = plugins.diff;
     bind = {
         on = [ "<C-d>" ];
         run = "plugin diff";
@@ -13,7 +14,9 @@ let
 in
 {
     options.shimeoki.yazi.plugins.diff = {
-        enable = lib.mkEnableOption "diff";
+        enable = lib.mkEnableOption "diff" // {
+            default = plugins.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

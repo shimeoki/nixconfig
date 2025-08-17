@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.yazi.plugins.toggle-pane;
+    inherit (config.shimeoki.yazi) plugins;
+    cfg = plugins.toggle-pane;
     setMin = {
         on = [ "<C-t>" ];
         run = "plugin toggle-pane min-preview";
@@ -17,7 +18,9 @@ let
 in
 {
     options.shimeoki.yazi.plugins.toggle-pane = {
-        enable = lib.mkEnableOption "toggle-pane";
+        enable = lib.mkEnableOption "toggle-pane" // {
+            default = plugins.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {
