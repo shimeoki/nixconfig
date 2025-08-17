@@ -12,7 +12,9 @@ let
 in
 {
     options.shimeoki.ssh = {
-        enable = lib.mkEnableOption "ssh";
+        enable = lib.mkEnableOption "ssh" // {
+            default = true;
+        };
     };
 
     config = lib.mkIf cfg.enable (lib.mkMerge [ home ]);
