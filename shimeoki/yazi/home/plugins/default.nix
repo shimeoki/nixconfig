@@ -1,7 +1,11 @@
 {
+    config,
     lib,
     ...
 }:
+let
+    inherit (config.shimeoki) yazi;
+in
 {
     imports = [
         ./git.nix
@@ -14,6 +18,8 @@
     ];
 
     options.shimeoki.yazi.plugins = {
-        enable = lib.mkEnableOption "plugins";
+        enable = lib.mkEnableOption "plugins" // {
+            default = yazi.enable;
+        };
     };
 }

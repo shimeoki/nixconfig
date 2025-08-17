@@ -5,11 +5,14 @@
     ...
 }:
 let
-    cfg = config.shimeoki.gpg;
+    module = config.shimeoki;
+    cfg = module.gpg;
 in
 {
     options.shimeoki.gpg = {
-        enable = lib.mkEnableOption "gpg";
+        enable = lib.mkEnableOption "gpg" // {
+            default = module.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

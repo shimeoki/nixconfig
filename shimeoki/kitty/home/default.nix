@@ -4,7 +4,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.kitty;
+    module = config.shimeoki;
+    cfg = module.kitty;
 in
 {
     imports = [
@@ -17,7 +18,9 @@ in
     ];
 
     options.shimeoki.kitty = {
-        enable = lib.mkEnableOption "kitty";
+        enable = lib.mkEnableOption "kitty" // {
+            default = module.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

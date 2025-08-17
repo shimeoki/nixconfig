@@ -1,6 +1,7 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.yazi;
+    module = config.shimeoki;
+    cfg = module.yazi;
 in
 {
     imports = [
@@ -11,7 +12,9 @@ in
     ];
 
     options.shimeoki.yazi = {
-        enable = lib.mkEnableOption "yazi";
+        enable = lib.mkEnableOption "yazi" // {
+            default = module.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

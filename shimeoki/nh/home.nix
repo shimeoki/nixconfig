@@ -4,11 +4,14 @@
     ...
 }:
 let
-    cfg = config.shimeoki.nh;
+    module = config.shimeoki;
+    cfg = module.nh;
 in
 {
     options.shimeoki.nh = {
-        enable = lib.mkEnableOption "nh";
+        enable = lib.mkEnableOption "nh" // {
+            default = module.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

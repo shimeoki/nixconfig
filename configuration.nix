@@ -12,7 +12,7 @@ in
         ./hardware-configuration.nix
     ];
 
-    # enable ./modules
+    # enable custom modules
     shimeoki.enable = true;
 
     home-manager.useGlobalPkgs = true;

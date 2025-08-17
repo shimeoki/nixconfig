@@ -4,11 +4,14 @@
     ...
 }:
 let
-    cfg = config.shimeoki.ssh;
+    module = config.shimeoki;
+    cfg = module.ssh;
 in
 {
     options.shimeoki.ssh = {
-        enable = lib.mkEnableOption "ssh";
+        enable = lib.mkEnableOption "ssh" // {
+            default = module.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {

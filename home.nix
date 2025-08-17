@@ -27,17 +27,8 @@
         };
     };
 
-    shimeoki = {
-        gpg.enable = true;
-        ssh.enable = true;
-        kitty.enable = true;
-        nh.enable = true;
-        git.enable = true;
-        yazi = {
-            enable = true;
-            plugins.enable = true;
-        };
-    };
+    # enable custom modules
+    shimeoki.enable = true;
 
     home.username = "d";
     home.homeDirectory = "/home/d";

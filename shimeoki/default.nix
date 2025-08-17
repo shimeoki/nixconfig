@@ -3,6 +3,7 @@
     # todo: check for available flake inputs before importing
 
     imports = [
+        ./nixos.nix
         ./gpg
         ./ssh
         ./kitty
@@ -11,8 +12,4 @@
         ./git
         ./yazi
     ];
-
-    options.shimeoki = {
-        enable = lib.mkEnableOption "module";
-    };
 }

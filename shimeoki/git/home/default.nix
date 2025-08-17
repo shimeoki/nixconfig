@@ -4,7 +4,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.git;
+    module = config.shimeoki;
+    cfg = module.git;
 in
 {
 
@@ -15,7 +16,9 @@ in
     ];
 
     options.shimeoki.git = {
-        enable = lib.mkEnableOption "git";
+        enable = lib.mkEnableOption "git" // {
+            default = module.enable;
+        };
     };
 
     config = lib.mkIf cfg.enable {
