@@ -508,7 +508,6 @@
             enable = true;
         };
         plugins.telescope = {
-            enable = true;
             extensions = {
                 fzf-native = {
                     enable = true;
@@ -918,114 +917,6 @@
                 {
                     key = "<leader><c-e>";
                     action = "<cmd>Yazi toggle<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>f";
-                    action = "<cmd>Telescope find_files<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>F";
-                    action = "<cmd>Telescope live_grep<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>b";
-                    action = "<cmd>Telescope buffers<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>B";
-                    action = "<cmd>Telescope oldfiles<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>r";
-                    action = "<cmd>Telescope commands<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader><c-r>";
-                    action = "<cmd>Telescope command_history<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>v";
-                    action = "<cmd>Telescope registers<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>/";
-                    action = "<cmd>Telescope current_buffer_fuzzy_find<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>n";
-                    action = "<cmd>Telescope lsp_references<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>d";
-                    action = "<cmd>Telescope diagnostics bufnr=0<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>D";
-                    action = "<cmd>Telescope diagnostics<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>s";
-                    action = "<cmd>Telescope lsp_document_symbols<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>S";
-                    action = "<cmd>Telescope lsp_workspace_symbols<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>t";
-                    action = "<cmd>Telescope lsp_definitions<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>T";
-                    action = "<cmd>Telescope lsp_implementations<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader><c-t>";
-                    action = "<cmd>Telescope lsp_type_definitions<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>g";
-                    action = "<cmd>Telescope git_commits<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>G";
-                    action = "<cmd>Telescope git_branches<cr>";
                     options.silent = true;
                     mode = modes;
                 }
