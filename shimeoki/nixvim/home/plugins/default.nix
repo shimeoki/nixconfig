@@ -20,6 +20,7 @@ in
         ./noice
         ./autopairs
         ./indent-blankline
+        ./lsp
     ];
 
     options.shimeoki.nixvim.plugins = {
