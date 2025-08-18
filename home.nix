@@ -989,7 +989,7 @@
                 }
                 {
                     key = "<leader>s";
-                    action = "<cmd>Telescope lsp_documents_symbols<cr>";
+                    action = "<cmd>Telescope lsp_document_symbols<cr>";
                     options.silent = true;
                     mode = modes;
                 }
