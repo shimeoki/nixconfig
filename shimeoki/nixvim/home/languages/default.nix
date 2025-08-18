@@ -6,6 +6,12 @@ in
     imports = [
         ./nix
         ./go
+        ./c
+        ./nushell
+        ./lua
+        ./css
+        ./markdown
+        ./python
     ];
 
     options.shimeoki.nixvim.languages = {

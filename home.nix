@@ -40,62 +40,6 @@
 
     programs.nixvim = {
         lsp.servers = {
-            lua_ls = {
-                enable = true;
-                settings = {
-                    # todo: on_init function
-                    settings.Lua = {
-                        runtime = {
-                            version = "LuaJIT";
-                        };
-                        diagnostics = {
-                            globals = [
-                                "vim"
-                                "require"
-                            ];
-                        };
-                        telemetry = {
-                            enable = false;
-                        };
-                        format = {
-                            enable = false;
-                        };
-                        hint = {
-                            enable = true;
-                            arrayIndex = "Auto";
-                            await = true;
-                            paramName = "Literal";
-                            paramType = true;
-                            semicolon = "SameLine";
-                            setType = true;
-                        };
-                    };
-                };
-            };
-            jedi_language_server = {
-                enable = true;
-            };
-            # fix: imports, but doesn't launch
-            ruff = {
-                enable = true;
-                settings = {
-                    init_options.settings = {
-                        lineLength = 80;
-                        lint = {
-                            select = [
-                                "E4"
-                                "E7"
-                                "E9"
-                                "F"
-                            ];
-                        };
-                    };
-                    on_attach = ''
-                        -- disable hover for ruff
-                        client.server_capabilities.hoverProvider = false
-                    '';
-                };
-            };
             bashls = {
                 enable = true;
                 settings = {
@@ -106,15 +50,6 @@
                     ];
                 };
             };
-            clangd = {
-                enable = true;
-            };
-            nushell = {
-                enable = true;
-            };
-            cssls = {
-                enable = true;
-            };
             texlab = {
                 enable = true;
             };
@@ -122,9 +57,6 @@
                 enable = true;
             };
             dockerls = {
-                enable = true;
-            };
-            marksman = {
                 enable = true;
             };
         };
