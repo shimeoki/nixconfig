@@ -39,9 +39,6 @@
     };
 
     programs.nixvim = {
-        dependencies = {
-            go.enable = true;
-        };
         lsp.servers = {
             lua_ls = {
                 enable = true;
@@ -123,20 +120,6 @@
             };
             hyprls = {
                 enable = true;
-            };
-            gopls = {
-                enable = true;
-                settings.gopls = {
-                    hints = {
-                        rangeVariableTypes = true;
-                        parameterNames = true;
-                        constantValues = true;
-                        assignVariableTypes = true;
-                        compositeLiteralFields = true;
-                        compositeLiteralTypes = true;
-                        functionTypeParameters = true;
-                    };
-                };
             };
             dockerls = {
                 enable = true;

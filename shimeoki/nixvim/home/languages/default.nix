@@ -5,6 +5,7 @@ in
 {
     imports = [
         ./nix
+        ./go
     ];
 
     options.shimeoki.nixvim.languages = {
