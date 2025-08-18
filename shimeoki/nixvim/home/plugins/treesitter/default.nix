@@ -14,6 +14,7 @@ in
         programs.nixvim = {
             dependencies = {
                 gcc.enable = lib.mkForce true;
+                nodejs.enable = lib.mkForce true;
                 tree-sitter.enable = lib.mkForce true;
             };
             plugins.treesitter = {

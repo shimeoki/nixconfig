@@ -50,7 +50,6 @@
         dependencies = {
             go.enable = true;
             ripgrep.enable = true;
-            nodejs.enable = true;
         };
         lsp.servers = {
             lua_ls = {
