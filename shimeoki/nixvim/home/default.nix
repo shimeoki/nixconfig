@@ -14,6 +14,7 @@ in
         ./plugins
         ./diagnostics.nix
         ./keymap.nix
+        ./binds.nix
     ];
 
     options.shimeoki.nixvim = {
