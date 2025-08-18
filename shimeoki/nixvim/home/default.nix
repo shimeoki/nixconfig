@@ -13,6 +13,7 @@ in
     imports = [
         inputs.nixvim.homeModules.nixvim
         ./plugins
+        ./languages
         ./diagnostics.nix
         ./keymap.nix
         ./binds.nix

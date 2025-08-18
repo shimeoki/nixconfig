@@ -1,8 +1,4 @@
 {
-    pkgs,
-    ...
-}:
-{
     stylix.targets = {
         kitty = {
             variant256Colors = true;
@@ -148,37 +144,10 @@
             marksman = {
                 enable = true;
             };
-            nixd = {
-                enable = true;
-            };
-        };
-        plugins.conform-nvim = {
-            settings = {
-                formatters_by_ft = {
-                    nix = [ "nixfmt" ];
-                };
-                formatters = {
-                    nixfmt = {
-                        append_args = [
-                            "--width=80"
-                            "--indent=4"
-                        ];
-                    };
-                };
-            };
-        };
-        plugins.lint = {
-            lintersByFt = {
-                nix = [ "statix" ];
-            };
         };
         plugins.web-devicons = {
             enable = true;
         };
-        extraPackages = with pkgs; [
-            nixfmt
-            statix
-        ];
     };
 
     home.stateVersion = "25.05";
