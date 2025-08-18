@@ -13,6 +13,7 @@ in
         inputs.nixvim.homeModules.nixvim
         ./plugins
         ./diagnostics.nix
+        ./keymap.nix
     ];
 
     options.shimeoki.nixvim = {
