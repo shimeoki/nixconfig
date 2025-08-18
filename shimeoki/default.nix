@@ -12,5 +12,6 @@
         ./yazi
         ./zen-browser
         ./niri
+        ./nixvim
     ];
 }
