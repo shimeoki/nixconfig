@@ -43,10 +43,6 @@
     };
 
     programs.nixvim = {
-        plugins.notify = {
-            enable = true;
-            settings.fps = 60; # note: author specific
-        };
         plugins.noice = {
             enable = true;
             settings = {

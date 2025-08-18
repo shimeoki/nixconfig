@@ -16,6 +16,7 @@ in
         ./treesitter
         ./luasnip
         ./blink
+        ./notify
     ];
 
     options.shimeoki.nixvim.plugins = {
