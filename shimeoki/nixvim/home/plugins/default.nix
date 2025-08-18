@@ -22,6 +22,7 @@ in
         ./indent-blankline
         ./lsp
         ./conform
+        ./lint
     ];
 
     options.shimeoki.nixvim.plugins = {
