@@ -1,5 +1,6 @@
 {
     config,
+    pkgs,
     lib,
     inputs,
     ...
@@ -15,6 +16,7 @@ in
         ./diagnostics.nix
         ./keymap.nix
         ./binds.nix
+        ./opts.nix
     ];
 
     options.shimeoki.nixvim = {
@@ -24,6 +26,12 @@ in
     };
 
     config = lib.mkIf cfg.enable {
-        programs.nixvim.enable = true;
+        programs.nixvim = {
+            enable = true;
+            defaultEditor = true;
+            clipboard.register = "unnamedplus";
+            # note: what about non-wayland?
+            extraPackages = [ pkgs.wl-clipboard ];
+        };
     };
 }
