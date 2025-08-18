@@ -49,7 +49,6 @@
         lsp.inlayHints.enable = true;
         dependencies = {
             go.enable = true;
-            ripgrep.enable = true;
         };
         lsp.servers = {
             lua_ls = {
@@ -200,122 +199,12 @@
                 nix = [ "statix" ];
             };
         };
-        plugins.telescope = {
-            extensions = {
-                fzf-native = {
-                    enable = true;
-                    settings = {
-                        fuzzy = true;
-                        override_generic_sorter = true;
-                        override_file_sorter = true;
-                        case_mode = "smart_case";
-                    };
-                };
-                ui-select = {
-                    enable = true;
-                    settings.__raw = ''
-                        { require("telescope.themes").get_dropdown() }
-                    '';
-                };
-            };
-            settings = {
-                defaults = {
-                    layout_strategy = "flex";
-                    layout_config =
-                        let
-                            preview_width = 80;
-                            preview_cutoff = preview_width + preview_width / 2;
-                        in
-                        {
-                            scroll_speed = 4;
-                            horizontal = {
-                                anchor = "CENTER";
-
-                                height.padding = 0;
-                                width.padding = 0;
-
-                                preview_width = preview_width;
-                                preview_cutoff = preview_cutoff;
-
-                                prompt_position = "top";
-                                mirror = false;
-                            };
-                            vertical = {
-                                anchor = "CENTER";
-
-                                height.padding = 0;
-                                width.padding = 0;
-
-                                prompt_position = "top";
-                                mirror = true;
-                            };
-                            flex = {
-                                flip_columns = preview_cutoff;
-                            };
-                        };
-                    sorting_strategy = "ascending";
-                    mappings =
-                        let
-                            keys = {
-                                "<c-j>" = "move_selection_next";
-                                "<c-k>" = "move_selection_previous";
-
-                                "<c-l>" = "cycle_previewers_next";
-                                "<c-h>" = "cycle_previewers_prev";
-
-                                "<c-u>" = false;
-                                "<c-d>" = false;
-
-                                "<c-;>" = "select_horizontal";
-                                "<c-'>" = "select_vertical";
-
-                                "<J>" = "preview_scrolling_down";
-                                "<K>" = "preview_scrolling_up";
-                                # todo: layout toggle preview
-
-                                "<esc>" = "close";
-                                "<s-esc>" = {
-                                    __unkeyed-1 = "<esc>";
-                                    type = "command";
-                                };
-
-                                # todo: row indexes
-                            };
-                        in
-                        {
-                            i = keys;
-                            n = keys;
-                        };
-                    # todo: vimgrep arguments
-                    wrap_results = true;
-                    prompt_prefix = "";
-                    selection_caret = " ";
-                    entry_prefix = " ";
-                    border = true;
-                    dynamic_preview_title = true;
-                    results_title = false;
-                };
-                pickers = {
-                    find_files = {
-                        find_command = [
-                            "rg"
-                            "--files"
-                            "--hidden"
-                            "--glob"
-                            "!**/.git/*"
-                        ];
-                    };
-                    # todo: mappings for buffers
-                };
-            };
-        };
         plugins.web-devicons = {
             enable = true;
         };
         extraPackages = with pkgs; [
             nixfmt
             statix
-            fd
         ];
     };
 
