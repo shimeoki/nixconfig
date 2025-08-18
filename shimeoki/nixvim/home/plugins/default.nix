@@ -21,6 +21,7 @@ in
         ./autopairs
         ./indent-blankline
         ./lsp
+        ./conform
     ];
 
     options.shimeoki.nixvim.plugins = {
