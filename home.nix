@@ -201,9 +201,6 @@
                 nix = [ "statix" ];
             };
         };
-        plugins.indent-blankline = {
-            enable = true;
-        };
         plugins.telescope = {
             extensions = {
                 fzf-native = {

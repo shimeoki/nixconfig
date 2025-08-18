@@ -19,6 +19,7 @@ in
         ./notify
         ./noice
         ./autopairs
+        ./indent-blankline
     ];
 
     options.shimeoki.nixvim.plugins = {
