@@ -1,0 +1,30 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki.nixvim) plugins;
+    cfg = plugins.luasnip;
+in
+{
+    imports = [
+        ./binds.nix
+    ];
+
+    options.shimeoki.nixvim.plugins.luasnip = {
+        enable = lib.mkEnableOption "luasnip" // {
+            default = plugins.enable;
+        };
+    };
+
+    config = lib.mkIf cfg.enable {
+        programs.nixvim.plugins.luasnip = {
+            # todo: virtual text and snippets
+            enable = true;
+            settings = {
+                region_check_events = [ "InsertEnter" ];
+                delete_check_events = [
+                    "InsertLeave"
+                    "TextChanged"
+                ];
+            };
+        };
+    };
+}

@@ -43,17 +43,6 @@
     };
 
     programs.nixvim = {
-        plugins.luasnip = {
-            # todo: virtual text and snippets
-            enable = true;
-            settings = {
-                region_check_events = [ "InsertEnter" ];
-                delete_check_events = [
-                    "InsertLeave"
-                    "TextChanged"
-                ];
-            };
-        };
         plugins.blink-cmp = {
             enable = true;
             settings = {
@@ -538,50 +527,6 @@
             nixfmt
             statix
             fd
-        ];
-        keymaps = [
-            # todo: quarto
-            {
-                key = "<c-s-l>";
-                action.__raw = ''
-                    function()
-                        local ls = require("luasnip")
-                        return ls.choice_active() and ls.change_choice(1)
-                    end
-                '';
-                options.silent = true;
-                mode = [
-                    "i"
-                    "s"
-                ];
-            }
-            {
-                key = "<c-s-h>";
-                action.__raw = ''
-                    function()
-                        local ls = require("luasnip")
-                        return ls.choice_active() and ls.change_choice(-1)
-                    end
-                '';
-                options.silent = true;
-                mode = [
-                    "i"
-                    "s"
-                ];
-            }
-            {
-                key = "<c-bs>";
-                action.__raw = ''
-                    function()
-                        require("luasnip").unlink_current()
-                    end
-                '';
-                options.silent = true;
-                mode = [
-                    "i"
-                    "s"
-                ];
-            }
         ];
     };
 
