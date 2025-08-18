@@ -10,7 +10,7 @@ in
     # todo: quarto
 
     imports = [
-        ./lualine.nix
+        ./lualine
         ./telescope
         ./yazi
         ./treesitter
