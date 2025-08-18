@@ -281,7 +281,6 @@
         lsp.inlayHints.enable = true;
         dependencies = {
             go.enable = true;
-            yazi.enable = true;
             ripgrep.enable = true;
             nodejs.enable = true;
             gcc.enable = true;
@@ -391,14 +390,6 @@
             };
             nixd = {
                 enable = true;
-            };
-        };
-        plugins.yazi = {
-            enable = true;
-            settings = {
-                floating_window_scaling_factor = 1.0;
-                open_for_directories = true;
-                keymaps.show_help = "<f1>";
             };
         };
         plugins.conform-nvim = {
@@ -567,75 +558,50 @@
             statix
             fd
         ];
-        keymaps =
-            let
-                modes = [
-                    "n"
-                    "v"
+        keymaps = [
+            # todo: quarto
+            {
+                key = "<c-s-l>";
+                action.__raw = ''
+                    function()
+                        local ls = require("luasnip")
+                        return ls.choice_active() and ls.change_choice(1)
+                    end
+                '';
+                options.silent = true;
+                mode = [
+                    "i"
+                    "s"
                 ];
-            in
-            [
-                {
-                    key = "<leader>e";
-                    action = "<cmd>Yazi<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader>E";
-                    action = "<cmd>Yazi cwd<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                {
-                    key = "<leader><c-e>";
-                    action = "<cmd>Yazi toggle<cr>";
-                    options.silent = true;
-                    mode = modes;
-                }
-                # todo: quarto
-                {
-                    key = "<c-s-l>";
-                    action.__raw = ''
-                        function()
-                            local ls = require("luasnip")
-                            return ls.choice_active() and ls.change_choice(1)
-                        end
-                    '';
-                    options.silent = true;
-                    mode = [
-                        "i"
-                        "s"
-                    ];
-                }
-                {
-                    key = "<c-s-h>";
-                    action.__raw = ''
-                        function()
-                            local ls = require("luasnip")
-                            return ls.choice_active() and ls.change_choice(-1)
-                        end
-                    '';
-                    options.silent = true;
-                    mode = [
-                        "i"
-                        "s"
-                    ];
-                }
-                {
-                    key = "<c-bs>";
-                    action.__raw = ''
-                        function()
-                            require("luasnip").unlink_current()
-                        end
-                    '';
-                    options.silent = true;
-                    mode = [
-                        "i"
-                        "s"
-                    ];
-                }
-            ];
+            }
+            {
+                key = "<c-s-h>";
+                action.__raw = ''
+                    function()
+                        local ls = require("luasnip")
+                        return ls.choice_active() and ls.change_choice(-1)
+                    end
+                '';
+                options.silent = true;
+                mode = [
+                    "i"
+                    "s"
+                ];
+            }
+            {
+                key = "<c-bs>";
+                action.__raw = ''
+                    function()
+                        require("luasnip").unlink_current()
+                    end
+                '';
+                options.silent = true;
+                mode = [
+                    "i"
+                    "s"
+                ];
+            }
+        ];
     };
 
     home.stateVersion = "25.05";

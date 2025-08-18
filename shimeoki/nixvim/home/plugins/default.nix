@@ -10,6 +10,7 @@ in
     imports = [
         ./lualine.nix
         ./telescope
+        ./yazi
     ];
 
     options.shimeoki.nixvim.plugins = {
