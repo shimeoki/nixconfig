@@ -201,9 +201,6 @@
                 nix = [ "statix" ];
             };
         };
-        plugins.nvim-autopairs = {
-            enable = true;
-        };
         plugins.indent-blankline = {
             enable = true;
         };

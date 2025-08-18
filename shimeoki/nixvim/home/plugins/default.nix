@@ -18,6 +18,7 @@ in
         ./blink
         ./notify
         ./noice
+        ./autopairs
     ];
 
     options.shimeoki.nixvim.plugins = {
