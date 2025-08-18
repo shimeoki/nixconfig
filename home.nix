@@ -43,23 +43,6 @@
     };
 
     programs.nixvim = {
-        plugins.treesitter = {
-            # todo: use main branch
-            enable = true;
-            settings = {
-                highlight = {
-                    enable = true;
-                    additional_vim_regex_highlighting = false;
-                };
-            };
-            languageRegister = {
-                css = "gtkcss";
-                bash = [
-                    "sh"
-                    "zsh"
-                ];
-            };
-        };
         plugins.luasnip = {
             # todo: virtual text and snippets
             enable = true;
@@ -283,8 +266,6 @@
             go.enable = true;
             ripgrep.enable = true;
             nodejs.enable = true;
-            gcc.enable = true;
-            tree-sitter.enable = true;
         };
         lsp.servers = {
             lua_ls = {

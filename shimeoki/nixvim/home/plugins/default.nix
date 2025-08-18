@@ -11,6 +11,7 @@ in
         ./lualine.nix
         ./telescope
         ./yazi
+        ./treesitter
     ];
 
     options.shimeoki.nixvim.plugins = {
