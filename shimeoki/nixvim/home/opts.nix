@@ -1,13 +1,24 @@
+{ config, lib, ... }:
 let
-    indent = 4;
-    columns = 80;
+    cfg = config.shimeoki.nixvim.opts;
 in
 {
+    options.shimeoki.nixvim.opts = with lib; {
+        indent = mkOption {
+            type = types.int;
+            default = 4;
+        };
+        width = mkOption {
+            type = types.int;
+            default = 80;
+        };
+    };
+
     config = {
         programs.nixvim.opts = {
-            tabstop = indent;
-            softtabstop = indent;
-            shiftwidth = indent;
+            tabstop = cfg.indent;
+            softtabstop = cfg.indent;
+            shiftwidth = cfg.indent;
             expandtab = true;
 
             number = true;
@@ -18,7 +29,7 @@ in
             wrap = true;
             linebreak = true;
 
-            colorcolumn = builtins.toString (columns + 1);
+            colorcolumn = builtins.toString (cfg.width + 1);
 
             breakindent = true;
 
