@@ -17,6 +17,7 @@ in
         ./luasnip
         ./blink
         ./notify
+        ./noice
     ];
 
     options.shimeoki.nixvim.plugins = {
