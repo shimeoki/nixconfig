@@ -12,6 +12,7 @@ in
     imports = [
         inputs.nixvim.homeModules.nixvim
         ./plugins
+        ./diagnostics.nix
     ];
 
     options.shimeoki.nixvim = {
