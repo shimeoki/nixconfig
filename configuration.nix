@@ -42,10 +42,13 @@ in
         useXkbConfig = true;
     };
 
-    nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-    ];
+    nix.settings = {
+        warn-dirty = false;
+        experimental-features = [
+            "nix-command"
+            "flakes"
+        ];
+    };
 
     services.xserver.xkb.layout = "us,ru";
     services.xserver.xkb.options = "grp:caps_toggle";
