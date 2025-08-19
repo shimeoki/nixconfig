@@ -28,6 +28,7 @@ in
         programs.nixvim = {
             extraPackages = [ pkgs.fd ];
             dependencies.ripgrep.enable = lib.mkForce true;
+            plugins.web-devicons.enable = lib.mkForce true;
             plugins.telescope.enable = true;
         };
     };

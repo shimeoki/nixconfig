@@ -38,11 +38,5 @@
         enable = true;
     };
 
-    programs.nixvim = {
-        plugins.web-devicons = {
-            enable = true;
-        };
-    };
-
     home.stateVersion = "25.05";
 }
