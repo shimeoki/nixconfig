@@ -15,6 +15,7 @@ in
         ./shell
         ./tex
         ./hypr
+        ./docker
     ];
 
     options.shimeoki.nixvim.languages = {
