@@ -34,10 +34,5 @@
     # for example: GPG_TTY environment variable
     programs.bash.enable = true;
 
-    # todo: module
-    services.dunst = {
-        enable = true;
-    };
-
     home.stateVersion = "25.05";
 }

@@ -14,5 +14,6 @@
         ./niri
         ./nixvim
         ./fuzzel
+        ./dunst
     ];
 }

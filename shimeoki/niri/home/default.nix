@@ -20,6 +20,7 @@ in
     };
 
     config = lib.mkIf cfg.enable {
+        shimeoki.dunst.enable = lib.mkForce true;
         programs.niri.settings = {
             prefer-no-csd = true;
         };
