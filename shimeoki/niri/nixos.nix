@@ -2,6 +2,7 @@
     config,
     options,
     lib,
+    inputs,
     ...
 }:
 let
@@ -15,6 +16,10 @@ let
     };
 in
 {
+    imports = [
+        inputs.niri.nixosModules.niri
+    ];
+
     options.shimeoki.niri = {
         enable = lib.mkEnableOption "niri" // {
             default = module.enable;
