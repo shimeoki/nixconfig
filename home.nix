@@ -40,16 +40,6 @@
 
     programs.nixvim = {
         lsp.servers = {
-            bashls = {
-                enable = true;
-                settings = {
-                    filetypes = [
-                        "sh"
-                        "zsh"
-                        "bash"
-                    ];
-                };
-            };
             texlab = {
                 enable = true;
             };
