@@ -40,9 +40,6 @@
 
     programs.nixvim = {
         lsp.servers = {
-            texlab = {
-                enable = true;
-            };
             hyprls = {
                 enable = true;
             };

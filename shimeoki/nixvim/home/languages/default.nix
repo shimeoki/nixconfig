@@ -13,6 +13,7 @@ in
         ./markdown
         ./python
         ./shell
+        ./tex
     ];
 
     options.shimeoki.nixvim.languages = {
