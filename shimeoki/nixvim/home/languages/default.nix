@@ -14,6 +14,7 @@ in
         ./python
         ./shell
         ./tex
+        ./hypr
     ];
 
     options.shimeoki.nixvim.languages = {

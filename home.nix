@@ -40,9 +40,6 @@
 
     programs.nixvim = {
         lsp.servers = {
-            hyprls = {
-                enable = true;
-            };
             dockerls = {
                 enable = true;
             };
