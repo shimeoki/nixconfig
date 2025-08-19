@@ -1,20 +1,25 @@
 {
     config,
-    lib,
     pkgs,
-    dotfiles,
-    nixvim,
-    zen-browser,
+    inputs,
     ...
 }:
+let
+    inherit (config.shimeoki) dotfiles;
+in
 {
+    # todo: hosts/ configuration
+
     imports = [
         ./hardware-configuration.nix
     ];
 
+    # enable custom modules
+    shimeoki.enable = true;
+
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
-    home-manager.extraSpecialArgs = { inherit dotfiles nixvim zen-browser; };
+    home-manager.extraSpecialArgs = { inherit inputs; };
     home-manager.users.d = ./home.nix;
 
     boot.loader.systemd-boot.enable = false;
@@ -39,10 +44,13 @@
         useXkbConfig = true;
     };
 
-    nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-    ];
+    nix.settings = {
+        warn-dirty = false;
+        experimental-features = [
+            "nix-command"
+            "flakes"
+        ];
+    };
 
     services.xserver.xkb.layout = "us,ru";
     services.xserver.xkb.options = "grp:caps_toggle";
@@ -68,11 +76,9 @@
     services.kanata = {
         enable = true;
         keyboards.main = {
-            configFile = "${dotfiles}/root/private_dot_config/kanata/kanata.kbd";
+            configFile = dotfiles.config "kanata/kanata.kbd";
         };
     };
-
-    programs.niri.enable = true;
 
     stylix = {
         enable = true;
