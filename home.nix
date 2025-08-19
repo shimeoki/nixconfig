@@ -35,11 +35,6 @@
     programs.bash.enable = true;
 
     # todo: module
-    programs.fuzzel = {
-        enable = true;
-    };
-
-    # todo: module
     services.dunst = {
         enable = true;
     };

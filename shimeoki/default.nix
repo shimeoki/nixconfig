@@ -13,5 +13,6 @@
         ./zen-browser
         ./niri
         ./nixvim
+        ./fuzzel
     ];
 }

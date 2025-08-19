@@ -5,8 +5,8 @@ let
 in
 {
     config = lib.mkIf cfg.enable {
-        # todo: force fuzzel
         shimeoki.kitty.enable = lib.mkForce true;
+        shimeoki.fuzzel.enable = lib.mkForce true;
         programs.niri.settings.binds =
             with config.lib.niri.actions;
             lib.mkMerge [
