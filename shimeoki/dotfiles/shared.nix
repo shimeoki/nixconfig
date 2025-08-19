@@ -1,7 +1,6 @@
 { lib, inputs, ... }:
 let
-    # todo: root -> home after input update
-    home = path: "${inputs.dotfiles}/root/${path}";
+    home = path: "${inputs.dotfiles}/home/${path}";
     config = path: home "private_dot_config/${path}";
     scripts = path: home "dot_scripts/${path}";
 in
