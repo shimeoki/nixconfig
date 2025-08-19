@@ -1,8 +1,12 @@
 {
+    # todo: users/ configuration
+
     stylix.targets = {
+        # todo: use in kitty module
         kitty = {
             variant256Colors = true;
         };
+        # todo: use in nixvim module
         nixvim = {
             plugin = "base16-nvim";
             transparentBackground = {
@@ -30,10 +34,12 @@
     # for example: GPG_TTY environment variable
     programs.bash.enable = true;
 
+    # todo: module
     programs.fuzzel = {
         enable = true;
     };
 
+    # todo: module
     services.dunst = {
         enable = true;
     };

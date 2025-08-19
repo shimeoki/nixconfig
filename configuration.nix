@@ -8,6 +8,8 @@ let
     inherit (config.shimeoki) dotfiles;
 in
 {
+    # todo: hosts/ configuration
+
     imports = [
         ./hardware-configuration.nix
     ];
