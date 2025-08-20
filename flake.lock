@@ -85,11 +85,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1755637268,
-        "narHash": "sha256-EbrevBPS93Ny9Ite2+l3pa3/i5cQsw19vZzOLYkE6do=",
+        "lastModified": 1755714382,
+        "narHash": "sha256-RyoNcfaaF7YJ+Z0Iz1XqB8VIT/goFdekDMr5yEdUsBM=",
         "owner": "shimeoki",
         "repo": "dotfiles",
-        "rev": "457c03de4b962adae96d34f81046238689cc80c7",
+        "rev": "83796b04234e2e457a623e668ad379728a5c7e40",
         "type": "github"
       },
       "original": {
