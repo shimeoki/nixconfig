@@ -19,6 +19,7 @@ in
     };
 
     config = lib.mkIf cfg.enable {
+        shimeoki.niri.enable = lib.mkForce true;
         services.greetd = {
             enable = true;
             useTextGreeter = true;
