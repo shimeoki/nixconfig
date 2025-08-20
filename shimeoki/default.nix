@@ -15,5 +15,6 @@
         ./nixvim
         ./fuzzel
         ./dunst
+        ./greetd
     ];
 }
