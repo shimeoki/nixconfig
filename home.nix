@@ -21,8 +21,16 @@
         };
     };
 
-    # enable custom modules
-    shimeoki.enable = true;
+    # custom modules
+    shimeoki = {
+        enable = true;
+
+        waybar = {
+            keyboard-state.enable = false;
+            cava.enable = false;
+            mpd.enable = false;
+        };
+    };
 
     home.username = "d";
     home.homeDirectory = "/home/d";

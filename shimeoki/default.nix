@@ -16,5 +16,6 @@
         ./fuzzel
         ./dunst
         ./greetd
+        ./waybar
     ];
 }
