@@ -177,6 +177,10 @@ in
         mkIf cfg.enable {
             programs.niri.settings = {
                 binds = mkMerge (flatten binds);
+                input = {
+                    mod-key = "Super";
+                    mod-key-nested = "Alt";
+                };
             };
         };
 }
