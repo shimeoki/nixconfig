@@ -9,7 +9,7 @@
 
             tab_bar_style = "hidden";
             tab_powerline_style = "slanted";
-            tab_separator = "";
+            tab_separator = ''""'';
 
             tab_title_template = ''" {fmt.fg.red}[bell_symbol]{activity_symbol}{fmt.fg.tab} {index} {title} {tab.last_focused_progress_percent} "'';
 
