@@ -1,6 +1,9 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.niri;
+    module = config.shimeoki;
+    cfg = module.niri;
+    inherit (module) uwsm;
+
     bind = keys: action: { "Mod+${keys}".action = action; };
 in
 {
@@ -9,10 +12,14 @@ in
         shimeoki.fuzzel.enable = lib.mkForce true;
         programs.niri.settings.binds =
             with config.lib.niri.actions;
+            let
+                uwsm-app = spawn "uwsm-app" "--";
+                app = if uwsm.enable then uwsm-app else spawn;
+            in
             lib.mkMerge [
                 (bind "Shift+Slash" show-hotkey-overlay)
 
-                (bind "Return" (spawn "kitty"))
+                (bind "Return" (app "kitty.desktop"))
                 (bind "D" (spawn "fuzzel"))
 
                 (bind "BackSpace" close-window)

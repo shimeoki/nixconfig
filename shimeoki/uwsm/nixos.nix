@@ -2,28 +2,27 @@
     config,
     options,
     lib,
-    inputs,
     ...
 }:
 let
     module = config.shimeoki;
-    cfg = module.niri;
+    cfg = module.uwsm;
 
     home = lib.optionalAttrs (options ? home-manager) {
-        home-manager.sharedModules = [ ./home ];
+        home-manager.sharedModules = [ ./home.nix ];
     };
 
-    enable = {
-        programs.niri.enable = true;
+    nixos = {
+        programs.uwsm.enable = true;
     };
 in
 {
     imports = [
-        inputs.niri.nixosModules.niri
+        ./niri.nix
     ];
 
-    options.shimeoki.niri = {
-        enable = lib.mkEnableOption "niri" // {
+    options.shimeoki.uwsm = {
+        enable = lib.mkEnableOption "uwsm" // {
             default = module.enable;
         };
     };
@@ -31,7 +30,7 @@ in
     config = lib.mkIf cfg.enable (
         lib.mkMerge [
             home
-            enable
+            nixos
         ]
     );
 }

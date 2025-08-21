@@ -10,6 +10,10 @@ let
     padding = 8;
 in
 {
+    imports = [
+        ./uwsm.nix
+    ];
+
     options.shimeoki.fuzzel = {
         enable = lib.mkEnableOption "fuzzel" // {
             default = module.enable;

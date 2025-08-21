@@ -7,9 +7,17 @@
 let
     module = config.shimeoki;
     cfg = module.greetd;
+    inherit (module) niri uwsm;
 
     # fix: hardcoded username
     user = "d";
+
+    exec = "/run/current-system/sw/bin/niri-session";
+    command =
+        if niri.enable then
+            if uwsm.enable then "uwsm start -F ${exec}" else exec
+        else
+            "/usr/bin/env bash"; # todo: use login shell
 in
 {
     options.shimeoki.greetd = {
@@ -24,10 +32,8 @@ in
             enable = true;
             useTextGreeter = true;
             settings = {
-                # todo: uwsm integration
                 initial_session = {
-                    command = "niri-session";
-                    inherit user;
+                    inherit command user;
                 };
 
                 default_session = {
