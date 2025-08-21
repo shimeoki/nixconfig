@@ -19,6 +19,12 @@
         zen-browser = {
             profileNames = [ "main" ];
         };
+        # todo: use in waybar module
+        waybar = {
+            enableLeftBackColors = true;
+            enableCenterBackColors = true;
+            enableRightBackColors = true;
+        };
     };
 
     # custom modules
