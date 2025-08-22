@@ -18,5 +18,6 @@
         ./greetd
         ./waybar
         ./uwsm
+        ./nushell
     ];
 }
