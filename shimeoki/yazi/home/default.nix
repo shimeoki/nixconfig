@@ -8,6 +8,7 @@ in
         ./preview.nix
         ./settings.nix
         ./binds.nix
+        ./shell.nix
         ./plugins
     ];
 
