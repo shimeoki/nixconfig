@@ -15,6 +15,7 @@ in
         ./bell.nix
         ./layout.nix
         ./tabs.nix
+        ./aliases.nix
     ];
 
     options.shimeoki.kitty = {
