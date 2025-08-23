@@ -1,5 +1,9 @@
 {
     config = {
+        home.shellAliases = {
+            g = "git";
+        };
+
         programs.git.aliases = {
             ci = "commit";
             reword = "commit --amend";
