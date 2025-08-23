@@ -1,6 +1,5 @@
 {
     config,
-    pkgs,
     lib,
     inputs,
     ...
@@ -20,6 +19,7 @@ in
         ./opts.nix
         ./performance.nix
         ./clipboard.nix
+        ./aliases.nix
     ];
 
     options.shimeoki.nixvim = {
