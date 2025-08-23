@@ -23,6 +23,7 @@ in
         ./lsp
         ./conform
         ./lint
+        ./lz-n
     ];
 
     options.shimeoki.nixvim.plugins = {
