@@ -4,6 +4,10 @@ let
     cfg = plugins.conform;
 in
 {
+    imports = [
+        ./lazy-load.nix
+    ];
+
     options.shimeoki.nixvim.plugins.conform = {
         enable = lib.mkEnableOption "conform" // {
             default = plugins.enable;
