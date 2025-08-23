@@ -4,6 +4,10 @@ let
     cfg = plugins.autopairs;
 in
 {
+    imports = [
+        ./lazy-load.nix
+    ];
+
     options.shimeoki.nixvim.plugins.autopairs = {
         enable = lib.mkEnableOption "autopairs" // {
             default = plugins.enable;
