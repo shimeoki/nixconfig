@@ -18,6 +18,7 @@ in
         ./keymap.nix
         ./binds.nix
         ./opts.nix
+        ./performance.nix
     ];
 
     options.shimeoki.nixvim = {
