@@ -19,6 +19,7 @@ in
         ./binds.nix
         ./opts.nix
         ./performance.nix
+        ./clipboard.nix
     ];
 
     options.shimeoki.nixvim = {
@@ -31,9 +32,6 @@ in
         programs.nixvim = {
             enable = true;
             defaultEditor = true;
-            clipboard.register = "unnamedplus";
-            # note: what about non-wayland?
-            extraPackages = [ pkgs.wl-clipboard ];
         };
     };
 }
