@@ -7,7 +7,6 @@ in
         programs.nixvim.plugins.conform-nvim.lazyLoad.settings = {
             # todo: custom cmd's
             event = [
-                "DeferredUIEnter"
                 "BufWritePre"
             ];
         };

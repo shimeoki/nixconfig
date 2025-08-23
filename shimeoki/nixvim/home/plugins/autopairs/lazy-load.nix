@@ -6,7 +6,6 @@ in
     config = lib.mkIf lz-n.enable {
         programs.nixvim.plugins.nvim-autopairs.lazyLoad.settings = {
             event = [
-                "DeferredUIEnter"
                 "InsertEnter"
             ];
         };

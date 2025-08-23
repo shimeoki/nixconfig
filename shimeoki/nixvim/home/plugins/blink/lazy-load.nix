@@ -6,7 +6,6 @@ in
     config = lib.mkIf lz-n.enable {
         programs.nixvim.plugins.blink-cmp.lazyLoad.settings = {
             event = [
-                "DeferredUIEnter"
                 "InsertEnter"
                 "CmdlineEnter"
             ];

@@ -6,9 +6,7 @@ in
     config = lib.mkIf lz-n.enable {
         programs.nixvim.plugins.luasnip.lazyLoad.settings = {
             event = [
-                "DeferredUIEnter"
                 "InsertEnter"
-                "CmdlineEnter"
             ];
         };
     };
