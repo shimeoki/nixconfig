@@ -7,7 +7,6 @@ in
         programs.nixvim.plugins.indent-blankline.lazyLoad.settings = {
             event = [
                 "DeferredUIEnter"
-                "BufReadPost"
             ];
         };
     };
