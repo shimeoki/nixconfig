@@ -10,6 +10,7 @@ in
 {
     imports = [
         ./settings.nix
+        ./prompt.nix
     ];
 
     options.shimeoki.nushell = {
