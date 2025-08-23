@@ -93,6 +93,10 @@ let
     ];
 in
 {
+    imports = [
+        ./lazy-load.nix
+    ];
+
     options.shimeoki.nixvim.plugins.lualine = {
         enable = lib.mkEnableOption "lualine" // {
             default = plugins.enable;

@@ -8,6 +8,7 @@ in
         ./routes.nix
         ./views.nix
         ./lsp.nix
+        ./lazy-load.nix
     ];
 
     options.shimeoki.nixvim.plugins.noice = {

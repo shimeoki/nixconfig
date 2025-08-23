@@ -4,6 +4,10 @@ let
     cfg = plugins.notify;
 in
 {
+    imports = [
+        ./lazy-load.nix
+    ];
+
     options.shimeoki.nixvim.plugins.notify = {
         enable = lib.mkEnableOption "notify" // {
             default = plugins.enable;
