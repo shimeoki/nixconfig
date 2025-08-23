@@ -4,6 +4,10 @@ let
     cfg = plugins.indent-blankline;
 in
 {
+    imports = [
+        ./lazy-load.nix
+    ];
+
     options.shimeoki.nixvim.plugins.indent-blankline = {
         enable = lib.mkEnableOption "indent-blankline" // {
             default = plugins.enable;
