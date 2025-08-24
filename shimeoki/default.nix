@@ -20,5 +20,6 @@
         ./uwsm
         ./nushell
         ./zoxide
+        ./lazygit
     ];
 }
