@@ -6,6 +6,7 @@ in
 {
     imports = [
         ./binds.nix
+        ./lazy-load.nix
     ];
 
     options.shimeoki.nixvim.plugins.yazi = {
