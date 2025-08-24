@@ -13,6 +13,7 @@ in
         inputs.nixvim.homeModules.nixvim
         ./plugins
         ./languages
+        ./colorschemes
         ./diagnostics.nix
         ./keymap.nix
         ./binds.nix
