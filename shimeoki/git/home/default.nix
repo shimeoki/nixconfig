@@ -13,6 +13,7 @@ in
         ./user.nix
         ./settings.nix
         ./aliases.nix
+        ./delta
     ];
 
     options.shimeoki.git = {
