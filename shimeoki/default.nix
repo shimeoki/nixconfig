@@ -23,5 +23,6 @@
         ./lazygit
         ./eza
         ./bat
+        ./fd
     ];
 }
