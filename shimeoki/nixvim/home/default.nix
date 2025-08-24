@@ -20,6 +20,7 @@ in
         ./performance.nix
         ./clipboard.nix
         ./aliases.nix
+        ./builtin.nix
     ];
 
     options.shimeoki.nixvim = {
