@@ -22,5 +22,6 @@
         ./zoxide
         ./lazygit
         ./eza
+        ./bat
     ];
 }
