@@ -21,5 +21,6 @@
         ./nushell
         ./zoxide
         ./lazygit
+        ./eza
     ];
 }
