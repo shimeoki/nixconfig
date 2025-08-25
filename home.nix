@@ -1,32 +1,6 @@
 {
     # todo: users/ configuration
 
-    stylix.targets = {
-        # todo: use in kitty module
-        kitty = {
-            variant256Colors = true;
-        };
-        # todo: use in nixvim module
-        nixvim = {
-            plugin = "base16-nvim";
-            transparentBackground = {
-                main = true;
-                numberLine = true;
-                signColumn = true;
-            };
-        };
-        # todo: use in zen-browser module
-        zen-browser = {
-            profileNames = [ "main" ];
-        };
-        # todo: use in waybar module
-        waybar = {
-            enableLeftBackColors = true;
-            enableCenterBackColors = true;
-            enableRightBackColors = true;
-        };
-    };
-
     # custom modules
     shimeoki = {
         enable = true;

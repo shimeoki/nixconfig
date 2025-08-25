@@ -22,6 +22,7 @@ in
         ./clipboard.nix
         ./aliases.nix
         ./builtin.nix
+        ./stylix.nix
     ];
 
     options.shimeoki.nixvim = {

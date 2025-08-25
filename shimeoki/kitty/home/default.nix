@@ -16,6 +16,7 @@ in
         ./layout.nix
         ./tabs.nix
         ./aliases.nix
+        ./stylix.nix
     ];
 
     options.shimeoki.kitty = {

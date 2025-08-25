@@ -28,5 +28,6 @@
         ./fastfetch
         ./carapace
         ./btop
+        ./stylix
     ];
 }

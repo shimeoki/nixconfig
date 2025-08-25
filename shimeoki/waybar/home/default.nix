@@ -28,6 +28,8 @@ in
         ./cava.nix
         ./mpd.nix
         ./tray.nix
+
+        ./stylix.nix
     ];
 
     options.shimeoki.waybar = {
