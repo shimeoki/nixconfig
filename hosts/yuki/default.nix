@@ -1,6 +1,5 @@
 {
     config,
-    pkgs,
     lib,
     modulesPath,
     inputs,
@@ -15,6 +14,7 @@ in
         ./fs.nix
         ./kernel.nix
         ./network.nix
+        ./boot.nix
     ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -29,15 +29,6 @@ in
         backupFileExtension = "bak";
         extraSpecialArgs = { inherit inputs; };
         users.d = ./home.nix;
-    };
-
-    boot.loader.systemd-boot.enable = false;
-    boot.loader.systemd-boot.configurationLimit = 10;
-    boot.loader.efi.canTouchEfiVariables = true;
-
-    boot.lanzaboote = {
-        enable = true;
-        pkiBundle = "/var/lib/sbctl";
     };
 
     time.timeZone = "Europe/Moscow";
@@ -83,10 +74,6 @@ in
             configFile = dotfiles.config "kanata/kanata.kbd";
         };
     };
-
-    environment.systemPackages = with pkgs; [
-        sbctl
-    ];
 
     system.stateVersion = "25.05";
 }

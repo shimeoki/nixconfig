@@ -89,7 +89,6 @@
                     modules = [
                         self.nixosModules.shimeoki
                         ./hosts/yuki
-                        inputs.lanzaboote.nixosModules.lanzaboote
                         inputs.home-manager.nixosModules.home-manager
                         inputs.stylix.nixosModules.stylix
                     ];
