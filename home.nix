@@ -36,6 +36,8 @@
             cava.enable = false;
             mpd.enable = false;
         };
+
+        git.delta.enable = false;
     };
 
     home.username = "d";
