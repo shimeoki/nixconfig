@@ -85,7 +85,7 @@ in
 
     stylix = {
         enable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     };
 
     environment.systemPackages = with pkgs; [
