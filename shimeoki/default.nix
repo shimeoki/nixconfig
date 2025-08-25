@@ -27,5 +27,6 @@
         ./fzf
         ./fastfetch
         ./carapace
+        ./btop
     ];
 }
