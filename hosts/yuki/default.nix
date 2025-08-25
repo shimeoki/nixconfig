@@ -2,7 +2,6 @@
     config,
     lib,
     modulesPath,
-    inputs,
     ...
 }:
 {
@@ -12,6 +11,7 @@
         ./kernel.nix
         ./network.nix
         ./boot.nix
+        ./hm.nix
     ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -21,10 +21,6 @@
     shimeoki.enable = true;
 
     home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "bak";
-        extraSpecialArgs = { inherit inputs; };
         users.d = ./home.nix;
     };
 
