@@ -14,9 +14,8 @@ in
         (modulesPath + "/installer/scan/not-detected.nix")
         ./fs.nix
         ./kernel.nix
+        ./network.nix
     ];
-
-    networking.useDHCP = lib.mkDefault true;
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -40,11 +39,6 @@ in
         enable = true;
         pkiBundle = "/var/lib/sbctl";
     };
-
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
-    networking.hostName = "nixos";
-    networking.networkmanager.enable = true;
 
     time.timeZone = "Europe/Moscow";
 

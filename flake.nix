@@ -83,7 +83,7 @@
         {
             nixosModules.shimeoki = ./shimeoki;
             nixosConfigurations = {
-                nixos = nixpkgs.lib.nixosSystem {
+                yuki = nixpkgs.lib.nixosSystem {
                     system = "x86_64-linux";
                     specialArgs = { inherit inputs; };
                     modules = [

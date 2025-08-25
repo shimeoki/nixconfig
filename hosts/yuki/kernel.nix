@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
     boot = {
         initrd.availableKernelModules = [
@@ -8,5 +9,6 @@
         ];
 
         kernelModules = [ "kvm-amd" ];
+        kernelPackages = pkgs.linuxPackages_latest;
     };
 }
