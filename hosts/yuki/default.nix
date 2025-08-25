@@ -5,9 +5,6 @@
     inputs,
     ...
 }:
-let
-    inherit (config.shimeoki) dotfiles;
-in
 {
     imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
@@ -66,13 +63,6 @@ in
             "wheel"
             "networkmanager"
         ];
-    };
-
-    services.kanata = {
-        enable = true;
-        keyboards.main = {
-            configFile = dotfiles.config "kanata/kanata.kbd";
-        };
     };
 
     system.stateVersion = "25.05";

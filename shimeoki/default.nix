@@ -29,5 +29,6 @@
         ./carapace
         ./btop
         ./stylix
+        ./kanata
     ];
 }
