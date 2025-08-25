@@ -10,6 +10,8 @@ in
 {
     imports = [
         ./binds.nix
+        ./fd.nix
+        ./preview.nix
     ];
 
     options.shimeoki.fzf = {
