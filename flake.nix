@@ -89,7 +89,6 @@
                     modules = [
                         self.nixosModules.shimeoki
                         ./hosts/yuki
-                        inputs.stylix.nixosModules.stylix
                     ];
                 };
             };
