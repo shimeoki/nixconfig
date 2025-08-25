@@ -1,7 +1,3 @@
-{ config, ... }:
-let
-    inherit (config.shimeoki) dotfiles;
-in
 {
     # todo: users/ configuration
 
@@ -54,8 +50,6 @@ in
             sctl = "sudo systemctl --system";
             uctl = "systemctl --user";
         };
-
-        packages = [ dotfiles.scripts ];
     };
 
     # note: bash is the default shell and
