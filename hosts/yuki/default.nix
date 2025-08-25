@@ -1,6 +1,8 @@
 {
     config,
     pkgs,
+    lib,
+    modulesPath,
     inputs,
     ...
 }:
@@ -8,11 +10,16 @@ let
     inherit (config.shimeoki) dotfiles;
 in
 {
-    # todo: hosts/ configuration
-
     imports = [
-        ./hardware-configuration.nix
+        (modulesPath + "/installer/scan/not-detected.nix")
+        ./fs.nix
+        ./kernel.nix
     ];
+
+    networking.useDHCP = lib.mkDefault true;
+
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     # enable custom modules
     shimeoki.enable = true;

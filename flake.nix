@@ -88,7 +88,7 @@
                     specialArgs = { inherit inputs; };
                     modules = [
                         self.nixosModules.shimeoki
-                        ./configuration.nix
+                        ./hosts/yuki
                         inputs.lanzaboote.nixosModules.lanzaboote
                         inputs.home-manager.nixosModules.home-manager
                         inputs.stylix.nixosModules.stylix
