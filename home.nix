@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+    inherit (config.shimeoki) dotfiles;
+in
 {
     # todo: users/ configuration
 
@@ -43,6 +47,16 @@
     home.username = "d";
     home.homeDirectory = "/home/d";
     programs.home-manager.enable = true;
+
+    home = {
+        shellAliases = {
+            ctl = "systemctl";
+            sctl = "sudo systemctl --system";
+            uctl = "systemctl --user";
+        };
+
+        packages = [ dotfiles.scripts ];
+    };
 
     # note: bash is the default shell and
     # works without this, but other things
