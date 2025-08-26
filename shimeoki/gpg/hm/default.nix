@@ -5,22 +5,21 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.gpg;
+    inherit (config) shimeoki;
+    inherit (shimeoki) gpg;
 in
 {
     options.shimeoki.gpg = {
         enable = lib.mkEnableOption "gpg" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf gpg.enable {
         programs.gpg.enable = true;
         services.gpg-agent = {
             enable = true;
             pinentry.package = pkgs.pinentry-curses;
         };
-        # todo: git integration
     };
 }
