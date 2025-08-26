@@ -1,11 +1,9 @@
 { config, lib, ... }:
 let
-    module = config.shimeoki;
-    cfg = module.uwsm;
-    inherit (module) niri;
+    inherit (config.shimeoki) uwsm niri;
 in
 {
-    config = lib.mkIf (cfg.enable && niri.enable) {
+    config = lib.mkIf (uwsm.enable && niri.enable) {
         programs.uwsm.waylandCompositors.niri = {
             prettyName = "Niri";
             comment = "A scrollable-tiling Wayland compositor";

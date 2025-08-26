@@ -4,8 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.uwsm;
+    inherit (config) shimeoki;
+    inherit (shimeoki) uwsm;
 in
 {
     imports = [
@@ -14,11 +14,11 @@ in
 
     options.shimeoki.uwsm = {
         enable = lib.mkEnableOption "uwsm" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf uwsm.enable {
         programs.uwsm.enable = true;
     };
 }
