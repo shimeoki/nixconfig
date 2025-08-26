@@ -6,8 +6,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.stylix;
+    inherit (config) shimeoki;
+    inherit (shimeoki) stylix;
 in
 {
     imports = [
@@ -16,11 +16,11 @@ in
 
     options.shimeoki.stylix = {
         enable = lib.mkEnableOption "stylix" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf stylix.enable {
         stylix = {
             enable = true;
             base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
