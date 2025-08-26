@@ -16,6 +16,7 @@
         ./fzf/hm
         ./git/hm
         ./gpg/hm
+        ./home-manager/hm
         ./kitty/hm
         ./lazygit/hm
         ./nh/hm
