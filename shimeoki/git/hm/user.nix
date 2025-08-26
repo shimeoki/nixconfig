@@ -6,18 +6,36 @@
 let
     inherit (config.shimeoki) git gpg;
 
-    signing = lib.mkIf gpg.enable {
-        key = "2B092E2DCA05866B";
+    signing = lib.mkIf (gpg.enable && git.signing.gpg) {
+        inherit (git.signing) key;
         signByDefault = true;
     };
 in
 {
-    # todo: user data support
+    options.shimeoki.git = with lib; {
+        name = mkOption {
+            type = types.str;
+        };
+
+        email = mkOption {
+            type = types.str;
+        };
+
+        signing = {
+            gpg = mkEnableOption "gpg" // {
+                default = gpg.enable;
+            };
+
+            key = mkOption {
+                type = types.str;
+            };
+        };
+    };
 
     config = lib.mkIf git.enable {
         programs.git = {
-            userName = "shimeoki";
-            userEmail = "shimeoki@gmail.com";
+            userName = git.name;
+            userEmail = git.email;
             inherit signing;
         };
     };
