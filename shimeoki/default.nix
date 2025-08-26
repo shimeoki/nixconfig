@@ -30,5 +30,6 @@
         ./btop
         ./stylix
         ./kanata
+        ./host
     ];
 }

@@ -21,7 +21,20 @@
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     # enable custom modules
-    shimeoki.enable = true;
+    shimeoki = {
+        enable = true;
+
+        host = {
+            type = "laptop";
+            outputs = {
+                "eDP-1" = {
+                    width = 1920;
+                    height = 1080;
+                    hz = 60;
+                };
+            };
+        };
+    };
 
     home-manager = {
         users.d = ./home.nix;
