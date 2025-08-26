@@ -60,6 +60,8 @@ in
             cpoptions = "aABceF";
 
             undofile = true;
+
+            fillchars = "eob: ";
         };
     };
 }
