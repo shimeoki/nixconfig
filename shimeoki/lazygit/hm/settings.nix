@@ -1,5 +1,9 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki) lazygit;
+in
 {
-    config = {
+    config = lib.mkIf lazygit.enable {
         programs.lazygit.settings = {
             gui = {
                 scrollHeight = 4;

@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.lazygit;
+    inherit (config.shimeoki) lazygit;
 in
 {
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf lazygit.enable {
         home.shellAliases = {
             lg = "lazygit";
         };
