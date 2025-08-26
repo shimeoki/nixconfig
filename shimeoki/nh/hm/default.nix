@@ -21,7 +21,14 @@ in
     config = lib.mkIf nh.enable {
         programs.nh = {
             enable = true;
+
             inherit (nh) flake;
+
+            clean = {
+                enable = true;
+                dates = "weekly";
+                extraArgs = "--keep=10"; # todo: match number of boot entries
+            };
         };
     };
 }
