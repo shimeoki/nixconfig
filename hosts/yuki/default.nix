@@ -9,7 +9,6 @@
         ./kernel.nix
         ./network.nix
         ./boot.nix
-        ./hm.nix
         ./xkb.nix
         ./console.nix
         ./audio.nix

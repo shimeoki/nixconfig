@@ -11,6 +11,7 @@ in
     imports = [
         ./dotfiles/nixos
         ./greetd/nixos
+        ./home-manager/nixos
         ./host/nixos
         ./kanata/nixos
         ./niri/nixos
