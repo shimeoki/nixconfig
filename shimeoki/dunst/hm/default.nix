@@ -4,8 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.dunst;
+    inherit (config) shimeoki;
+    inherit (shimeoki) dunst;
 
     padding = 16;
     icon_size = 32;
@@ -13,11 +13,11 @@ in
 {
     options.shimeoki.dunst = {
         enable = lib.mkEnableOption "dunst" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf dunst.enable {
         services.dunst = {
             enable = true;
             settings.global = {
