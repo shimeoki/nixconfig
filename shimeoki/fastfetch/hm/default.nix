@@ -4,10 +4,10 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.fastfetch;
+    inherit (config) shimeoki;
+    inherit (shimeoki) fastfetch;
 
-    type = if cfg.logo then "small" else "none";
+    type = if fastfetch.logo then "small" else "none";
 in
 {
     imports = [
@@ -16,13 +16,13 @@ in
 
     options.shimeoki.fastfetch = {
         enable = lib.mkEnableOption "fastfetch" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
 
         logo = lib.mkEnableOption "logo";
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf fastfetch.enable {
         programs.fastfetch = {
             enable = true;
             settings = {
