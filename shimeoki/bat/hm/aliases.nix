@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.bat;
+    inherit (config.shimeoki) bat;
 in
 {
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf bat.enable {
         home.shellAliases = {
             b = "bat";
             bp = "bat --plain";

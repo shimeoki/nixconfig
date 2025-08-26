@@ -5,8 +5,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.bat;
+    inherit (config) shimeoki;
+    inherit (shimeoki) bat;
 in
 {
     imports = [
@@ -15,11 +15,11 @@ in
 
     options.shimeoki.bat = {
         enable = lib.mkEnableOption "bat" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf bat.enable {
         programs.bat = {
             enable = true;
             extraPackages = with pkgs.bat-extras; [ batman ];
