@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.eza;
+    inherit (config.shimeoki) eza;
 in
 {
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf eza.enable {
         home.shellAliases = {
             l = "eza --oneline";
             la = "eza --oneline --all";
