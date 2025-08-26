@@ -11,7 +11,6 @@ in
             full-border.enable = lib.mkForce true;
         };
         programs.yazi = {
-            # fix: just the path doesn't work
             initLua = builtins.readFile (dotfiles.config "yazi/init.lua");
             settings.mgr = {
                 ratio = [

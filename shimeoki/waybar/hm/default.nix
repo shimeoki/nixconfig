@@ -41,7 +41,6 @@ in
     config = lib.mkIf cfg.enable {
         programs.waybar = {
             enable = true;
-            # fix: doesn't read the file automatically
             style = builtins.readFile (dotfiles.config "waybar/default.css");
         };
     };
