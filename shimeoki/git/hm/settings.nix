@@ -1,5 +1,9 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki) git;
+in
 {
-    config = {
+    config = lib.mkIf git.enable {
         programs.git.extraConfig = {
             init.defaultBranch = "main";
             core = {
