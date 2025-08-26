@@ -4,8 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.nushell;
+    inherit (config) shimeoki;
+    inherit (shimeoki) nushell;
 in
 {
     imports = [
@@ -15,11 +15,11 @@ in
 
     options.shimeoki.nushell = {
         enable = lib.mkEnableOption "nushell" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf nushell.enable {
         programs.nushell.enable = true;
     };
 }

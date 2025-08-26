@@ -4,8 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.fuzzel;
+    inherit (config) shimeoki;
+    inherit (shimeoki) fuzzel;
 
     padding = 8;
 in
@@ -16,11 +16,11 @@ in
 
     options.shimeoki.fuzzel = {
         enable = lib.mkEnableOption "fuzzel" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf fuzzel.enable {
         programs.fuzzel = {
             enable = true;
             settings = {

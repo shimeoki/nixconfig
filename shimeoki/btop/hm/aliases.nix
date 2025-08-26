@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.btop;
+    inherit (config.shimeoki) btop;
 in
 {
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf btop.enable {
         home.shellAliases = {
             t = "btop";
         };

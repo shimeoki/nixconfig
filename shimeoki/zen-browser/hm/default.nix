@@ -5,8 +5,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.zen-browser;
+    inherit (config) shimeoki;
+    inherit (shimeoki) zen-browser;
 in
 {
     imports = [
@@ -19,11 +19,11 @@ in
 
     options.shimeoki.zen-browser = {
         enable = lib.mkEnableOption "zen-browser" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf zen-browser.enable {
         programs.zen-browser.enable = true;
     };
 }

@@ -4,9 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.eza;
-    inherit (module) git;
+    inherit (config) shimeoki;
+    inherit (shimeoki) eza git;
 in
 {
     imports = [
@@ -15,11 +14,11 @@ in
 
     options.shimeoki.eza = {
         enable = lib.mkEnableOption "eza" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf eza.enable {
         programs.eza = {
             enable = true;
             git = git.enable;

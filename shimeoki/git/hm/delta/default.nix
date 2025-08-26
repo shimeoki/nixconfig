@@ -5,7 +5,7 @@
 }:
 let
     inherit (config.shimeoki) git;
-    cfg = git.delta;
+    inherit (git) delta;
 in
 {
     options.shimeoki.git.delta = {
@@ -14,7 +14,7 @@ in
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf delta.enable {
         programs.git.delta = {
             enable = true;
             options = {

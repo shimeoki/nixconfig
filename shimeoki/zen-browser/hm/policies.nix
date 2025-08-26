@@ -1,5 +1,9 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki) zen-browser;
+in
 {
-    config = {
+    config = lib.mkIf zen-browser.enable {
         programs.zen-browser.policies = {
             AutofillAddressEnabled = true;
             AutofillCreditCardEnabled = false;

@@ -10,11 +10,13 @@ let
         bat
         eza
         kitty
+        dotfiles
         ;
 
     # bat, eza and kitty are needed for
     # file, directory and image previews respectively
-    enable = fzf.enable && bat.enable && eza.enable && kitty.enable;
+    enable =
+        fzf.enable && bat.enable && eza.enable && kitty.enable && dotfiles.enable;
 
     opts = [
         "--height=100%"

@@ -4,11 +4,10 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.lazygit;
+    inherit (config) shimeoki;
+    inherit (shimeoki) lazygit;
 in
 {
-
     imports = [
         ./settings.nix
         ./aliases.nix
@@ -16,11 +15,11 @@ in
 
     options.shimeoki.lazygit = {
         enable = lib.mkEnableOption "lazygit" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf lazygit.enable {
         programs.lazygit.enable = true;
     };
 }

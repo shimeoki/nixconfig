@@ -1,8 +1,16 @@
-{ pkgs, lib, ... }:
+{
+    config,
+    pkgs,
+    lib,
+    ...
+}:
+let
+    inherit (config.shimeoki) kitty;
+in
 {
     # todo: options
 
-    config = {
+    config = lib.mkIf kitty.enable {
         programs.kitty = {
             font = {
                 # hack: otherwise stylix doesn't work

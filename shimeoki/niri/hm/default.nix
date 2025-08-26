@@ -4,8 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.niri;
+    inherit (config) shimeoki;
+    inherit (shimeoki) niri;
 in
 {
     imports = [
@@ -23,11 +23,11 @@ in
 
     options.shimeoki.niri = {
         enable = lib.mkEnableOption "niri" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf niri.enable {
         shimeoki.dunst.enable = lib.mkForce true;
         programs.niri.settings = {
             prefer-no-csd = true;

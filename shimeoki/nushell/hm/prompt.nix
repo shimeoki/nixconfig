@@ -1,10 +1,9 @@
 { config, lib, ... }:
 let
-    inherit (config.shimeoki) git dotfiles;
+    inherit (config.shimeoki) nushell git dotfiles;
 in
 {
-    # git is used in the prompt
-    config = lib.mkIf git.enable {
+    config = lib.mkIf (nushell.enable && git.enable) {
         programs.nushell.extraConfig = ''
             use ${dotfiles.config "nushell/prompt.nu"} []
         '';

@@ -4,11 +4,10 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.git;
+    inherit (config) shimeoki;
+    inherit (shimeoki) git;
 in
 {
-
     imports = [
         ./user.nix
         ./settings.nix
@@ -18,11 +17,11 @@ in
 
     options.shimeoki.git = {
         enable = lib.mkEnableOption "git" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf git.enable {
         programs.git.enable = true;
     };
 }

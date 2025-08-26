@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.eza;
+    inherit (config.shimeoki) fastfetch;
 in
 {
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf fastfetch.enable {
         home.shellAliases = {
             ff = "fastfetch";
         };

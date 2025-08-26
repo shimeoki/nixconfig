@@ -1,9 +1,9 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
-    inherit (config.shimeoki) kitty;
+    inherit (config.shimeoki) nushell kitty;
 in
 {
-    config = {
+    config = lib.mkIf nushell.enable {
         programs.nushell.settings = {
             show_banner = false;
 

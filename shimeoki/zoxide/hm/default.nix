@@ -4,17 +4,17 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.zoxide;
+    inherit (config) shimeoki;
+    inherit (shimeoki) zoxide;
 in
 {
     options.shimeoki.zoxide = {
         enable = lib.mkEnableOption "zoxide" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf zoxide.enable {
         programs.zoxide = {
             enable = true;
             options = [ "--cmd=j" ];

@@ -5,7 +5,8 @@
     ...
 }:
 let
-    cfg = config.shimeoki.zen-browser;
+    inherit (config.shimeoki) zen-browser;
+
     searchNixpkgs = {
         name = "nixpkgs";
         urls = [
@@ -26,6 +27,7 @@ let
             }
         ];
     };
+
     searchNixwiki = {
         name = "nixwiki";
         urls = [
@@ -38,7 +40,7 @@ let
     };
 in
 {
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf zen-browser.enable {
         programs.zen-browser.profiles.main = {
             id = 0;
             search = {
