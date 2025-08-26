@@ -1,3 +1,4 @@
+{ config, ... }:
 {
     shimeoki = {
         enable = true;
@@ -15,5 +16,7 @@
             email = "shimeoki@gmail.com";
             signing.key = "2B092E2DCA05866B";
         };
+
+        nh.flake = "${config.home.homeDirectory}/nixconfig";
     };
 }
