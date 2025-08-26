@@ -5,8 +5,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.greetd;
+    inherit (config) shimeoki;
+    inherit (shimeoki) greetd;
 in
 {
     imports = [
@@ -15,11 +15,11 @@ in
 
     options.shimeoki.greetd = {
         enable = lib.mkEnableOption "greetd" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf greetd.enable {
         services.greetd = {
             enable = true;
             useTextGreeter = true;

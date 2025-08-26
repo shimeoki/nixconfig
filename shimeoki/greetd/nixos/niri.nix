@@ -1,8 +1,6 @@
 { config, lib, ... }:
 let
-    module = config.shimeoki;
-    cfg = module.greetd;
-    inherit (module) niri uwsm;
+    inherit (config.shimeoki) greetd niri uwsm;
 
     # fix: hardcoded username
     user = "d";
@@ -11,7 +9,7 @@ let
     command = if uwsm.enable then "uwsm start -F ${exec}" else exec;
 in
 {
-    config = lib.mkIf (cfg.enable && niri.enable) {
+    config = lib.mkIf (greetd.enable && niri.enable) {
         services.greetd.settings.initial_session = {
             inherit command user;
         };
