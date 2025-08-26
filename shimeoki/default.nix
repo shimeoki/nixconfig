@@ -29,5 +29,8 @@
         ./carapace
         ./btop
         ./stylix
+        ./kanata
+        ./host
+        ./tlp
     ];
 }

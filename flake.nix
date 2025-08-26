@@ -80,20 +80,25 @@
 
     outputs =
         { self, nixpkgs, ... }@inputs:
+        let
+            system =
+                arch: modules:
+                nixpkgs.lib.nixosSystem {
+                    system = arch;
+                    specialArgs = { inherit inputs; };
+                    modules = modules ++ [
+                        self.nixosModules.shimeoki
+                        { nixpkgs.hostPlatform = arch; }
+                    ];
+                };
+        in
         {
             nixosModules.shimeoki = ./shimeoki;
             nixosConfigurations = {
-                nixos = nixpkgs.lib.nixosSystem {
-                    system = "x86_64-linux";
-                    specialArgs = { inherit inputs; };
-                    modules = [
-                        self.nixosModules.shimeoki
-                        ./configuration.nix
-                        inputs.lanzaboote.nixosModules.lanzaboote
-                        inputs.home-manager.nixosModules.home-manager
-                        inputs.stylix.nixosModules.stylix
-                    ];
-                };
+                yuki = system "x86_64-linux" [
+                    ./hosts/yuki
+                    ./users/d
+                ];
             };
         };
 }

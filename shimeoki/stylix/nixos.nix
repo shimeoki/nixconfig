@@ -3,6 +3,7 @@
     options,
     pkgs,
     lib,
+    inputs,
     ...
 }:
 let
@@ -21,6 +22,10 @@ let
     };
 in
 {
+    imports = [
+        inputs.stylix.nixosModules.stylix
+    ];
+
     options.shimeoki.stylix = {
         enable = lib.mkEnableOption "stylix" // {
             default = module.enable;
