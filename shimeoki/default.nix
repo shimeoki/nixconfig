@@ -31,5 +31,6 @@
         ./stylix
         ./kanata
         ./host
+        ./tlp
     ];
 }

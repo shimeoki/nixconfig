@@ -43,11 +43,6 @@
     time.timeZone = "Europe/Moscow";
     i18n.defaultLocale = "en_US.UTF-8";
 
-    # fix: enable only on laptops
-    services.tlp = {
-        enable = true;
-    };
-
     users.users.d = {
         isNormalUser = true;
         extraGroups = [
