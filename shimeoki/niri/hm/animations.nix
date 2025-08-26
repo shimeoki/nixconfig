@@ -1,5 +1,9 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki) niri;
+in
 {
-    config = {
+    config = lib.mkIf niri.enable {
         programs.niri.settings.animations = {
             window-open.kind.easing = {
                 duration-ms = 400;

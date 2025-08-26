@@ -1,16 +1,13 @@
 { config, lib, ... }:
 let
-    module = config.shimeoki;
-    cfg = module.niri;
-
-    inherit (module)
+    inherit (config.lib.niri) actions;
+    inherit (config.shimeoki)
+        niri
         uwsm
         kitty
         fuzzel
         zen-browser
         ;
-
-    inherit (config.lib.niri) actions;
 
     bindRaw =
         {
@@ -172,15 +169,13 @@ let
     ];
 in
 {
-    config =
-        with lib;
-        mkIf cfg.enable {
-            programs.niri.settings = {
-                binds = mkMerge (flatten binds);
-                input = {
-                    mod-key = "Super";
-                    mod-key-nested = "Alt";
-                };
+    config = lib.mkIf niri.enable {
+        programs.niri.settings = {
+            binds = with lib; mkMerge (flatten binds);
+            input = {
+                mod-key = "Super";
+                mod-key-nested = "Alt";
             };
         };
+    };
 }
