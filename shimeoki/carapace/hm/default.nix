@@ -4,17 +4,17 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.carapace;
+    inherit (config) shimeoki;
+    inherit (shimeoki) carapace;
 in
 {
     options.shimeoki.carapace = {
         enable = lib.mkEnableOption "carapace" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf carapace.enable {
         programs.carapace.enable = true;
     };
 }
