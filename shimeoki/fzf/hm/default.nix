@@ -4,8 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.fzf;
+    inherit (config) shimeoki;
+    inherit (shimeoki) fzf;
 in
 {
     imports = [
@@ -16,11 +16,11 @@ in
 
     options.shimeoki.fzf = {
         enable = lib.mkEnableOption "fzf" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf fzf.enable {
         programs.fzf = {
             enable = true;
             defaultOptions = [

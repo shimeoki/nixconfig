@@ -1,8 +1,11 @@
+{ config, lib, ... }:
 let
+    inherit (config.shimeoki) fzf;
+
     bind = keys: action: "--bind='${keys}:${action}'";
 in
 {
-    config = {
+    config = lib.mkIf fzf.enable {
         programs.fzf.defaultOptions = [
             (bind "enter" "accept")
             (bind "U" "unix-line-discard")
