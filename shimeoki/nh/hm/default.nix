@@ -4,17 +4,17 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.nh;
+    inherit (config) shimeoki;
+    inherit (shimeoki) nh;
 in
 {
     options.shimeoki.nh = {
         enable = lib.mkEnableOption "nh" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf nh.enable {
         programs.nh = {
             enable = true;
             # fix: hardcoded path
