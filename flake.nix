@@ -93,7 +93,7 @@
                 };
         in
         {
-            nixosModules.shimeoki = ./shimeoki;
+            nixosModules.shimeoki = ./shimeoki/nixos.nix;
             nixosConfigurations = {
                 yuki = system "x86_64-linux" [
                     ./hosts/yuki
