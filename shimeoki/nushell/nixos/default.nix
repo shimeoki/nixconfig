@@ -5,17 +5,17 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.nushell;
+    inherit (config) shimeoki;
+    inherit (shimeoki) nushell;
 in
 {
     options.shimeoki.nushell = {
         enable = lib.mkEnableOption "nushell" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf nushell.enable {
         # set as default shell. maybe add as an option?
         users.users.d.shell = pkgs.nushell; # fix: hardcoded username
     };
