@@ -1,5 +1,9 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki) kitty;
+in
 {
-    config = {
+    config = lib.mkIf kitty.enable {
         programs.kitty.settings = {
             tab_bar_edge = "top";
             tab_bar_align = "left";

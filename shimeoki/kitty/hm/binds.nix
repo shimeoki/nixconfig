@@ -1,6 +1,9 @@
-{ lib, ... }:
+{ config, lib, ... }:
 let
+    inherit (config.shimeoki) kitty;
+
     bind = keys: action: { "kitty_mod+${keys}" = action; };
+
     binds = lib.mkMerge [
         (bind "/" "scroll_line_up")
         (bind "shift+/" "scroll_line_down")
@@ -72,9 +75,7 @@ let
     ];
 in
 {
-    # todo: options
-
-    config = {
+    config = lib.mkIf kitty.enable {
         programs.kitty = {
             settings.kitty_mod = "alt";
             keybindings = binds;

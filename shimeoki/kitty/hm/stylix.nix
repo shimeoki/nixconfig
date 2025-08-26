@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-    inherit (config.shimeoki) stylix;
+    inherit (config.shimeoki) kitty stylix;
 in
 {
-    config = lib.mkIf stylix.enable {
+    config = lib.mkIf (kitty.enable && stylix.enable) {
         stylix.targets.kitty = {
             variant256Colors = true;
         };
