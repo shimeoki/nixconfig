@@ -12,6 +12,9 @@
         ./network.nix
         ./boot.nix
         ./hm.nix
+        ./xkb.nix
+        ./console.nix
+        ./audio.nix
     ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -25,28 +28,7 @@
     };
 
     time.timeZone = "Europe/Moscow";
-
     i18n.defaultLocale = "en_US.UTF-8";
-    console = {
-        font = "Lat2-Terminus16";
-        useXkbConfig = true;
-    };
-
-    nix.settings = {
-        warn-dirty = false;
-        experimental-features = [
-            "nix-command"
-            "flakes"
-        ];
-    };
-
-    services.xserver.xkb.layout = "us,ru";
-    services.xserver.xkb.options = "grp:caps_toggle";
-
-    services.pipewire = {
-        enable = true;
-        pulse.enable = true;
-    };
 
     # fix: enable only on laptops
     services.tlp = {
@@ -58,6 +40,14 @@
         extraGroups = [
             "wheel"
             "networkmanager"
+        ];
+    };
+
+    nix.settings = {
+        warn-dirty = false;
+        experimental-features = [
+            "nix-command"
+            "flakes"
         ];
     };
 
