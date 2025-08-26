@@ -1,10 +1,11 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.zen-browser;
+    inherit (config.shimeoki) zen-browser;
+
     browser = "zen-twilight.desktop";
 in
 {
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf zen-browser.enable {
         xdg.mimeApps = {
             enable = lib.mkForce true;
             defaultApplications = {
