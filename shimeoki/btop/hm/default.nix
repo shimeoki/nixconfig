@@ -4,8 +4,8 @@
     ...
 }:
 let
-    module = config.shimeoki;
-    cfg = module.btop;
+    inherit (config) shimeoki;
+    inherit (shimeoki) btop;
 in
 {
     imports = [
@@ -14,11 +14,11 @@ in
 
     options.shimeoki.btop = {
         enable = lib.mkEnableOption "btop" // {
-            default = module.enable;
+            default = shimeoki.enable;
         };
     };
 
-    config = lib.mkIf cfg.enable {
+    config = lib.mkIf btop.enable {
         programs.btop = {
             enable = true;
         };
