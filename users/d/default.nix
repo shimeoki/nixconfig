@@ -1,4 +1,8 @@
 {
+    imports = [
+        ./shimeoki.nix
+    ];
+
     users.users.d = {
         isNormalUser = true;
         extraGroups = [

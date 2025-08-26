@@ -1,0 +1,5 @@
+{
+    shimeoki = {
+        nushell.users = [ "d" ];
+    };
+}

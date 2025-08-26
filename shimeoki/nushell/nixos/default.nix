@@ -9,14 +9,19 @@ let
     inherit (shimeoki) nushell;
 in
 {
-    options.shimeoki.nushell = {
-        enable = lib.mkEnableOption "nushell" // {
+    options.shimeoki.nushell = with lib; {
+        enable = mkEnableOption "nushell" // {
             default = shimeoki.enable;
+        };
+
+        users = mkOption {
+            type = with types; listOf str;
         };
     };
 
     config = lib.mkIf nushell.enable {
-        # set as default shell. maybe add as an option?
-        users.users.d.shell = pkgs.nushell; # fix: hardcoded username
+        users.users = lib.genAttrs nushell.users (user: {
+            shell = pkgs.nushell;
+        });
     };
 }
