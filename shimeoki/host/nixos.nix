@@ -2,7 +2,7 @@
 {
     options.shimeoki.host = with lib; {
         type = mkOption {
-            type = types.str;
+            type = types.str; # todo: enum
         };
 
         outputs = mkOption {
