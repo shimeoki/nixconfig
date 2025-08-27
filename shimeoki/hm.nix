@@ -26,6 +26,7 @@
         ./password-store/hm
         ./ssh/hm
         ./stylix/hm
+        ./swww/hm
         ./syncthing/hm
         ./uwsm/hm
         ./waybar/hm
