@@ -6,138 +6,150 @@
 let
     inherit (config) shimeoki;
     inherit (shimeoki) syncthing;
-    inherit (syncthing) presets;
 
-    presetDevices = {
+    devices = {
         kaede = {
             id = "OUEHO5F-JBQ3HYU-DPHH4WH-NH6GZ7E-RDMV3O4-4CEKL66-3KDJK3N-V5UYKQB";
         };
+
+        yuki = {
+            id = "GLBAQZC-S5SQAN2-EWKQTZ7-2XNYFXA-PGLGYLQ-PAUMQKS-CGYNWXA-6SGJPAZ";
+        };
+
+        akane = {
+            id = "YGDXQ2U-5ENEMMQ-7CLTQ4A-52WEK5L-DKJIPDU-DZKXPQP-OLHIOTS-KC3TJQ4";
+        };
     };
 
-    presetFolders = {
+    folders = {
         obsidian = {
-            inherit (presets.obsidian) enable;
+            inherit (syncthing.obsidian) enable devices;
             id = "3lrbn-rrmv4";
             label = "Obsidian";
             path = "~/obsidian";
-            devices = [ "kaede" ];
         };
 
         code = {
-            inherit (presets.code) enable;
+            inherit (syncthing.code) enable devices;
             id = "coevz-eczec";
             label = "Code";
             path = "~/code";
-            devices = [ "kaede" ];
         };
 
         pictures = {
-            inherit (presets.pictures) enable;
+            inherit (syncthing.pictures) enable devices;
             id = "dxisy-umvl5";
             label = "Pictures";
             path = "~/Pictures";
-            devices = [ "kaede" ];
         };
 
         documents = {
-            inherit (presets.documents) enable;
+            inherit (syncthing.documents) enable devices;
             id = "5mzls-iaxas";
             label = "Documents";
             path = "~/Documents";
-            devices = [ "kaede" ];
         };
 
         music = {
-            inherit (presets.music) enable;
+            inherit (syncthing.music) enable devices;
             id = "mejme-bzk7q";
             label = "Music";
             path = "~/Music";
-            devices = [ "kaede" ];
         };
 
         password-store = {
-            inherit (presets.password-store) enable;
+            inherit (syncthing.password-store) enable devices;
             id = "c3nmn-4xeeo";
             label = "Password Store";
             path = "~/.local/share/password-store";
-            devices = [ "kaede" ];
         };
     };
-
-    devices =
-        with lib;
-        mkMerge ([ syncthing.devices ] ++ optional presets.enable presetDevices);
-
-    folders =
-        with lib;
-        mkMerge ([ syncthing.folders ] ++ optional presets.enable presetFolders);
 in
 {
     options.shimeoki.syncthing = with lib; {
-        enable = mkEnableOption "syncthing" // {
-            default = shimeoki.enable;
-        };
+        enable = mkEnableOption "syncthing";
 
-        presets = {
-            enable = mkEnableOption "presets";
+        obsidian = {
+            enable = mkEnableOption "obsidian";
 
-            obsidian = {
-                enable = mkEnableOption "obsidian";
-            };
-
-            code = {
-                enable = mkEnableOption "code";
-            };
-
-            pictures = {
-                enable = mkEnableOption "pictures";
-            };
-
-            documents = {
-                enable = mkEnableOption "documents";
-            };
-
-            music = {
-                enable = mkEnableOption "music";
-            };
-
-            password-store = {
-                enable = mkEnableOption "password-store";
+            devices = mkOption {
+                default = [ ];
+                type =
+                    with types;
+                    listOf (enum [
+                        "kaede"
+                        "akane"
+                    ]);
             };
         };
 
-        devices = mkOption {
-            default = { };
-            type = types.attrsOf (
-                types.submodule {
-                    id = mkOption {
-                        type = types.str;
-                    };
+        code = {
+            enable = mkEnableOption "code";
 
-                    label = mkOption {
-                        type = types.str;
-                    };
-
-                    path = mkOption {
-                        type = types.str; # fix: should start with / or ~/
-                    };
-
-                    devices = mkOption {
-                        type = with types; listOf str;
-                    };
-                }
-            );
+            devices = mkOption {
+                default = [ ];
+                type =
+                    with types;
+                    listOf (enum [
+                        "kaede"
+                    ]);
+            };
         };
 
-        folders = mkOption {
-            default = { };
-            type = types.attrsOf (
-                types.submodule {
-                    id = mkOption {
-                        type = types.str;
-                    };
-                }
-            );
+        pictures = {
+            enable = mkEnableOption "pictures";
+
+            devices = mkOption {
+                default = [ ];
+                type =
+                    with types;
+                    listOf (enum [
+                        "kaede"
+                        "yuki"
+                    ]);
+            };
+        };
+
+        documents = {
+            enable = mkEnableOption "documents";
+
+            devices = mkOption {
+                default = [ ];
+                type =
+                    with types;
+                    listOf (enum [
+                        "kaede"
+                    ]);
+            };
+        };
+
+        music = {
+            enable = mkEnableOption "music";
+
+            devices = mkOption {
+                default = [ ];
+                type =
+                    with types;
+                    listOf (enum [
+                        "kaede"
+                        "akane"
+                    ]);
+            };
+        };
+
+        password-store = {
+            enable = mkEnableOption "password-store";
+
+            devices = mkOption {
+                default = [ ];
+                type =
+                    with types;
+                    listOf (enum [
+                        "kaede"
+                        "akane"
+                        "yuki"
+                    ]);
+            };
         };
     };
 

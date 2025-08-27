@@ -19,11 +19,23 @@
 
         nh.flake = "${config.home.homeDirectory}/nixconfig";
 
-        syncthing.presets = {
+        syncthing = {
             enable = true;
 
-            pictures.enable = true;
-            password-store.enable = true;
+            pictures = {
+                enable = true;
+                devices = [
+                    "kaede"
+                ];
+            };
+
+            password-store = {
+                enable = true;
+                devices = [
+                    "kaede"
+                    "akane"
+                ];
+            };
         };
     };
 }
