@@ -1,12 +1,22 @@
+let
+    username = "d";
+in
 {
     imports = [
         ./aliases.nix
-        ./shimeoki.nix
+        ./git.nix
+        ./syncthing.nix
+        ./waybar.nix
     ];
 
     home = {
-        username = "d";
-        homeDirectory = "/home/d";
+        inherit username;
+        homeDirectory = "/home/${username}";
+    };
+
+    shimeoki = {
+        enable = true;
+        nh.flake = "/home/${username}/nixconfig";
     };
 
     # note: bash is the default shell and

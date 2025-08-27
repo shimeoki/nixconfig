@@ -1,9 +1,8 @@
+let
+    name = "d";
+in
 {
-    imports = [
-        ./shimeoki.nix
-    ];
-
-    users.users.d = {
+    users.users."${name}" = {
         isNormalUser = true;
         extraGroups = [
             "wheel"
@@ -11,5 +10,10 @@
         ];
     };
 
-    home-manager.users.d = ./hm;
+    shimeoki = {
+        nushell.users = [ name ];
+        greetd.user = name;
+    };
+
+    home-manager.users."${name}" = ./hm;
 }
