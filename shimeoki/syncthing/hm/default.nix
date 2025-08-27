@@ -64,6 +64,14 @@ let
             path = "~/.local/share/password-store";
         };
     };
+
+    folderDevices =
+        devices:
+        with lib;
+        mkOption {
+            default = [ ];
+            type = with types; listOf (enum devices);
+        };
 in
 {
     options.shimeoki.syncthing = with lib; {
@@ -71,85 +79,45 @@ in
 
         obsidian = {
             enable = mkEnableOption "obsidian";
-
-            devices = mkOption {
-                default = [ ];
-                type =
-                    with types;
-                    listOf (enum [
-                        "kaede"
-                        "akane"
-                    ]);
-            };
+            devices = folderDevices [
+                "kaede"
+                "akane"
+            ];
         };
 
         code = {
             enable = mkEnableOption "code";
-
-            devices = mkOption {
-                default = [ ];
-                type =
-                    with types;
-                    listOf (enum [
-                        "kaede"
-                    ]);
-            };
+            devices = folderDevices [ "kaede" ];
         };
 
         pictures = {
             enable = mkEnableOption "pictures";
-
-            devices = mkOption {
-                default = [ ];
-                type =
-                    with types;
-                    listOf (enum [
-                        "kaede"
-                        "yuki"
-                    ]);
-            };
+            devices = folderDevices [
+                "kaede"
+                "yuki"
+            ];
         };
 
         documents = {
             enable = mkEnableOption "documents";
-
-            devices = mkOption {
-                default = [ ];
-                type =
-                    with types;
-                    listOf (enum [
-                        "kaede"
-                    ]);
-            };
+            devices = folderDevices [ "kaede" ];
         };
 
         music = {
             enable = mkEnableOption "music";
-
-            devices = mkOption {
-                default = [ ];
-                type =
-                    with types;
-                    listOf (enum [
-                        "kaede"
-                        "akane"
-                    ]);
-            };
+            devices = folderDevices [
+                "kaede"
+                "akane"
+            ];
         };
 
         password-store = {
             enable = mkEnableOption "password-store";
-
-            devices = mkOption {
-                default = [ ];
-                type =
-                    with types;
-                    listOf (enum [
-                        "kaede"
-                        "akane"
-                        "yuki"
-                    ]);
-            };
+            devices = folderDevices [
+                "kaede"
+                "akane"
+                "yuki"
+            ];
         };
     };
 
