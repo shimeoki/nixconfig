@@ -18,5 +18,12 @@
         };
 
         nh.flake = "${config.home.homeDirectory}/nixconfig";
+
+        syncthing.presets = {
+            enable = true;
+
+            pictures.enable = true;
+            password-store.enable = true;
+        };
     };
 }
