@@ -81,14 +81,12 @@
     outputs =
         { self, nixpkgs, ... }@inputs:
         let
-            system =
-                arch: modules:
+            nixos =
+                system: modules:
                 nixpkgs.lib.nixosSystem {
-                    system = arch;
+                    inherit system;
                     specialArgs = { inherit inputs; };
-                    modules = modules ++ [
-                        { nixpkgs.hostPlatform = arch; }
-                    ];
+                    modules = modules ++ [ { nixpkgs.hostPlatform = system; } ];
                 };
         in
         {
@@ -99,7 +97,7 @@
             homeModules.default = self.homeModules.shimeoki;
 
             nixosConfigurations = {
-                yuki = system "x86_64-linux" [
+                yuki = nixos "x86_64-linux" [
                     ./hosts/yuki
                     ./users/d
                 ];
