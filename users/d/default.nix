@@ -1,7 +1,12 @@
+{ inputs, ... }:
 let
     name = "d";
 in
 {
+    imports = [
+        inputs.self.nixosModules.shimeoki # note: imports home-manager module
+    ];
+
     users.users."${name}" = {
         isNormalUser = true;
         extraGroups = [

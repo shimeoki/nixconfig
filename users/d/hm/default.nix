@@ -1,8 +1,10 @@
+{ inputs, ... }:
 let
     username = "d";
 in
 {
     imports = [
+        inputs.self.homeModules.shimeoki
         ./aliases.nix
         ./git.nix
         ./syncthing.nix

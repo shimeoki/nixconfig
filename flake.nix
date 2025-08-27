@@ -87,13 +87,17 @@
                     system = arch;
                     specialArgs = { inherit inputs; };
                     modules = modules ++ [
-                        self.nixosModules.shimeoki
                         { nixpkgs.hostPlatform = arch; }
                     ];
                 };
         in
         {
             nixosModules.shimeoki = ./shimeoki/nixos.nix;
+            nixosModules.default = self.nixosModules.shimeoki;
+
+            homeModules.shimeoki = ./shimeoki/hm.nix;
+            homeModules.default = self.homeModules.shimeoki;
+
             nixosConfigurations = {
                 yuki = system "x86_64-linux" [
                     ./hosts/yuki
