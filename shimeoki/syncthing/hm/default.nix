@@ -88,7 +88,11 @@ in
 
         code = {
             enable = mkEnableOption "code";
-            devices = folderDevices [ "kaede" ];
+            devices = folderDevices [
+                "kaede"
+                "akane"
+                "yuki"
+            ];
         };
 
         pictures = {
@@ -101,7 +105,11 @@ in
 
         documents = {
             enable = mkEnableOption "documents";
-            devices = folderDevices [ "kaede" ];
+            devices = folderDevices [
+                "kaede"
+                "akane"
+                "yuki"
+            ];
         };
 
         music = {

@@ -24,5 +24,21 @@
                 "akane"
             ];
         };
+
+        code = {
+            enable = true;
+            devices = [
+                "kaede"
+                "akane"
+            ];
+        };
+
+        documents = {
+            enable = true;
+            devices = [
+                "kaede"
+                "akane"
+            ];
+        };
     };
 }
