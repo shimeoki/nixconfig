@@ -82,6 +82,7 @@ in
             devices = folderDevices [
                 "kaede"
                 "akane"
+                "yuki"
             ];
         };
 

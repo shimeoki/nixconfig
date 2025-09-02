@@ -16,5 +16,13 @@
                 "akane"
             ];
         };
+
+        obsidian = {
+            enable = true;
+            devices = [
+                "kaede"
+                "akane"
+            ];
+        };
     };
 }
