@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
     inherit (config) shimeoki;
-    inherit (shimeoki) obsidian;
+    inherit (shimeoki) obsidian syncthing;
 in
 {
     options.shimeoki.obsidian = {
@@ -11,6 +11,12 @@ in
     };
 
     config = lib.mkIf obsidian.enable {
-        programs.obsidian.enable = true;
+        programs.obsidian = {
+            enable = true;
+            vaults.obsidian = {
+                inherit (syncthing.obsidian) enable;
+                target = "obsidian"; # todo: don't hardcode path
+            };
+        };
     };
 }
