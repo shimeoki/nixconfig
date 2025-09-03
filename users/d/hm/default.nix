@@ -14,6 +14,7 @@ in
     home = {
         inherit username;
         homeDirectory = "/home/${username}";
+        sessionVariables.NIXOS_OZONE_WL = "1"; # note: for electron
     };
 
     shimeoki = {
