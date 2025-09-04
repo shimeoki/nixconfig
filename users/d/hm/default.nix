@@ -19,6 +19,7 @@ in
 
     shimeoki = {
         enable = true;
+        uwsm.enable = false;
         nh.flake = "/home/${username}/nixconfig";
     };
 
