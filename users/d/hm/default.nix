@@ -14,11 +14,11 @@ in
     home = {
         inherit username;
         homeDirectory = "/home/${username}";
-        sessionVariables.NIXOS_OZONE_WL = "1"; # note: for electron
     };
 
     shimeoki = {
         enable = true;
+        uwsm.enable = false;
         nh.flake = "/home/${username}/nixconfig";
     };
 

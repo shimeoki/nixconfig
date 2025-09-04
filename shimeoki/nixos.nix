@@ -14,6 +14,7 @@
         ./stylix/nixos
         ./tlp/nixos
         ./uwsm/nixos
+        ./obsidian/nixos
     ];
 
     options.shimeoki = {

@@ -75,8 +75,8 @@ let
     binds = with actions; [
         (bind "Shift+Slash" show-hotkey-overlay)
 
-        (bindIf kitty.enable "Return" (app "kitty.desktop"))
-        (bindIf zen-browser.enable "B" (app "zen-twilight.desktop"))
+        (bindIf kitty.enable "Return" (app "kitty"))
+        (bindIf zen-browser.enable "B" (app "zen"))
         # todo: obsidian
         # todo: materialgram
         # todo: pwvucontrol
