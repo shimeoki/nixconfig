@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+    config,
+    pkgs,
+    lib,
+    ...
+}:
 let
     inherit (config) shimeoki;
     inherit (shimeoki) obsidian syncthing;
@@ -11,8 +16,10 @@ in
     };
 
     config = lib.mkIf obsidian.enable {
-        programs.obsidian = {
-            inherit (syncthing.obsidian) enable;
-        };
+        home.packages = [ pkgs.obsidian ];
+        ## TODO: use after the home-manager update
+        # programs.obsidian = {
+        #     inherit (syncthing.obsidian) enable;
+        # };
     };
 }
