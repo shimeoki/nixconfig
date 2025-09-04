@@ -13,7 +13,7 @@ in
             reword = "commit --amend";
             st = "status --short";
             sw = "switch";
-            ch = "checkout";
+            co = "checkout";
             new = "switch --create";
             b = "branch";
             del = "branch --delete";
