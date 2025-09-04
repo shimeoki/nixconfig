@@ -16,6 +16,7 @@ in
             co = "checkout";
             new = "switch --create";
             b = "branch";
+            rename = "branch --move";
             del = "branch --delete";
             list = "branch --all";
             hist = "log --graph --oneline --all";
