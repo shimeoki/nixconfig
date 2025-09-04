@@ -12,11 +12,7 @@ in
 
     config = lib.mkIf obsidian.enable {
         programs.obsidian = {
-            enable = true;
-            vaults.obsidian = {
-                inherit (syncthing.obsidian) enable;
-                target = "obsidian"; # todo: don't hardcode path
-            };
+            inherit (syncthing.obsidian) enable;
         };
     };
 }
