@@ -25,6 +25,7 @@ in
             m = "merge";
             ff = "merge --ff";
             changes = "diff --cached";
+            kill = "push --delete";
         };
     };
 }
