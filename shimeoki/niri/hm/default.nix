@@ -1,5 +1,6 @@
 {
     config,
+    pkgs,
     lib,
     ...
 }:
@@ -29,6 +30,7 @@ in
 
     config = lib.mkIf niri.enable {
         shimeoki.dunst.enable = lib.mkForce true;
+        home.packages = with pkgs; [ nautilus ];
         programs.niri.settings = {
             prefer-no-csd = true;
             hotkey-overlay.skip-at-startup = true;

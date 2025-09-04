@@ -13,8 +13,10 @@ in
             reword = "commit --amend";
             st = "status --short";
             sw = "switch";
+            co = "checkout";
             new = "switch --create";
             b = "branch";
+            rename = "branch --move";
             del = "branch --delete";
             list = "branch --all";
             hist = "log --graph --oneline --all";
@@ -23,6 +25,7 @@ in
             m = "merge";
             ff = "merge --ff";
             changes = "diff --cached";
+            kill = "push --delete";
         };
     };
 }

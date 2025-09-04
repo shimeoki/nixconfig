@@ -23,6 +23,7 @@
         ./niri/hm
         ./nixvim/hm
         ./nushell/hm
+        ./obsidian/hm
         ./password-store/hm
         ./ssh/hm
         ./stylix/hm
