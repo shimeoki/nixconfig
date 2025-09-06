@@ -8,6 +8,17 @@
 let
     inherit (config) shimeoki;
     inherit (shimeoki) stylix;
+
+    # monospace for everything
+    font = {
+        package = pkgs.nerd-fonts.noto;
+        name = "NotoSansM Nerd Font";
+    };
+
+    emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+    };
 in
 {
     imports = [
@@ -24,6 +35,13 @@ in
         stylix = {
             enable = true;
             base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+
+            fonts = {
+                monospace = font;
+                serif = font;
+                sansSerif = font;
+                inherit emoji;
+            };
         };
     };
 }
