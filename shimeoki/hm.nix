@@ -21,6 +21,7 @@
         ./lazygit/hm
         ./nh/hm
         ./niri/hm
+        ./nix-search-tv/hm
         ./nixvim/hm
         ./nushell/hm
         ./obsidian/hm
