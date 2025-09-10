@@ -15,6 +15,7 @@ in
         ./xdg.nix
         ./profiles.nix
         ./stylix.nix
+        ./extensions.nix
     ];
 
     options.shimeoki.zen-browser = {
