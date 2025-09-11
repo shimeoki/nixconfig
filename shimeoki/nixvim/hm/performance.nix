@@ -12,7 +12,10 @@
 
             combinePlugins = {
                 enable = true;
-                standalonePlugins = [ "conform.nvim" ];
+                standalonePlugins = [
+                    "conform.nvim"
+                    "nvim-jdtls"
+                ];
             };
         };
     };
