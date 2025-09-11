@@ -10,20 +10,21 @@ in
     # todo: quarto
 
     imports = [
-        ./lualine
-        ./telescope
-        ./yazi
-        ./treesitter
-        ./luasnip
-        ./blink
-        ./notify
-        ./noice
         ./autopairs
-        ./indent-blankline
-        ./lsp
+        ./blink
         ./conform
+        ./indent-blankline
+        ./jdtls
         ./lint
+        ./lsp
+        ./lualine
+        ./luasnip
         ./lz-n
+        ./noice
+        ./notify
+        ./telescope
+        ./treesitter
+        ./yazi
     ];
 
     options.shimeoki.nixvim.plugins = {
