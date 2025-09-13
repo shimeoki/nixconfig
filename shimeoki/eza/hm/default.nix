@@ -24,6 +24,8 @@ in
             git = git.enable;
             colors = "always";
             icons = "auto";
+            enableBashIntegration = false;
+            enableNushellIntegration = false;
             extraOptions = [
                 "--group-directories-first"
                 "--no-quotes"
