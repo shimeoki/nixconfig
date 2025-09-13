@@ -5,6 +5,7 @@ in
 {
     imports = [
         ./lsp.nix
+        ./fmt.nix
     ];
 
     options.shimeoki.nixvim.languages.shell = {
