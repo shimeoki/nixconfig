@@ -9,6 +9,8 @@ let
     inherit (config) shimeoki;
     inherit (shimeoki) stylix;
 
+    theme = "gruvbox-dark-hard";
+
     # monospace for everything
     font = {
         package = pkgs.nerd-fonts.noto;
@@ -34,7 +36,7 @@ in
     config = lib.mkIf stylix.enable {
         stylix = {
             enable = true;
-            base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+            base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
 
             fonts = {
                 monospace = font;
