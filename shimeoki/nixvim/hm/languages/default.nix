@@ -4,18 +4,18 @@ let
 in
 {
     imports = [
-        ./nix
-        ./go
         ./c
-        ./nushell
+        ./docker
+        ./go
+        ./hypr
         ./lua
-        ./css
         ./markdown
+        ./nix
+        ./nushell
         ./python
         ./shell
         ./tex
-        ./hypr
-        ./docker
+        ./web
     ];
 
     options.shimeoki.nixvim.languages = {

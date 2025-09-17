@@ -5,10 +5,11 @@ in
 {
     imports = [
         ./lsp.nix
+        ./fmt.nix
     ];
 
-    options.shimeoki.nixvim.languages.css = {
-        enable = lib.mkEnableOption "css" // {
+    options.shimeoki.nixvim.languages.web = {
+        enable = lib.mkEnableOption "web" // {
             default = languages.enable;
         };
     };
