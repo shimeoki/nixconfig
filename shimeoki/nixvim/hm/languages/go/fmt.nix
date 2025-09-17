@@ -14,12 +14,6 @@ in
             extraPackages = [ pkgs.golines ];
             plugins.conform-nvim.settings = {
                 formatters_by_ft.go = [ "golines" ];
-                formatters.golines = {
-                    append_args = [
-                        "--max-len=80"
-                        "--tab-len=4"
-                    ];
-                };
             };
         };
     };

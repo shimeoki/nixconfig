@@ -6,6 +6,7 @@ in
 {
     imports = [
         ./lazy-load.nix
+        ./formatters.nix
     ];
 
     options.shimeoki.nixvim.plugins.conform = {
