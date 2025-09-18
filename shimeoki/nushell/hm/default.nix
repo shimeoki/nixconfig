@@ -9,8 +9,9 @@ let
 in
 {
     imports = [
-        ./settings.nix
+        ./nix.nix
         ./prompt.nix
+        ./settings.nix
     ];
 
     options.shimeoki.nushell = {
