@@ -2,17 +2,28 @@
     description = "nixconfig";
 
     inputs = {
-        # maybe better not to follow?
-
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
         flake-parts.url = "github:hercules-ci/flake-parts";
         systems.url = "github:nix-systems/x86_64-linux";
 
+        flake-compat = {
+            url = "github:edolstra/flake-compat";
+            flake = false;
+        };
+
         dotfiles = {
             url = "github:shimeoki/dotfiles";
             flake = false;
+        };
+
+        git-hooks = {
+            url = "github:cachix/git-hooks.nix";
+            inputs = {
+                nixpkgs.follows = "nixpkgs";
+                flake-compat.follows = "flake-compat";
+            };
         };
 
         flake-utils = {
@@ -30,6 +41,7 @@
             inputs = {
                 nixpkgs.follows = "nixpkgs";
                 flake-parts.follows = "flake-parts";
+                flake-compat.follows = "flake-compat";
                 pre-commit-hooks-nix.follows = "";
             };
         };
@@ -79,14 +91,69 @@
     };
 
     outputs =
-        { self, nixpkgs, ... }@inputs:
+        {
+            self,
+            nixpkgs,
+            systems,
+            git-hooks,
+            ...
+        }@inputs:
         let
-            nixos =
+            forEachSystem = nixpkgs.lib.genAttrs (import systems);
+            getPkgs = system: import nixpkgs { inherit system; };
+
+            mkSystem =
                 system: modules:
                 nixpkgs.lib.nixosSystem {
                     inherit system;
                     specialArgs = { inherit inputs; };
                     modules = modules ++ [ { nixpkgs.hostPlatform = system; } ];
+                };
+
+            mkHooks =
+                system:
+                git-hooks.lib.${system}.run {
+                    src = ./.;
+                    hooks = {
+                        nixfmt-rfc-style = {
+                            enable = true;
+                            settings.width = 80;
+                            args = [ "--indent=4" ];
+                        };
+                    };
+                };
+
+            mkFormatter =
+                system:
+                let
+                    pkgs = getPkgs system;
+                    hooks = mkHooks system;
+                    inherit (hooks.config) package configFile;
+
+                    script = ''
+                        ${package}/bin/pre-commit run --all-files \
+                            --config ${configFile}
+                    '';
+                in
+                pkgs.writeShellScriptBin "shimeoki-nixconfig-fmt" script;
+
+            mkDevShell =
+                system:
+                let
+                    pkgs = getPkgs system;
+                    hooks = mkHooks system;
+                    inherit (hooks) shellHook enabledPackages;
+                in
+                pkgs.mkShell {
+                    packages = with pkgs; [
+                        nushell
+                    ];
+
+                    buildInputs = enabledPackages;
+
+                    shellHook = shellHook + ''
+                        exec nu
+                    '';
                 };
         in
         {
@@ -96,8 +163,18 @@
             homeModules.shimeoki = ./shimeoki/hm.nix;
             homeModules.default = self.homeModules.shimeoki;
 
+            formatter = forEachSystem mkFormatter;
+
+            checks = forEachSystem (system: {
+                pre-commit = mkHooks system;
+            });
+
+            devShells = forEachSystem (system: {
+                default = mkDevShell system;
+            });
+
             nixosConfigurations = {
-                yuki = nixos "x86_64-linux" [
+                yuki = mkSystem "x86_64-linux" [
                     ./hosts/yuki
                     ./users/d
                 ];
