@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
-    imports = [ ../shared.nix ];
+    imports = [ inputs.dotfiles.nixosModules.default ];
 }

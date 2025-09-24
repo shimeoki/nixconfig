@@ -15,7 +15,10 @@
 
         dotfiles = {
             url = "github:shimeoki/dotfiles";
-            flake = false;
+            inputs = {
+                nixpkgs.follows = "nixpkgs";
+                systems.follows = "systems";
+            };
         };
 
         git-hooks = {

@@ -83,13 +83,20 @@
       }
     },
     "dotfiles": {
-      "flake": false,
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
       "locked": {
-        "lastModified": 1757528511,
-        "narHash": "sha256-EGJQVpQeT884BE0j3VgTecDSHuoYlvU/BjQBXAjPz0s=",
+        "lastModified": 1758712779,
+        "narHash": "sha256-ItzJUgnFQXN+efIy3VmqPX25Ye9+BQiB8++6TLEkE0U=",
         "owner": "shimeoki",
         "repo": "dotfiles",
-        "rev": "9d6211f110f15fb8a2ffbbcb10155ff0e681bc25",
+        "rev": "e3b707c1e94b3fb21e4f8c52a9d03c4d87aa3f1c",
         "type": "github"
       },
       "original": {

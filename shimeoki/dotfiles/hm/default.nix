@@ -1,10 +1,16 @@
-{ config, lib, ... }:
+{
+    inputs,
+    config,
+    pkgs,
+    lib,
+    ...
+}:
 let
     inherit (config) shimeoki;
     inherit (shimeoki) dotfiles;
 in
 {
-    imports = [ ../shared.nix ];
+    imports = [ inputs.dotfiles.homeModules.default ];
 
     options.shimeoki.dotfiles = {
         enable = lib.mkEnableOption "dotfiles" // {
@@ -13,6 +19,6 @@ in
     };
 
     config = lib.mkIf dotfiles.enable {
-        home.packages = [ dotfiles.scripts ];
+        home.packages = [ inputs.dotfiles.packages.${pkgs.system}.default ];
     };
 }
