@@ -5,13 +5,12 @@
 }:
 let
     inherit (config) shimeoki;
-    inherit (shimeoki) nushell;
+    inherit (shimeoki) nushell dotfiles;
 in
 {
     imports = [
-        ./nix.nix
-        ./prompt.nix
         ./settings.nix
+        ./binds.nix
     ];
 
     options.shimeoki.nushell = {
@@ -21,6 +20,14 @@ in
     };
 
     config = lib.mkIf nushell.enable {
-        programs.nushell.enable = true;
+        programs.nushell = {
+            enable = true;
+            extraConfig = ''
+                source ${dotfiles.config "nushell/up.nu"}
+                source ${dotfiles.config "nushell/uuid.nu"}
+                use ${dotfiles.config "nushell/prompt.nu"} []
+                use ${dotfiles.config "nushell/modules/repo.nu"}
+            '';
+        };
     };
 }
