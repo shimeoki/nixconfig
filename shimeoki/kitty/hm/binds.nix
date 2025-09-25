@@ -71,6 +71,12 @@ let
         (bind "\\" "layout_action rotate")
         (bind "f" "toggle_layout stack")
 
+        (bind "minus" "change_font_size all -2.0")
+        (bind "underscore" "change_font_size all 26.0")
+        (bind "plus" "change_font_size all +2.0")
+        (bind "equal" "change_font_size all +2.0")
+        (bind "0" "change_font_size all 0")
+
         # todo: scrollback
     ];
 in
