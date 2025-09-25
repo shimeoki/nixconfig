@@ -30,5 +30,9 @@ in
                 extraArgs = "--keep=10"; # todo: match number of boot entries
             };
         };
+
+        home.shellAliases = {
+            switch = "nh os switch";
+        };
     };
 }
