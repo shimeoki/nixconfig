@@ -95,16 +95,12 @@
 
     outputs =
         {
-            self,
             nixpkgs,
             systems,
-            git-hooks,
+            flake-parts,
             ...
         }@inputs:
         let
-            forEachSystem = nixpkgs.lib.genAttrs (import systems);
-            getPkgs = system: import nixpkgs { inherit system; };
-
             mkSystem =
                 system: modules:
                 nixpkgs.lib.nixosSystem {
@@ -112,75 +108,33 @@
                     specialArgs = { inherit inputs; };
                     modules = modules ++ [ { nixpkgs.hostPlatform = system; } ];
                 };
-
-            mkHooks =
-                system:
-                git-hooks.lib.${system}.run {
-                    src = ./.;
-                    hooks = {
-                        nixfmt-rfc-style = {
-                            enable = true;
-                            settings.width = 80;
-                            args = [ "--indent=4" ];
-                        };
-                    };
-                };
-
-            mkFormatter =
-                system:
-                let
-                    pkgs = getPkgs system;
-                    hooks = mkHooks system;
-                    inherit (hooks.config) package configFile;
-
-                    script = ''
-                        ${package}/bin/pre-commit run --all-files \
-                            --config ${configFile}
-                    '';
-                in
-                pkgs.writeShellScriptBin "shimeoki-nixconfig-fmt" script;
-
-            mkDevShell =
-                system:
-                let
-                    pkgs = getPkgs system;
-                    hooks = mkHooks system;
-                    inherit (hooks) shellHook enabledPackages;
-                in
-                pkgs.mkShell {
-                    packages = with pkgs; [
-                        nushell
-                    ];
-
-                    buildInputs = enabledPackages;
-
-                    shellHook = shellHook + ''
-                        exec nu
-                    '';
-                };
         in
-        {
-            nixosModules.shimeoki = ./shimeoki/nixos.nix;
-            nixosModules.default = self.nixosModules.shimeoki;
+        flake-parts.lib.mkFlake { inherit inputs; } {
+            systems = import systems;
 
-            homeModules.shimeoki = ./shimeoki/hm.nix;
-            homeModules.default = self.homeModules.shimeoki;
+            imports = [
+                ./flake/hooks.nix
+                ./flake/fmt.nix
+                ./flake/dev.nix
+            ];
 
-            formatter = forEachSystem mkFormatter;
+            flake = {
+                nixosModules = rec {
+                    shimeoki = ./shimeoki/nixos.nix;
+                    default = shimeoki;
+                };
 
-            checks = forEachSystem (system: {
-                pre-commit = mkHooks system;
-            });
+                homeModules = rec {
+                    shimeoki = ./shimeoki/hm.nix;
+                    default = shimeoki;
+                };
 
-            devShells = forEachSystem (system: {
-                default = mkDevShell system;
-            });
-
-            nixosConfigurations = {
-                yuki = mkSystem "x86_64-linux" [
-                    ./hosts/yuki
-                    ./users/d
-                ];
+                nixosConfigurations = {
+                    yuki = mkSystem "x86_64-linux" [
+                        ./hosts/yuki
+                        ./users/d
+                    ];
+                };
             };
         };
 }
