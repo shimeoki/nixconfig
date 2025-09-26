@@ -116,17 +116,12 @@
 
             imports = [
                 ./flake/git-hooks.nix
+                ./flake/fmt.nix
             ];
 
             perSystem =
                 { config, pkgs, ... }:
                 {
-                    formatter = pkgs.writeShellScriptBin "shimeoki-nixconfig-fmt" ''
-                        ${config.pre-commit.settings.package}/bin/pre-commit \
-                            run --all-files \
-                            --config ${config.pre-commit.settings.configFile}
-                    '';
-
                     devShells = {
                         default = pkgs.mkShell {
                             packages = [ pkgs.nushell ];
