@@ -115,7 +115,7 @@
             systems = import systems;
 
             imports = [
-                ./flake/git-hooks.nix
+                ./flake/hooks.nix
                 ./flake/fmt.nix
                 ./flake/dev.nix
             ];
