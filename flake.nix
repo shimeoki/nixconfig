@@ -117,22 +117,8 @@
             imports = [
                 ./flake/git-hooks.nix
                 ./flake/fmt.nix
+                ./flake/dev.nix
             ];
-
-            perSystem =
-                { config, pkgs, ... }:
-                {
-                    devShells = {
-                        default = pkgs.mkShell {
-                            packages = [ pkgs.nushell ];
-                            buildInputs = config.pre-commit.settings.enabledPackages;
-                            shellHook = ''
-                                ${config.pre-commit.installationScript}
-                                exec nu
-                            '';
-                        };
-                    };
-                };
 
             flake = {
                 nixosModules.shimeoki = ./shimeoki/nixos.nix;
