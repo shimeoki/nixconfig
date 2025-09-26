@@ -98,11 +98,11 @@
             self,
             nixpkgs,
             systems,
+            flake-parts,
             git-hooks,
             ...
         }@inputs:
         let
-            forEachSystem = nixpkgs.lib.genAttrs (import systems);
             getPkgs = system: import nixpkgs { inherit system; };
 
             mkSystem =
@@ -159,28 +159,36 @@
                     '';
                 };
         in
-        {
-            nixosModules.shimeoki = ./shimeoki/nixos.nix;
-            nixosModules.default = self.nixosModules.shimeoki;
+        flake-parts.lib.mkFlake { inherit inputs; } {
+            systems = import systems;
 
-            homeModules.shimeoki = ./shimeoki/hm.nix;
-            homeModules.default = self.homeModules.shimeoki;
+            perSystem =
+                { system, ... }:
+                {
+                    formatter = mkFormatter system;
 
-            formatter = forEachSystem mkFormatter;
+                    checks = {
+                        pre-commit = mkHooks system;
+                    };
 
-            checks = forEachSystem (system: {
-                pre-commit = mkHooks system;
-            });
+                    devShells = {
+                        default = mkDevShell system;
+                    };
+                };
 
-            devShells = forEachSystem (system: {
-                default = mkDevShell system;
-            });
+            flake = {
+                nixosModules.shimeoki = ./shimeoki/nixos.nix;
+                nixosModules.default = self.nixosModules.shimeoki;
 
-            nixosConfigurations = {
-                yuki = mkSystem "x86_64-linux" [
-                    ./hosts/yuki
-                    ./users/d
-                ];
+                homeModules.shimeoki = ./shimeoki/hm.nix;
+                homeModules.default = self.homeModules.shimeoki;
+
+                nixosConfigurations = {
+                    yuki = mkSystem "x86_64-linux" [
+                        ./hosts/yuki
+                        ./users/d
+                    ];
+                };
             };
         };
 }
