@@ -95,11 +95,9 @@
 
     outputs =
         {
-            self,
             nixpkgs,
             systems,
             flake-parts,
-            git-hooks,
             ...
         }@inputs:
         let
@@ -121,11 +119,15 @@
             ];
 
             flake = {
-                nixosModules.shimeoki = ./shimeoki/nixos.nix;
-                nixosModules.default = self.nixosModules.shimeoki;
+                nixosModules = rec {
+                    shimeoki = ./shimeoki/nixos.nix;
+                    default = shimeoki;
+                };
 
-                homeModules.shimeoki = ./shimeoki/hm.nix;
-                homeModules.default = self.homeModules.shimeoki;
+                homeModules = rec {
+                    shimeoki = ./shimeoki/hm.nix;
+                    default = shimeoki;
+                };
 
                 nixosConfigurations = {
                     yuki = mkSystem "x86_64-linux" [
