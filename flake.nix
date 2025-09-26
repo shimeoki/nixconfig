@@ -115,20 +115,12 @@
             systems = import systems;
 
             imports = [
-                git-hooks.flakeModule
+                ./flake/git-hooks.nix
             ];
 
             perSystem =
                 { config, pkgs, ... }:
                 {
-                    pre-commit.settings.hooks = {
-                        nixfmt-rfc-style = {
-                            enable = true;
-                            settings.width = 80;
-                            args = [ "--indent=4" ];
-                        };
-                    };
-
                     formatter = pkgs.writeShellScriptBin "shimeoki-nixconfig-fmt" ''
                         ${config.pre-commit.settings.package}/bin/pre-commit \
                             run --all-files \
