@@ -103,8 +103,6 @@
             ...
         }@inputs:
         let
-            getPkgs = system: import nixpkgs { inherit system; };
-
             mkSystem =
                 system: modules:
                 nixpkgs.lib.nixosSystem {
@@ -112,67 +110,40 @@
                     specialArgs = { inherit inputs; };
                     modules = modules ++ [ { nixpkgs.hostPlatform = system; } ];
                 };
+        in
+        flake-parts.lib.mkFlake { inherit inputs; } {
+            systems = import systems;
 
-            mkHooks =
-                system:
-                git-hooks.lib.${system}.run {
-                    src = ./.;
-                    hooks = {
+            imports = [
+                git-hooks.flakeModule
+            ];
+
+            perSystem =
+                { config, pkgs, ... }:
+                {
+                    pre-commit.settings.hooks = {
                         nixfmt-rfc-style = {
                             enable = true;
                             settings.width = 80;
                             args = [ "--indent=4" ];
                         };
                     };
-                };
 
-            mkFormatter =
-                system:
-                let
-                    pkgs = getPkgs system;
-                    hooks = mkHooks system;
-                    inherit (hooks.config) package configFile;
-
-                    script = ''
-                        ${package}/bin/pre-commit run --all-files \
-                            --config ${configFile}
+                    formatter = pkgs.writeShellScriptBin "shimeoki-nixconfig-fmt" ''
+                        ${config.pre-commit.settings.package}/bin/pre-commit \
+                            run --all-files \
+                            --config ${config.pre-commit.settings.configFile}
                     '';
-                in
-                pkgs.writeShellScriptBin "shimeoki-nixconfig-fmt" script;
-
-            mkDevShell =
-                system:
-                let
-                    pkgs = getPkgs system;
-                    hooks = mkHooks system;
-                    inherit (hooks) shellHook enabledPackages;
-                in
-                pkgs.mkShell {
-                    packages = with pkgs; [
-                        nushell
-                    ];
-
-                    buildInputs = enabledPackages;
-
-                    shellHook = shellHook + ''
-                        exec nu
-                    '';
-                };
-        in
-        flake-parts.lib.mkFlake { inherit inputs; } {
-            systems = import systems;
-
-            perSystem =
-                { system, ... }:
-                {
-                    formatter = mkFormatter system;
-
-                    checks = {
-                        pre-commit = mkHooks system;
-                    };
 
                     devShells = {
-                        default = mkDevShell system;
+                        default = pkgs.mkShell {
+                            packages = [ pkgs.nushell ];
+                            buildInputs = config.pre-commit.settings.enabledPackages;
+                            shellHook = ''
+                                ${config.pre-commit.installationScript}
+                                exec nu
+                            '';
+                        };
                     };
                 };
 
