@@ -41,6 +41,8 @@ in
             border.enable = false;
 
             background-color = "transparent";
+
+            empty-workspace-above-first = true;
         };
     };
 }
