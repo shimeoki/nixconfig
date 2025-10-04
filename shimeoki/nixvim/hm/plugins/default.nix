@@ -24,6 +24,7 @@ in
         ./lz-n
         ./noice
         ./notify
+        ./surround
         ./telescope
         ./treesitter
         ./yazi
