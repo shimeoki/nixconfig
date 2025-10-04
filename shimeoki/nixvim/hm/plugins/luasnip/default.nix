@@ -28,9 +28,7 @@ in
                     "TextChanged"
                 ];
             };
-            fromVscode = [ { } ];
             fromLua = [
-                { }
                 { paths = dotfiles.config "nvim/luasnippets"; }
             ];
         };
