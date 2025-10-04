@@ -1,5 +1,9 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki.nixvim.plugins) blink;
+in
 {
-    config = {
+    config = lib.mkIf blink.enable {
         programs.nixvim.plugins.blink-cmp.settings = {
             cmdline.keymap.preset = "inherit";
             keymap = {
