@@ -6,6 +6,11 @@
 let
     inherit (config) shimeoki;
     inherit (shimeoki) nh;
+
+    # TODO: match number of boot entries
+    keep = 10;
+
+    keepArg = "--keep ${builtins.toString keep}";
 in
 {
     options.shimeoki.nh = with lib; {
@@ -27,12 +32,13 @@ in
             clean = {
                 enable = true;
                 dates = "weekly";
-                extraArgs = "--keep=10"; # todo: match number of boot entries
+                extraArgs = "${keepArg}";
             };
         };
 
         home.shellAliases = {
             switch = "nh os switch";
+            clean = "nh clean all ${keepArg}";
         };
     };
 }
