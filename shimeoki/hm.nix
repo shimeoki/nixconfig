@@ -27,6 +27,7 @@
         ./nushell/hm
         ./obsidian/hm
         ./password-store/hm
+        ./pwvucontrol/hm
         ./ssh/hm
         ./stylix/hm
         ./swww/hm
