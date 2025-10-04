@@ -9,6 +9,7 @@ let
         zen-browser
         materialgram
         obsidian
+        dotfiles
         ;
 
     bindRaw =
@@ -83,7 +84,8 @@ let
         (bindIf materialgram.enable "M" (app "materialgram"))
         # todo: pwvucontrol
         (bindIf fuzzel.enable "D" (spawn "fuzzel"))
-        # todo: scripts
+        (bindIf dotfiles.enable "Z" (spawn "niri-waybar.nu"))
+        # probably should be checked for waybar and nushell?
 
         (bindNoRepeat "Tab" toggle-overview)
         (bindNoRepeat "MouseForward" toggle-overview)
