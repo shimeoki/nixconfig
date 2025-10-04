@@ -1,6 +1,8 @@
 { config, lib, ... }:
 let
-    inherit (config.shimeoki.nixvim) plugins;
+    inherit (config) shimeoki;
+    inherit (shimeoki) dotfiles;
+    inherit (shimeoki.nixvim) plugins;
     cfg = plugins.luasnip;
 in
 {
@@ -17,7 +19,7 @@ in
 
     config = lib.mkIf cfg.enable {
         programs.nixvim.plugins.luasnip = {
-            # todo: virtual text and snippets
+            # todo: virtual text
             enable = true;
             settings = {
                 region_check_events = [ "InsertEnter" ];
@@ -26,6 +28,9 @@ in
                     "TextChanged"
                 ];
             };
+            fromLua = [
+                { paths = dotfiles.config "nvim/luasnippets"; }
+            ];
         };
     };
 }

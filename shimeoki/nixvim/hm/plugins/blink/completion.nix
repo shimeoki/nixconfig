@@ -1,5 +1,9 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki.nixvim.plugins) blink;
+in
 {
-    config = {
+    config = lib.mkIf blink.enable {
         programs.nixvim.plugins.blink-cmp.settings = {
             signature.enabled = false;
             completion = {
@@ -26,14 +30,23 @@
                         "s"
                     ];
                     draw = {
-                        # todo: item idx
                         columns = [
+                            { __unkeyed-1 = "item_idx"; }
                             { __unkeyed-1 = "label"; }
                             { __unkeyed-1 = "label_description"; }
                             { __unkeyed-1 = "kind_icon"; }
                             { __unkeyed-1 = "kind"; }
                             { __unkeyed-1 = "source_name"; }
                         ];
+                        components.item_idx.text.__raw = ''
+                            function(ctx)
+                                if ctx.idx <= 9 then
+                                    return tostring(ctx.idx)
+                                else
+                                    return " "
+                                end
+                            end
+                        '';
                     };
                 };
             };
@@ -45,9 +58,29 @@
                 menu.auto_show = true;
             };
             fuzzy.sorts = [
+                "exact"
+                {
+                    __raw = ''
+                        function(a, b)
+                            local source_priority = {
+                                snippets = 4,
+                                lsp = 3,
+                                path = 2,
+                                buffer = 1,
+                            }
+
+                            local a_priority = source_priority[a.source_id]
+                            local b_priority = source_priority[b.source_id]
+
+                            if a_priority ~= b_priority then
+                                return a_priority > b_priority
+                            end
+                        end
+                    '';
+                }
                 "score"
                 "sort_text"
-            ]; # todo: exact and source sort
+            ];
         };
     };
 }

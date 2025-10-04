@@ -1,5 +1,33 @@
+{ config, lib, ... }:
+let
+    inherit (config.shimeoki.nixvim.plugins) blink;
+
+    showBind = providers: {
+        __unkeyed-1.__raw = ''
+            function(cmp)
+                cmp.show({ providers = { ${providers} } })
+            end
+        '';
+        __unkeyed-2 = "fallback_to_mappings";
+    };
+
+    indexBind = index: {
+        __unkeyed-1.__raw = ''
+            function(cmp)
+                cmp.accept({ index = ${builtins.toString index} })
+            end
+        '';
+    };
+
+    indexBinds = lib.listToAttrs (
+        lib.map (i: {
+            name = "<c-${builtins.toString i}>";
+            value = indexBind i;
+        }) (lib.range 1 9)
+    );
+in
 {
-    config = {
+    config = lib.mkIf blink.enable {
         programs.nixvim.plugins.blink-cmp.settings = {
             cmdline.keymap.preset = "inherit";
             keymap = {
@@ -23,7 +51,9 @@
                     "fallback_to_mappings"
                 ];
 
-                # todo: other show binds
+                "<c-a>" = showBind ''"lsp", "snippets", "path"'';
+                "<c-e>" = showBind ''"lsp", "path"'';
+                "<c-o>" = showBind ''"snippets"'';
 
                 "<c-j>" = [
                     "select_next"
@@ -66,9 +96,8 @@
                     "hide_documentation"
                     "fallback"
                 ];
-
-                # todo: index binds
-            };
+            }
+            // indexBinds;
         };
     };
 }

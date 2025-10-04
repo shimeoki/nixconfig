@@ -13,6 +13,7 @@ in
         ./autopairs
         ./blink
         ./conform
+        ./friendly-snippets
         ./gitsigns
         ./indent-blankline
         ./jdtls
