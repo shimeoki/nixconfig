@@ -19,6 +19,7 @@
         ./home-manager/hm
         ./kitty/hm
         ./lazygit/hm
+        ./materialgram/hm
         ./nh/hm
         ./niri/hm
         ./nix-search-tv/hm
