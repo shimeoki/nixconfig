@@ -1,6 +1,8 @@
 { config, lib, ... }:
 let
-    inherit (config.shimeoki) waybar;
+    inherit (config.shimeoki) waybar pwvucontrol;
+
+    mute = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 in
 {
     # todo: check for audio?
@@ -21,8 +23,8 @@ in
                 "󰕾"
             ];
             scroll-step = 5;
-            # todo: pwvucontrol
-            # todo: wpctl
+            on-click = if pwvucontrol.enable then "pwvucontrol" else mute;
+            on-click-right = mute;
             tooltip = false;
             reverse-scrolling = true;
         };
