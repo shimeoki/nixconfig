@@ -24,7 +24,7 @@ in
             # todo: pwvucontrol
             # todo: wpctl
             tooltip = false;
-            reverse-scrolling = false;
+            reverse-scrolling = true;
         };
     };
 }
