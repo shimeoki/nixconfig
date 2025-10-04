@@ -7,6 +7,7 @@ let
         kitty
         fuzzel
         zen-browser
+        materialgram
         ;
 
     bindRaw =
@@ -78,7 +79,7 @@ let
         (bindIf kitty.enable "Return" (app "kitty"))
         (bindIf zen-browser.enable "B" (app "zen"))
         # todo: obsidian
-        # todo: materialgram
+        (bindIf materialgram.enable "M" (app "materialgram"))
         # todo: pwvucontrol
         (bindIf fuzzel.enable "D" (spawn "fuzzel"))
         # todo: scripts
