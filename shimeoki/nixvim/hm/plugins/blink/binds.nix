@@ -10,6 +10,21 @@ let
         '';
         __unkeyed-2 = "fallback_to_mappings";
     };
+
+    indexBind = index: {
+        __unkeyed-1.__raw = ''
+            function(cmp)
+                cmp.accept({ index = ${builtins.toString index} })
+            end
+        '';
+    };
+
+    indexBinds = lib.listToAttrs (
+        lib.map (i: {
+            name = "<c-${builtins.toString i}>";
+            value = indexBind i;
+        }) (lib.range 1 9)
+    );
 in
 {
     config = lib.mkIf blink.enable {
@@ -81,9 +96,8 @@ in
                     "hide_documentation"
                     "fallback"
                 ];
-
-                # todo: index binds
-            };
+            }
+            // indexBinds;
         };
     };
 }
