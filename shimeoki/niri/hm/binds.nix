@@ -10,6 +10,7 @@ let
         materialgram
         obsidian
         dotfiles
+        pwvucontrol
         ;
 
     bindRaw =
@@ -82,8 +83,7 @@ let
         (bindIf zen-browser.enable "B" (app "zen"))
         (bindIf obsidian.enable "N" (app "obsidian"))
         (bindIf materialgram.enable "M" (app "materialgram"))
-        # todo: pwvucontrol
-        (bindIf fuzzel.enable "D" (spawn "fuzzel"))
+        (bindIf pwvucontrol.enable "A" (app "pwvucontrol"))
         (bindIf dotfiles.enable "Z" (spawn "niri-waybar.nu"))
         # probably should be checked for waybar and nushell?
 
