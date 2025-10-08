@@ -80,6 +80,7 @@ let
         (bind "Shift+Slash" show-hotkey-overlay)
 
         (bindIf kitty.enable "Return" (app "kitty"))
+        (bindIf fuzzel.enable "Space" (spawn "fuzzel"))
         (bindIf zen-browser.enable "B" (app "zen"))
         (bindIf obsidian.enable "N" (app "obsidian"))
         (bindIf materialgram.enable "M" (app "materialgram"))
