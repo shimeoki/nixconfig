@@ -11,7 +11,7 @@ let
             __unkeyed-1 = "mode";
             fmt = ''
                 function(s)
-                  string.sub(string.lower(s), 1, 3)
+                    return string.sub(string.lower(s), 1, 3)
                 end
             '';
         }
