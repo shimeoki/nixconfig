@@ -79,6 +79,8 @@ let
     binds = with actions; [
         (bind "Shift+Slash" show-hotkey-overlay)
 
+        (bind "E" (app "nautilus"))
+
         (bindIf kitty.enable "Return" (app "kitty"))
         (bindIf fuzzel.enable "Space" (spawn "fuzzel"))
         (bindIf zen-browser.enable "B" (app "zen"))
