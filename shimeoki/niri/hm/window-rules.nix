@@ -31,6 +31,7 @@ in
 
                 matches = [
                     { app-id = "^kitty$"; }
+                    { app-id = "^obsidian$"; }
                 ];
             }
         ];
