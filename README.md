@@ -70,7 +70,8 @@ git clone https://github.com/shimeoki/nixconfig.git
 ```
 
 and define your own hosts and users as needed. Then, add them in the
-`flake.nix`, as can be already seen in the flake itself.
+`./flake/systems.nix`: add an entry in `systems` for the corresponding hostname
+and create a system with a list of needed users.
 
 Some notes:
 
