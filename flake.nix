@@ -8,7 +8,7 @@
         flake-parts.url = "github:hercules-ci/flake-parts";
         systems.url = "github:nix-systems/x86_64-linux";
 
-        # keep-sorted start block=yes case=no newline_separated=yes
+        # keep-sorted start block=yes newline_separated=yes
         dotfiles = {
             url = "github:shimeoki/dotfiles";
             inputs = {
