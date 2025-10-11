@@ -8,52 +8,63 @@
         flake-parts.url = "github:hercules-ci/flake-parts";
         systems.url = "github:nix-systems/x86_64-linux";
 
-        flake-compat = {
-            url = "github:edolstra/flake-compat";
-            flake = false;
-        };
-
+        # keep-sorted start block=yes newline_separated=yes
         dotfiles = {
             url = "github:shimeoki/dotfiles";
             inputs = {
+                # keep-sorted start
+                flake-parts.follows = "flake-parts";
                 nixpkgs.follows = "nixpkgs";
                 systems.follows = "systems";
-            };
-        };
-
-        git-hooks = {
-            url = "github:cachix/git-hooks.nix";
-            inputs = {
-                nixpkgs.follows = "nixpkgs";
-                flake-compat.follows = "flake-compat";
+                treefmt.follows = "treefmt";
+                # keep-sorted end
             };
         };
 
         flake-utils = {
             url = "github:numtide/flake-utils";
-            inputs.systems.follows = "systems";
+            inputs = {
+                systems.follows = "systems";
+            };
         };
 
         home-manager = {
             url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs = {
+                nixpkgs.follows = "nixpkgs";
+            };
         };
 
         lanzaboote = {
             url = "github:nix-community/lanzaboote/v0.4.2";
             inputs = {
-                nixpkgs.follows = "nixpkgs";
+                # keep-sorted start
                 flake-parts.follows = "flake-parts";
-                flake-compat.follows = "flake-compat";
+                nixpkgs.follows = "nixpkgs";
                 pre-commit-hooks-nix.follows = "";
+                # keep-sorted end
             };
         };
 
         niri = {
             url = "github:sodiboo/niri-flake";
             inputs = {
-                nixpkgs.follows = "nixpkgs";
+                # keep-sorted start
                 nixpkgs-stable.follows = "nixpkgs-stable";
+                nixpkgs.follows = "nixpkgs";
+                # keep-sorted end
+            };
+        };
+
+        nixvim = {
+            url = "github:nix-community/nixvim";
+            inputs = {
+                # keep-sorted start
+                flake-parts.follows = "flake-parts";
+                nixpkgs.follows = "nixpkgs";
+                nuschtosSearch.follows = "nuschtosSearch";
+                systems.follows = "systems";
+                # keep-sorted end
             };
         };
 
@@ -65,76 +76,47 @@
             };
         };
 
-        nixvim = {
-            url = "github:nix-community/nixvim";
+        stylix = {
+            url = "github:nix-community/stylix";
+            inputs = {
+                # keep-sorted start
+                flake-parts.follows = "flake-parts";
+                nixpkgs.follows = "nixpkgs";
+                systems.follows = "systems";
+                # keep-sorted end
+            };
+        };
+
+        treefmt = {
+            url = "github:numtide/treefmt-nix";
             inputs = {
                 nixpkgs.follows = "nixpkgs";
-                flake-parts.follows = "flake-parts";
-                systems.follows = "systems";
-                nuschtosSearch.follows = "nuschtosSearch";
             };
         };
 
         zen-browser = {
             url = "github:0xc000022070/zen-browser-flake";
             inputs = {
-                nixpkgs.follows = "nixpkgs";
+                # keep-sorted start
                 home-manager.follows = "home-manager";
-            };
-        };
-
-        stylix = {
-            url = "github:nix-community/stylix";
-            inputs = {
                 nixpkgs.follows = "nixpkgs";
-                flake-parts.follows = "flake-parts";
-                systems.follows = "systems";
+                # keep-sorted end
             };
         };
+        # keep-sorted end
     };
 
     outputs =
-        {
-            nixpkgs,
-            systems,
-            flake-parts,
-            ...
-        }@inputs:
-        let
-            mkSystem =
-                system: modules:
-                nixpkgs.lib.nixosSystem {
-                    inherit system;
-                    specialArgs = { inherit inputs; };
-                    modules = modules ++ [ { nixpkgs.hostPlatform = system; } ];
-                };
-        in
-        flake-parts.lib.mkFlake { inherit inputs; } {
-            systems = import systems;
+        inputs:
+        inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+            systems = import inputs.systems;
 
             imports = [
-                ./flake/hooks.nix
+                # keep-sorted start
                 ./flake/fmt.nix
-                ./flake/dev.nix
+                ./flake/modules.nix
+                ./flake/systems.nix
+                # keep-sorted end
             ];
-
-            flake = {
-                nixosModules = rec {
-                    shimeoki = ./shimeoki/nixos.nix;
-                    default = shimeoki;
-                };
-
-                homeModules = rec {
-                    shimeoki = ./shimeoki/hm.nix;
-                    default = shimeoki;
-                };
-
-                nixosConfigurations = {
-                    yuki = mkSystem "x86_64-linux" [
-                        ./hosts/yuki
-                        ./users/d
-                    ];
-                };
-            };
         };
 }
