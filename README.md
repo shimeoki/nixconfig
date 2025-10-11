@@ -84,16 +84,6 @@ The flake doesn't expose the modules for external usage in a flake yet.
 
 ## Contributing
 
-The flake exposes a development shell (with Nushell). If Nix is installed, in
-the directory of the flake run
-
-```sh
-nix develop
-```
-
-to use pre-commit hooks with formatting.
-
-The style is not very strict, but general guidelines are:
-
-- 4 spaces per tab and 80 columns maximum.
-- Conventional commits for the commits.
+- Use conventional commits (not very strict).
+- Check that every commit can be used in `nixos-rebuild`.
+- Format with `nix fmt` before a PR or before every commit (latter preferred).
