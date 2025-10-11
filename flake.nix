@@ -29,6 +29,13 @@
             };
         };
 
+        treefmt = {
+            url = "github:numtide/treefmt-nix";
+            inputs = {
+                nixpkgs.follows = "nixpkgs";
+            };
+        };
+
         flake-utils = {
             url = "github:numtide/flake-utils";
             inputs.systems.follows = "systems";
@@ -94,47 +101,14 @@
     };
 
     outputs =
-        {
-            nixpkgs,
-            systems,
-            flake-parts,
-            ...
-        }@inputs:
-        let
-            mkSystem =
-                system: modules:
-                nixpkgs.lib.nixosSystem {
-                    inherit system;
-                    specialArgs = { inherit inputs; };
-                    modules = modules ++ [ { nixpkgs.hostPlatform = system; } ];
-                };
-        in
-        flake-parts.lib.mkFlake { inherit inputs; } {
-            systems = import systems;
+        inputs:
+        inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+            systems = import inputs.systems;
 
             imports = [
-                ./flake/hooks.nix
                 ./flake/fmt.nix
-                ./flake/dev.nix
+                ./flake/modules.nix
+                ./flake/systems.nix
             ];
-
-            flake = {
-                nixosModules = rec {
-                    shimeoki = ./shimeoki/nixos.nix;
-                    default = shimeoki;
-                };
-
-                homeModules = rec {
-                    shimeoki = ./shimeoki/hm.nix;
-                    default = shimeoki;
-                };
-
-                nixosConfigurations = {
-                    yuki = mkSystem "x86_64-linux" [
-                        ./hosts/yuki
-                        ./users/d
-                    ];
-                };
-            };
         };
 }
