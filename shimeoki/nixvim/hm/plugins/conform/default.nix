@@ -5,8 +5,11 @@ let
 in
 {
     imports = [
-        ./lazy-load.nix
+        # keep-sorted start
+        ./commands.nix
         ./formatters.nix
+        ./lazy-load.nix
+        # keep-sorted end
     ];
 
     options.shimeoki.nixvim.plugins.conform = {
