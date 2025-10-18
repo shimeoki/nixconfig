@@ -16,5 +16,9 @@ in
 
     config = lib.mkIf swww.enable {
         services.swww.enable = true;
+
+        home.sessionVariables = {
+            SWWW_TRANSITION = "any";
+        };
     };
 }
