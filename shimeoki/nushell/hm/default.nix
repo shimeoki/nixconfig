@@ -6,6 +6,8 @@
 let
     inherit (config) shimeoki;
     inherit (shimeoki) nushell dotfiles;
+
+    env = "IN_NIX_SHELL";
 in
 {
     imports = [
@@ -27,7 +29,11 @@ in
                 source ${dotfiles.config "nushell/uuid.nu"}
                 use ${dotfiles.config "nushell/prompt.nu"} []
                 use ${dotfiles.config "nushell/modules/repo.nu"}
-            '';
+
+                def pkg [name: string]: nothing -> nothing {
+                    nix shell --set-env-var ${env} impure $"nixpkgs#($name)"
+                }
+            ''; # TODO: move 'pkg' to another place
         };
     };
 }
