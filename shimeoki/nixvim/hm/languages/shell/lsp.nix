@@ -1,21 +1,20 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.nixvim.languages.shell;
-    inherit (config.shimeoki.nixvim.plugins) lsp;
+    inherit (config.shimeoki) nixvim;
+    inherit (nixvim) lspconfig languages plugins;
+    inherit (languages) shell;
+    inherit (plugins) lsp;
 in
 {
-    config = lib.mkIf (cfg.enable && lsp.enable) {
-        programs.nixvim.lsp.servers = {
-            bashls = {
-                enable = true;
-                settings = {
-                    filetypes = [
-                        "sh"
-                        "zsh"
-                        "bash"
-                    ];
-                };
+    config = lib.mkIf (shell.enable && lsp.enable) {
+        programs.nixvim = {
+            lsp.servers = {
+                bashls.enable = true;
             };
+
+            extraFiles = lib.mkMerge [
+                (lspconfig "bashls")
+            ];
         };
     };
 }

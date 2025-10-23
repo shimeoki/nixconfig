@@ -2,18 +2,18 @@
 let
     inherit (config.shimeoki) nixvim;
     inherit (nixvim) lspconfig languages plugins;
-    inherit (languages) c;
+    inherit (languages) java;
     inherit (plugins) lsp;
 in
 {
-    config = lib.mkIf (c.enable && lsp.enable) {
+    config = lib.mkIf (java.enable && lsp.enable) {
         programs.nixvim = {
             lsp.servers = {
-                clangd.enable = true;
+                jdtls.enable = true;
             };
 
             extraFiles = lib.mkMerge [
-                (lspconfig "clangd")
+                (lspconfig "jdtls")
             ];
         };
     };

@@ -4,10 +4,12 @@ let
 in
 {
     imports = [
+        # keep-sorted start
         ./c
         ./docker
         ./go
         ./hypr
+        ./java
         ./lua
         ./markdown
         ./nix
@@ -16,6 +18,7 @@ in
         ./shell
         ./tex
         ./web
+        # keep-sorted end
     ];
 
     options.shimeoki.nixvim.languages = {

@@ -1,12 +1,20 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.nixvim.languages.nushell;
-    inherit (config.shimeoki.nixvim.plugins) lsp;
+    inherit (config.shimeoki) nixvim;
+    inherit (nixvim) lspconfig languages plugins;
+    inherit (languages) nushell;
+    inherit (plugins) lsp;
 in
 {
-    config = lib.mkIf (cfg.enable && lsp.enable) {
-        programs.nixvim.lsp.servers = {
-            nushell.enable = true;
+    config = lib.mkIf (nushell.enable && lsp.enable) {
+        programs.nixvim = {
+            lsp.servers = {
+                nushell.enable = true;
+            };
+
+            extraFiles = lib.mkMerge [
+                (lspconfig "nushell")
+            ];
         };
     };
 }

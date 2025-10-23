@@ -1,25 +1,20 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.nixvim.languages.go;
-    inherit (config.shimeoki.nixvim.plugins) lsp;
+    inherit (config.shimeoki) nixvim;
+    inherit (nixvim) lspconfig languages plugins;
+    inherit (languages) go;
+    inherit (plugins) lsp;
 in
 {
-    config = lib.mkIf (cfg.enable && lsp.enable) {
-        programs.nixvim.lsp.servers = {
-            gopls = {
-                enable = true;
-                settings.gopls = {
-                    hints = {
-                        rangeVariableTypes = true;
-                        parameterNames = true;
-                        constantValues = true;
-                        assignVariableTypes = true;
-                        compositeLiteralFields = true;
-                        compositeLiteralTypes = true;
-                        functionTypeParameters = true;
-                    };
-                };
+    config = lib.mkIf (go.enable && lsp.enable) {
+        programs.nixvim = {
+            lsp.servers = {
+                gopls.enable = true;
             };
+
+            extraFiles = lib.mkMerge [
+                (lspconfig "gopls")
+            ];
         };
     };
 }

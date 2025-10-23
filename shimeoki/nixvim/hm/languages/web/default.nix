@@ -4,8 +4,10 @@ let
 in
 {
     imports = [
-        ./lsp.nix
+        # keep-sorted start
         ./fmt.nix
+        ./lsp.nix
+        # keep-sorted end
     ];
 
     options.shimeoki.nixvim.languages.web = {

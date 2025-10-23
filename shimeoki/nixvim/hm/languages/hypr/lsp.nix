@@ -1,12 +1,20 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.nixvim.languages.hypr;
-    inherit (config.shimeoki.nixvim.plugins) lsp;
+    inherit (config.shimeoki) nixvim;
+    inherit (nixvim) lspconfig languages plugins;
+    inherit (languages) hypr;
+    inherit (plugins) lsp;
 in
 {
-    config = lib.mkIf (cfg.enable && lsp.enable) {
-        programs.nixvim.lsp.servers = {
-            hyprls.enable = true;
+    config = lib.mkIf (hypr.enable && lsp.enable) {
+        programs.nixvim = {
+            lsp.servers = {
+                hyprls.enable = true;
+            };
+
+            extraFiles = lib.mkMerge [
+                (lspconfig "hyprls")
+            ];
         };
     };
 }

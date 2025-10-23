@@ -4,14 +4,11 @@ let
 in
 {
     imports = [
-        # keep-sorted start
-        ./fmt.nix
         ./lsp.nix
-        # keep-sorted end
     ];
 
-    options.shimeoki.nixvim.languages.shell = {
-        enable = lib.mkEnableOption "shell" // {
+    options.shimeoki.nixvim.languages.java = {
+        enable = lib.mkEnableOption "java" // {
             default = languages.enable;
         };
     };

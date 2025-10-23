@@ -1,12 +1,20 @@
 { config, lib, ... }:
 let
-    cfg = config.shimeoki.nixvim.languages.tex;
-    inherit (config.shimeoki.nixvim.plugins) lsp;
+    inherit (config.shimeoki) nixvim;
+    inherit (nixvim) lspconfig languages plugins;
+    inherit (languages) tex;
+    inherit (plugins) lsp;
 in
 {
-    config = lib.mkIf (cfg.enable && lsp.enable) {
-        programs.nixvim.lsp.servers = {
-            texlab.enable = true;
+    config = lib.mkIf (tex.enable && lsp.enable) {
+        programs.nixvim = {
+            lsp.servers = {
+                texlab.enable = true;
+            };
+
+            extraFiles = lib.mkMerge [
+                (lspconfig "texlab")
+            ];
         };
     };
 }

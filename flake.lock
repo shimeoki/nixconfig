@@ -99,11 +99,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760168024,
-        "narHash": "sha256-E1O6kFLwl82HhwEb37zJUQocAyIHq6Omk7j3vxIUuCU=",
+        "lastModified": 1761161983,
+        "narHash": "sha256-/Q2ELqicmteNNS0rWzWIWuRqaPpQsKnvI3JFlfLF70E=",
         "owner": "shimeoki",
         "repo": "dotfiles",
-        "rev": "8c8ff195f391f417fd0dcae4ed153e92b640de0e",
+        "rev": "765d380c78f2882cfc6a87d64401781a38292515",
         "type": "github"
       },
       "original": {

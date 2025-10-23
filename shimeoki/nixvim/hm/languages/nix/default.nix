@@ -4,9 +4,11 @@ let
 in
 {
     imports = [
-        ./lsp.nix
+        # keep-sorted start
         ./fmt.nix
         ./lint.nix
+        ./lsp.nix
+        # keep-sorted end
     ];
 
     options.shimeoki.nixvim.languages.nix = {
