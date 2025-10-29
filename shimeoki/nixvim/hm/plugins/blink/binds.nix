@@ -33,18 +33,6 @@ in
             keymap = {
                 preset = "none";
 
-                "<enter>" = [
-                    "accept"
-                    "snippet_forward"
-                    "fallback"
-                ];
-
-                "<tab>" = [
-                    "accept"
-                    "snippet_forward"
-                    "fallback"
-                ];
-
                 "<c-s>" = [
                     "show"
                     "hide"
@@ -54,6 +42,11 @@ in
                 "<c-a>" = showBind ''"lsp", "snippets", "path"'';
                 "<c-e>" = showBind ''"lsp", "path"'';
                 "<c-o>" = showBind ''"snippets"'';
+
+                "<c-space>" = [
+                    "accept"
+                    "fallback"
+                ];
 
                 "<c-j>" = [
                     "select_next"
