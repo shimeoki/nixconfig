@@ -5,5 +5,7 @@
         uctl = "systemctl --user";
 
         dev = "nix develop";
+
+        bk = "cd -";
     };
 }
