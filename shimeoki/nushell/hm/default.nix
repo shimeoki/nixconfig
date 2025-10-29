@@ -11,8 +11,9 @@ let
 in
 {
     imports = [
-        ./settings.nix
         ./binds.nix
+        ./fzf.nix
+        ./settings.nix
     ];
 
     options.shimeoki.nushell = {

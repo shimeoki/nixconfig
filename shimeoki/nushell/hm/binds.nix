@@ -16,6 +16,20 @@ let
     bindShift = keybind: bindRaw (keybind // { modifier = "control_shift"; });
 in
 {
+    options.shimeoki.nushell = {
+        bindRaw = lib.mkOption {
+            type = with lib.types; functionTo attrs;
+        };
+
+        bind = lib.mkOption {
+            type = with lib.types; functionTo attrs;
+        };
+
+        bindShift = lib.mkOption {
+            type = with lib.types; functionTo attrs;
+        };
+    };
+
     config = lib.mkIf nushell.enable {
         programs.nushell.settings.keybindings = [
             (bind {
@@ -66,5 +80,9 @@ in
                 event.send = "ClearScreen";
             })
         ];
+
+        shimeoki.nushell = {
+            inherit bindRaw bind bindShift;
+        };
     };
 }
