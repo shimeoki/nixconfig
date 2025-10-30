@@ -114,8 +114,8 @@
             imports = [
                 # keep-sorted start
                 ./flake/fmt.nix
-                ./flake/modules.nix
-                ./flake/systems.nix
+                ./flake/mod.nix
+                ./flake/sys.nix
                 # keep-sorted end
             ];
         };
