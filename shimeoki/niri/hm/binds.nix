@@ -160,14 +160,11 @@ let
 
         (bind "W" toggle-column-tabbed-display)
 
-        (bind "S" (screenshot {
-            show-pointer = false;
-        }))
-
-        # note: https://github.com/sodiboo/niri-flake/issues/922#issuecomment-2729519779
+        # NOTE: https://github.com/sodiboo/niri-flake/issues/922#issuecomment-2729519779
+        # & https://github.com/sodiboo/niri-flake/issues/1380
+        { "Mod+S".action.screenshot.show-pointer = false; }
         { "Mod+Shift+S".action.screenshot-screen = [ ]; }
-
-        (bind "Ctrl+S" screenshot-window)
+        { "Mod+Ctrl+S".action.screenshot-window = [ ]; }
 
         (bindNoInhibiting "Escape" toggle-keyboard-shortcuts-inhibit)
 
