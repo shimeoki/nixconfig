@@ -8,7 +8,7 @@ in
             g = "git";
         };
 
-        programs.git.aliases = {
+        programs.git.settings.alias = {
             ci = "commit";
             reword = "commit --amend";
             st = "status --short";

@@ -33,10 +33,11 @@ in
     };
 
     config = lib.mkIf git.enable {
-        programs.git = {
-            userName = git.name;
-            userEmail = git.email;
+        programs.git.settings = {
             inherit signing;
+            user = {
+                inherit (git) name email;
+            };
         };
     };
 }

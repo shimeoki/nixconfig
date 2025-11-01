@@ -4,7 +4,7 @@ let
 in
 {
     config = lib.mkIf git.enable {
-        programs.git.extraConfig = {
+        programs.git.settings = {
             init.defaultBranch = "main";
             core = {
                 whitespace = "error";
