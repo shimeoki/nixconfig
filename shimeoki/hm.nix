@@ -7,6 +7,7 @@
         ./bat/hm
         ./btop/hm
         ./carapace/hm
+        ./delta/hm
         ./dotfiles/hm
         ./dunst/hm
         ./eza/hm
