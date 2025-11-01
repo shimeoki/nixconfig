@@ -3,13 +3,14 @@ let
     cfg = config.shimeoki.nixvim.opts;
 in
 {
-    options.shimeoki.nixvim.opts = with lib; {
-        indent = mkOption {
-            type = types.int;
+    options.shimeoki.nixvim.opts = {
+        indent = lib.mkOption {
+            type = with lib.types; int;
             default = 4;
         };
-        width = mkOption {
-            type = types.int;
+
+        width = lib.mkOption {
+            type = with lib.types; int;
             default = 80;
         };
     };

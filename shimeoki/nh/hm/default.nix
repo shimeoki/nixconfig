@@ -13,13 +13,13 @@ let
     keepArg = "--keep ${builtins.toString keep}";
 in
 {
-    options.shimeoki.nh = with lib; {
-        enable = mkEnableOption "nh" // {
+    options.shimeoki.nh = {
+        enable = lib.mkEnableOption "nh" // {
             default = shimeoki.enable;
         };
 
-        flake = mkOption {
-            type = types.path;
+        flake = lib.mkOption {
+            type = with lib.types; path;
         };
     };
 

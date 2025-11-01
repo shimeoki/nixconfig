@@ -9,13 +9,13 @@ let
     inherit (shimeoki) nushell;
 in
 {
-    options.shimeoki.nushell = with lib; {
-        enable = mkEnableOption "nushell" // {
+    options.shimeoki.nushell = {
+        enable = lib.mkEnableOption "nushell" // {
             default = shimeoki.enable;
         };
 
-        users = mkOption {
-            type = with types; listOf str;
+        users = lib.mkOption {
+            type = with lib.types; listOf str;
         };
     };
 

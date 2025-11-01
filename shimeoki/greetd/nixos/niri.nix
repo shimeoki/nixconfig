@@ -6,9 +6,9 @@ let
     command = if uwsm.enable then "uwsm start -F ${exec}" else exec;
 in
 {
-    options.shimeoki.greetd = with lib; {
-        user = mkOption {
-            type = types.str;
+    options.shimeoki.greetd = {
+        user = lib.mkOption {
+            type = with lib.types; str;
         };
     };
 

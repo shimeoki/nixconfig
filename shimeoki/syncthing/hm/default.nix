@@ -67,18 +67,17 @@ let
 
     folderDevices =
         devices:
-        with lib;
-        mkOption {
+        lib.mkOption {
             default = [ ];
-            type = with types; listOf (enum devices);
+            type = with lib.types; listOf (enum devices);
         };
 in
 {
-    options.shimeoki.syncthing = with lib; {
-        enable = mkEnableOption "syncthing";
+    options.shimeoki.syncthing = {
+        enable = lib.mkEnableOption "syncthing";
 
         obsidian = {
-            enable = mkEnableOption "obsidian";
+            enable = lib.mkEnableOption "obsidian";
             devices = folderDevices [
                 "kaede"
                 "akane"
@@ -87,7 +86,7 @@ in
         };
 
         code = {
-            enable = mkEnableOption "code";
+            enable = lib.mkEnableOption "code";
             devices = folderDevices [
                 "kaede"
                 "akane"
@@ -96,7 +95,7 @@ in
         };
 
         pictures = {
-            enable = mkEnableOption "pictures";
+            enable = lib.mkEnableOption "pictures";
             devices = folderDevices [
                 "kaede"
                 "yuki"
@@ -104,7 +103,7 @@ in
         };
 
         documents = {
-            enable = mkEnableOption "documents";
+            enable = lib.mkEnableOption "documents";
             devices = folderDevices [
                 "kaede"
                 "akane"
@@ -113,7 +112,7 @@ in
         };
 
         music = {
-            enable = mkEnableOption "music";
+            enable = lib.mkEnableOption "music";
             devices = folderDevices [
                 "kaede"
                 "akane"
@@ -121,7 +120,7 @@ in
         };
 
         password-store = {
-            enable = mkEnableOption "password-store";
+            enable = lib.mkEnableOption "password-store";
             devices = folderDevices [
                 "kaede"
                 "akane"

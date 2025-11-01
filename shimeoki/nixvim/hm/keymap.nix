@@ -35,9 +35,9 @@ let
         ];
 in
 {
-    options.shimeoki.nixvim.keymap = with lib; {
-        bind = mkOption {
-            type = with types; functionTo attrs;
+    options.shimeoki.nixvim.keymap = {
+        bind = lib.mkOption {
+            type = with lib.types; functionTo attrs;
         };
     };
 

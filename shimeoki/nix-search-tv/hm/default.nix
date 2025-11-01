@@ -11,8 +11,8 @@ let
     ns = pkgs.writeShellScriptBin "ns" (builtins.readFile ./nix-search-tv.bash);
 in
 {
-    options.shimeoki.nix-search-tv = with lib; {
-        enable = mkEnableOption "nix-search-tv" // {
+    options.shimeoki.nix-search-tv = {
+        enable = lib.mkEnableOption "nix-search-tv" // {
             default = shimeoki.enable;
         };
     };

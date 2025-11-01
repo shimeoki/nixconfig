@@ -12,22 +12,22 @@ let
     };
 in
 {
-    options.shimeoki.git = with lib; {
-        name = mkOption {
-            type = types.str;
+    options.shimeoki.git = {
+        name = lib.mkOption {
+            type = with lib.types; str;
         };
 
-        email = mkOption {
-            type = types.str;
+        email = lib.mkOption {
+            type = with lib.types; str;
         };
 
         signing = {
-            gpg = mkEnableOption "gpg" // {
+            gpg = lib.mkEnableOption "gpg" // {
                 default = gpg.enable;
             };
 
-            key = mkOption {
-                type = types.str;
+            key = lib.mkOption {
+                type = with lib.types; str;
             };
         };
     };

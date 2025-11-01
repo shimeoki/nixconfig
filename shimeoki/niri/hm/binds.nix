@@ -63,9 +63,8 @@ let
 
     # note: https://github.com/sodiboo/niri-flake/issues/1018
     bindNums =
-        with lib;
         key: action:
-        forEach (range 1 9) (
+        lib.forEach (lib.range 1 9) (
             n:
             let
                 num = builtins.toString n;

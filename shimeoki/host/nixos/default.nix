@@ -1,29 +1,31 @@
 { lib, ... }:
 {
-    options.shimeoki.host = with lib; {
-        type = mkOption {
-            type = types.enum [
-                "desktop"
-                "laptop"
-            ];
+    options.shimeoki.host = {
+        type = lib.mkOption {
+            type =
+                with lib.types;
+                enum [
+                    "desktop"
+                    "laptop"
+                ];
         };
 
-        outputs = mkOption {
-            type = types.attrsOf (
-                types.submodule {
-                    width = mkOption {
-                        type = types.int;
+        outputs = lib.mkOption {
+            type =
+                with lib.types;
+                attrsOf (submodule {
+                    width = lib.mkOption {
+                        type = with lib.types; int;
                     };
 
-                    height = mkOption {
-                        type = types.int;
+                    height = lib.mkOption {
+                        type = with lib.types; int;
                     };
 
-                    hz = mkOption {
-                        type = types.int;
+                    hz = lib.mkOption {
+                        type = with lib.types; int;
                     };
-                }
-            );
+                });
         };
     };
 }
