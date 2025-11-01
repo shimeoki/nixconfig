@@ -9,7 +9,7 @@ let
     inherit (config) shimeoki;
     inherit (shimeoki) stylix;
 
-    theme = "oxocarbon-dark";
+    theme = "kanagawa";
 
     # monospace for everything
     font = {
