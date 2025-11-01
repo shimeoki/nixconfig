@@ -11,6 +11,7 @@ in
     imports = [
         ./settings.nix
         ./aliases.nix
+        ./delta.nix
     ];
 
     options.shimeoki.lazygit = {
