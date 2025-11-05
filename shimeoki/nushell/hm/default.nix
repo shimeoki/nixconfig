@@ -14,6 +14,7 @@ in
         ./binds.nix
         ./fzf.nix
         ./settings.nix
+        ./neovim.nix
     ];
 
     options.shimeoki.nushell = {
