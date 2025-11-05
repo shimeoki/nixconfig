@@ -165,6 +165,8 @@ let
         { "Mod+Shift+S".action.screenshot-screen = [ ]; }
         { "Mod+Ctrl+S".action.screenshot-window = [ ]; }
 
+        (bind "O" toggle-window-rule-opacity)
+
         (bindNoInhibiting "Escape" toggle-keyboard-shortcuts-inhibit)
 
         (bind "Shift+E" quit)
