@@ -15,6 +15,7 @@ in
         ./fzf.nix
         ./settings.nix
         ./neovim.nix
+        ./lazygit.nix
     ];
 
     options.shimeoki.nushell = {
