@@ -5,10 +5,14 @@ in
 {
     imports = [
         inputs.self.homeModules.shimeoki
+
+        # keep-sorted start
         ./aliases.nix
+        ./cursor.nix
         ./git.nix
         ./syncthing.nix
         ./waybar.nix
+        # keep-sorted end
     ];
 
     home = {
