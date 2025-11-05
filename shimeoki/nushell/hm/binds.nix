@@ -58,13 +58,13 @@ in
 
             (bind {
                 name = "hint_word_complete";
-                keycode = "char_;";
+                keycode = "space";
                 event.send = "HistoryHintWordComplete";
             })
 
-            (bind {
+            (bindShift {
                 name = "hint_complete";
-                keycode = "char_'";
+                keycode = "space";
                 event.send = "HistoryHintComplete";
             })
 
