@@ -19,6 +19,7 @@ in
             (bind "ctrl-k" "up")
             (bind "ctrl-l" "select+down")
 
+            (bind "ctrl-f" "first")
             (bind "ctrl-u" "half-page-down")
             (bind "ctrl-i" "half-page-up")
         ];
