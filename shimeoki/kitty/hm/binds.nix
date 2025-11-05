@@ -5,8 +5,11 @@ let
     bind = keys: action: { "kitty_mod+${keys}" = action; };
 
     binds = lib.mkMerge [
-        (bind "/" "scroll_line_up")
-        (bind "shift+/" "scroll_line_down")
+        (bind "i" "scroll_line_up")
+        (bind "u" "scroll_line_down")
+
+        (bind "shift+i" "scroll_page_up")
+        (bind "shift+u" "scroll_page_down")
 
         (bind "[" "previous_window")
         (bind "]" "next_window")
@@ -77,7 +80,8 @@ let
         (bind "equal" "change_font_size all +2.0")
         (bind "0" "change_font_size all 0")
 
-        # todo: scrollback
+        (bind "p" "show_scrollback")
+        # todo: scrollback nvim
     ];
 in
 {
