@@ -5,11 +5,14 @@ let
 in
 {
     imports = [
+        ./plugins
+
+        # keep-sorted start
+        ./binds.nix
         ./preview.nix
         ./settings.nix
-        ./binds.nix
         ./shell.nix
-        ./plugins
+        # keep-sorted end
     ];
 
     options.shimeoki.yazi = {

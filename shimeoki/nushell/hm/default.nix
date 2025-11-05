@@ -14,10 +14,11 @@ in
         # keep-sorted start
         ./binds.nix
         ./fzf.nix
+        ./lazygit.nix
+        ./neovim.nix
         ./settings.nix
         ./yazi.nix
-        ./neovim.nix
-        ./lazygit.nix
+        ./zoxide.nix
         # keep-sorted end
     ];
 
