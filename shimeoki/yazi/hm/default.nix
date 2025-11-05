@@ -19,6 +19,9 @@ in
     };
 
     config = lib.mkIf cfg.enable {
-        programs.yazi.enable = true;
+        programs.yazi = {
+            enable = true;
+            enableNushellIntegration = false; # NOTE: managed by nushell module
+        };
     };
 }

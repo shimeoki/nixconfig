@@ -14,6 +14,7 @@ in
         ./binds.nix
         ./fzf.nix
         ./settings.nix
+        ./yazi.nix
         ./neovim.nix
         ./lazygit.nix
     ];
