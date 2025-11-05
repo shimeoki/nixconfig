@@ -11,12 +11,14 @@ let
 in
 {
     imports = [
+        # keep-sorted start
         ./binds.nix
         ./fzf.nix
         ./settings.nix
         ./yazi.nix
         ./neovim.nix
         ./lazygit.nix
+        # keep-sorted end
     ];
 
     options.shimeoki.nushell = {
