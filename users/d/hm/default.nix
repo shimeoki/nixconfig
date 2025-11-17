@@ -10,6 +10,7 @@ in
         ./aliases.nix
         ./cursor.nix
         ./git.nix
+        ./pkgs.nix
         ./syncthing.nix
         ./waybar.nix
         # keep-sorted end
