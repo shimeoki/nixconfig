@@ -7,6 +7,14 @@
 let
     inherit (config) shimeoki;
     inherit (shimeoki) niri;
+
+    # FIXME: hardcoded username and path
+    screenshot = {
+        fmt = "%Y-%m-%d-%H-%M-%S.png";
+        dir = "~/Pictures/screenshots/yuki";
+    };
+
+    screenshot-path = with screenshot; "${dir}/${fmt}";
 in
 {
     imports = [
@@ -40,7 +48,7 @@ in
             prefer-no-csd = true;
             hotkey-overlay.skip-at-startup = true;
             clipboard.disable-primary = true;
-            # todo: screenshot path
+            inherit screenshot-path;
         };
     };
 }
