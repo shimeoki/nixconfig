@@ -70,8 +70,8 @@ git clone https://github.com/shimeoki/nixconfig.git
 ```
 
 and define your own hosts and users as needed. Then, add them in the
-`./flake/systems.nix`: add an entry in `systems` for the corresponding hostname
-and create a system with a list of needed users.
+`./flake/sys.nix`: add an entry in `systems` for the corresponding hostname and
+create a system with a list of needed users.
 
 Some notes:
 
@@ -80,7 +80,15 @@ Some notes:
 
 ### Partial
 
-The flake doesn't expose the modules for external usage in a flake yet.
+The modules exported in a flake are for internal usage right now. Don't use them
+in your config, I was unable to get them working, because they are dependent on
+flake inputs. And just copying the inputs from my flake to any other flake to
+use my configuration not feels like a proper solution for me.
+
+However, you can still copy the modules to your own configuration. Before doing
+that, though, it's recommended to check required modules - they are always in
+`inherit` statements at the top. You also need to copy them, and in some cases
+they need certain flake inputs.
 
 ## Contributing
 
