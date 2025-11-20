@@ -31,6 +31,7 @@
         ./obsidian/hm
         ./password-store/hm
         ./pwvucontrol/hm
+        ./rmpc/hm
         ./ssh/hm
         ./stylix/hm
         ./swww/hm
