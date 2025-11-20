@@ -4,6 +4,7 @@
 }:
 {
     imports = [
+        # keep-sorted start
         ./bat/hm
         ./btop/hm
         ./carapace/hm
@@ -21,6 +22,7 @@
         ./kitty/hm
         ./lazygit/hm
         ./materialgram/hm
+        ./mpd/hm
         ./nh/hm
         ./niri/hm
         ./nix-search-tv/hm
@@ -38,6 +40,7 @@
         ./yazi/hm
         ./zen-browser/hm
         ./zoxide/hm
+        # keep-sorted end
     ];
 
     options.shimeoki = {
