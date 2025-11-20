@@ -7,13 +7,17 @@
     imports = [
         inputs.self.nixosModules.shimeoki
         (modulesPath + "/installer/scan/not-detected.nix")
+
+        # keep-sorted start
+        ./audio.nix
+        ./boot.nix
+        ./bt.nix
+        ./console.nix
         ./fs.nix
         ./kernel.nix
         ./network.nix
-        ./boot.nix
         ./xkb.nix
-        ./console.nix
-        ./audio.nix
+        # keep-sorted end
     ];
 
     time.timeZone = "Europe/Moscow";
