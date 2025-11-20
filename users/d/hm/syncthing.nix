@@ -2,29 +2,7 @@
     shimeoki.syncthing = {
         enable = true;
 
-        pictures = {
-            enable = true;
-            devices = [
-                "kaede"
-            ];
-        };
-
-        password-store = {
-            enable = true;
-            devices = [
-                "kaede"
-                "akane"
-            ];
-        };
-
-        obsidian = {
-            enable = true;
-            devices = [
-                "kaede"
-                "akane"
-            ];
-        };
-
+        # keep-sorted start block=yes newline_separated=yes
         code = {
             enable = true;
             devices = [
@@ -48,5 +26,29 @@
                 "akane"
             ];
         };
+
+        obsidian = {
+            enable = true;
+            devices = [
+                "kaede"
+                "akane"
+            ];
+        };
+
+        password-store = {
+            enable = true;
+            devices = [
+                "kaede"
+                "akane"
+            ];
+        };
+
+        pictures = {
+            enable = true;
+            devices = [
+                "kaede"
+            ];
+        };
+        # keep-sorted end
     };
 }
