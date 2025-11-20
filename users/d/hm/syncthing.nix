@@ -40,5 +40,13 @@
                 "akane"
             ];
         };
+
+        music = {
+            enable = true;
+            devices = [
+                "kaede"
+                "akane"
+            ];
+        };
     };
 }
