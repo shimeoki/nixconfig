@@ -40,7 +40,7 @@
             inputs = {
                 # keep-sorted start
                 flake-parts.follows = "flake-parts";
-                nixpkgs.follows = "nixpkgs";
+                # nixpkgs.follows = "nixpkgs"; NOTE: otherwise doesn't build
                 pre-commit-hooks-nix.follows = "";
                 # keep-sorted end
             };

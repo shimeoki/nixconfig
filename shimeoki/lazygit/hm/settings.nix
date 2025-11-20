@@ -28,10 +28,6 @@ in
 
                 filterMode = "fuzzy";
             };
-
-            git.paging = {
-                colorArg = "always";
-            };
         };
     };
 }

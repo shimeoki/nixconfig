@@ -5,7 +5,9 @@ in
 {
     config = lib.mkIf (lazygit.enable && delta.enable) {
         programs.lazygit.settings = {
-            git.paging.pager = "delta --paging=never";
+            git.pagers = [
+                { pager = "delta --paging=never"; }
+            ];
         };
     };
 }

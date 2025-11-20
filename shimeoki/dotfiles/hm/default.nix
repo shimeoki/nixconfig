@@ -19,6 +19,8 @@ in
     };
 
     config = lib.mkIf dotfiles.enable {
-        home.packages = [ inputs.dotfiles.packages.${pkgs.system}.default ];
+        home.packages = [
+            inputs.dotfiles.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ];
     };
 }
