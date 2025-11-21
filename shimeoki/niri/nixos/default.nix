@@ -1,5 +1,6 @@
 {
     config,
+    pkgs,
     lib,
     inputs,
     ...
@@ -20,6 +21,10 @@ in
     };
 
     config = lib.mkIf niri.enable {
-        programs.niri.enable = true;
+        nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+        programs.niri = {
+            enable = true;
+            package = pkgs.niri-unstable;
+        };
     };
 }

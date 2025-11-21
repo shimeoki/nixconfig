@@ -18,14 +18,18 @@ let
 in
 {
     imports = [
-        ./binds.nix
-        ./layout.nix
+        # keep-sorted start
         ./animations.nix
+        ./binds.nix
         ./environment.nix
+        ./input.nix
+        ./layer-rules.nix
+        ./layout.nix
         ./overview.nix
         ./window-rules.nix
-        ./layer-rules.nix
-        ./input.nix
+        ./xwayland.nix
+        # keep-sorted end
+
         # todo: output
         # todo: cursor
     ];
