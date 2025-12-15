@@ -3,7 +3,7 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
         flake-parts.url = "github:hercules-ci/flake-parts";
         systems.url = "github:nix-systems/x86_64-linux";
@@ -21,13 +21,6 @@
             };
         };
 
-        flake-utils = {
-            url = "github:numtide/flake-utils";
-            inputs = {
-                systems.follows = "systems";
-            };
-        };
-
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs = {
@@ -36,12 +29,11 @@
         };
 
         lanzaboote = {
-            url = "github:nix-community/lanzaboote/v0.4.2";
+            url = "github:nix-community/lanzaboote/v1.0.0";
             inputs = {
                 # keep-sorted start
-                flake-parts.follows = "flake-parts";
-                # nixpkgs.follows = "nixpkgs"; NOTE: otherwise doesn't build
-                pre-commit-hooks-nix.follows = "";
+                nixpkgs.follows = "nixpkgs";
+                pre-commit.follows = "";
                 # keep-sorted end
             };
         };
@@ -62,17 +54,8 @@
                 # keep-sorted start
                 flake-parts.follows = "flake-parts";
                 nixpkgs.follows = "nixpkgs";
-                nuschtosSearch.follows = "nuschtosSearch";
                 systems.follows = "systems";
                 # keep-sorted end
-            };
-        };
-
-        nuschtosSearch = {
-            url = "github:NuschtOS/search";
-            inputs = {
-                nixpkgs.follows = "nixpkgs";
-                flake-utils.follows = "flake-utils";
             };
         };
 
