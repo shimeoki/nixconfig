@@ -2,23 +2,18 @@
 
 My [NixOS](https://nixos.org/) configuration as a flake.
 
-The configuration is in very early state, but should be fully usable with the
-sufficient host and user configuration, even for non-NixOS machines.
+## Notice
+
+This configuration is superseded by
+[system (on codeberg)](https://codeberg.org/shimeoki/system).
+
+The repository is archived, not recommended for usage and preserved for history.
 
 ## Description
 
 It is planned to be a Nix counterpart of my
 [dotfiles](https://github.com/shimeoki/dotfiles). Most of the configuration is
 just mirrored, but written in Nix, where possible.
-
-For the philosophy of the configuration, visuals, applications and so on, check
-the repository above.
-
-But there are still some differences:
-
-- The coverage is not full.
-- Some additional configuration is present specific to Nix(OS).
-- The theme is defined via [Stylix](https://github.com/nix-community/stylix).
 
 ## Structure
 
@@ -57,41 +52,3 @@ module, and then it imports Home Manager. Because some options can be specific
 to a user, but not configured at Home Manager level, they should be done here.
 
 Examples for both can be seen in the flake.
-
-## Usage
-
-### Full
-
-If you want to fully transition to this configuration, you need to clone the
-configuration
-
-```sh
-git clone https://github.com/shimeoki/nixconfig.git
-```
-
-and define your own hosts and users as needed. Then, add them in the
-`./flake/sys.nix`: add an entry in `systems` for the corresponding hostname and
-create a system with a list of needed users.
-
-Some notes:
-
-- Don't forget to add new files to Git.
-- If your system is not `x86_64-linux`, change the `systems.url` in `flake.nix`.
-
-### Partial
-
-The modules exported in a flake are for internal usage right now. Don't use them
-in your config, I was unable to get them working, because they are dependent on
-flake inputs. And just copying the inputs from my flake to any other flake to
-use my configuration not feels like a proper solution for me.
-
-However, you can still copy the modules to your own configuration. Before doing
-that, though, it's recommended to check required modules - they are always in
-`inherit` statements at the top. You also need to copy them, and in some cases
-they need certain flake inputs.
-
-## Contributing
-
-- Use conventional commits (not very strict).
-- Check that every commit can be used in `nixos-rebuild`.
-- Format with `nix fmt` before a PR or before every commit (latter preferred).
