@@ -52,3 +52,8 @@ module, and then it imports Home Manager. Because some options can be specific
 to a user, but not configured at Home Manager level, they should be done here.
 
 Examples for both can be seen in the flake.
+
+## License
+
+Unless otherwise noted, the source files are distributed under the
+[BSD-3-Clause license](./LICENSE).
